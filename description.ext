@@ -50,49 +50,6 @@ class CfgDebriefing
 };
 
 
-// QT Scream
-class CfgSounds
-{
-	sounds[] = {};
-	class HitScream1
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "HitScream1";
-		// filename, volume, pitch
-		sound[] = {"@A3\Sounds_F\characters\human-sfx\Person0\P0_hit_01.wss", 10, 1};
-		// subtitle delay in seconds, subtitle text 
-		titles[] = {1, ""};
-	};
-	class RadioClick
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "RadioClick";
-		// filename, volume, pitch
-		sound[] = {"@A3\Sounds_F\sfx\UI\UAV\UAV_09.wss", 1, 1};
-		// subtitle delay in seconds, subtitle text 
-		titles[] = {0.1, ""};
-	};
-	class RadioOn
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "RadioOn";
-		// filename, volume, pitch
-		sound[] = {"fnc\sounds\QT_VOIP\on.wav", 1, 1};
-		// subtitle delay in seconds, subtitle text 
-		titles[] = {0.1, ""};
-	};
-	class RadioOff
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "RadioOff";
-		// filename, volume, pitch
-		sound[] = {"fnc\sounds\QT_VOIP\off.wav", 1, 1};
-		// subtitle delay in seconds, subtitle text 
-		titles[] = {0.1, ""};
-	};
-};
-
-
 // QT Rank Insignia
 class CfgUnitInsignia
 {
