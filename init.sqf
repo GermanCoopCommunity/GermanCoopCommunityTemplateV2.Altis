@@ -11,7 +11,7 @@ QT_fnc_Earplugs = compile preprocessFileLineNumbers "fnc\QT_fnc_Earplugs.sqf";
 QT_fnc_Insignia = compile preprocessFileLineNumbers "fnc\QT_fnc_Insignia.sqf";
 
 // define fnc arrays
-QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Revive,QT_fnc_VOIP];
+QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia];
 QT_spawn_fncs = [];
 QT_AI_call_fncs = [QT_fnc_Insignia];
 QT_AI_spawn_fncs = [];
