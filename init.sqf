@@ -9,23 +9,12 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 // precompile fncs
 QT_fnc_Earplugs = compile preprocessFileLineNumbers "fnc\QT_fnc_Earplugs.sqf";
 QT_fnc_Insignia = compile preprocessFileLineNumbers "fnc\QT_fnc_Insignia.sqf";
-QT_fnc_Gestures = compile preprocessFileLineNumbers "fnc\QT_fnc_Gestures.sqf";
-//QT_fnc_BFT = compile preprocessFileLineNumbers "fnc\QT_fnc_BFT.sqf";
-//QT_fnc_Mount = compile preprocessFileLineNumbers "fnc\QT_fnc_Mount.sqf";
-//QT_fnc_DragCarry = compile preprocessFileLineNumbers "fnc\QT_fnc_DragCarry.sqf";
-//QT_fnc_PoM = compile preprocessFileLineNumbers "fnc\QT_fnc_PoM.sqf";
-QT_fnc_Revive = compile preprocessFileLineNumbers "fnc\QT_fnc_Revive.sqf";
-QT_fnc_VOIP = compile preprocessFileLineNumbers "fnc\QT_fnc_VOIP.sqf";
-//QT_fnc_Scream = compile preprocessFileLineNumbers "fnc\QT_fnc_Scream.sqf";
-//QT_fnc_AI_Int = compile preprocessFileLineNumbers "fnc\QT_fnc_AI_Int.sqf";
-//QT_fnc_Intro = compile preprocessFileLineNumbers "fnc\QT_fnc_Intro.sqf";
-//QT_fnc_Jump = compile preprocessFileLineNumbers "fnc\QT_fnc_Jump.sqf";
 
 // define fnc arrays
 QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Revive,QT_fnc_VOIP];
-QT_spawn_fncs = [/*QT_fnc_BFT*/];
-QT_AI_call_fncs = [QT_fnc_Insignia,QT_fnc_Revive/*,QT_fnc_Scream,QT_fnc_AI_Int*/];
-QT_AI_spawn_fncs = [/*QT_fnc_BFT*/];
+QT_spawn_fncs = [];
+QT_AI_call_fncs = [QT_fnc_Insignia];
+QT_AI_spawn_fncs = [];
 
 // initialize fncs on player
 if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs;};
@@ -35,9 +24,6 @@ if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs;};
 if (!isNil "QT_AI_call_fncs") then
 {
 	{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
-	{[_x] call QT_fnc_Revive} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
-	//{[_x] call QT_fnc_Scream} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
-	//{[_x] call QT_fnc_AI_Int} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
 };
 if (!isNil "QT_AI_spawn_fncs") then
 {
