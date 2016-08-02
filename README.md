@@ -16,5 +16,5 @@ Features:
 
 
 Complete Zeus support including:
-	- every vehicle and unit editable for all Zeus
-	- Respawn-, JIP- compatible
+- every vehicle and unit editable for all Zeus
+- Respawn-, JIP- compatible
