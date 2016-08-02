@@ -43,21 +43,6 @@ player createDiaryRecord [
 			"<br/><font color='#107b1b'>Linke Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
 	]
 ];
-player createDiaryRecord [
-	"QTS",
-	[
-		"Gesten",
-			"
-			Tastatur 4: <font color='#107b1b'>""Los!""</font color><br/>
-			Tastatur 5: <font color='#FF0000'>""Halt!""</font color><br/>
-			Tastatur 6: <font color='#107b1b'>""Positiv!""</font color><br/>
-			Tastatur 7: <font color='#FF0000'>""Negativ!""</font color><br/>
-			Tastatur 8: <font color='#0a648c'>""Sichtkontakt auf (-Richtung- )!""</font color><br/><br/>
-			
-			Wenn der Gruppenchat aktiviert ist, sagt der Spieleravatar Entsprechendes.
-			"
-	]
-];
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
 
 
