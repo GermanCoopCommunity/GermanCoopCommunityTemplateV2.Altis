@@ -1,0 +1,141 @@
+﻿// by Quentin
+
+
+// Corpse & Wreck Managing
+corpseManagerMode = 2;
+/*
+	0 = None - None of the units are managed by the manager
+	1 = All - All units are managed by the manager
+	2 = None_But_Respawned - Only units that can respawn are managed by the manager
+	3 = All_But_Respawned - All units are managed by the manager with exception of respawned (opposite to mode 2)
+*/
+/*
+corpseLimit = 15;
+corpseRemovalMinTime = 300;
+corpseRemovalMaxTime = 600;
+wreckManagerMode = 2;
+*/
+/*
+	0 = None - None of the vehicles are managed by the manager
+	1 = All - All vehicles are managed by the manager
+	2 = None_But_Respawned - Only vehicles that can respawn are managed by the manager
+	3 = All_But_Respawned - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)
+*/
+/*
+wreckLimit = 15;
+wreckRemovalMinTime = 300;
+wreckRemovalMaxTime = 600;
+*/
+
+
+// Debriefing
+class CfgDebriefing
+{
+	class Success
+	{
+		title = "Mission erfüllt";
+		subtitle = "Ziel erreicht";
+		description = "Wir haben die Mission erfüllt.";
+		pictureBackground = "";
+		picture = "";
+	};
+	class Failure
+	{
+		title = "Mission gescheitert";
+		subtitle = "Ziel nicht erreicht";
+		description = "Wir haben die Mission nicht erfüllt.";
+		pictureBackground = "";
+		picture = "";
+	};
+};
+
+
+// QT Scream
+class CfgSounds
+{
+	sounds[] = {};
+	class HitScream1
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "HitScream1";
+		// filename, volume, pitch
+		sound[] = {"@A3\Sounds_F\characters\human-sfx\Person0\P0_hit_01.wss", 10, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, ""};
+	};
+	class RadioClick
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "RadioClick";
+		// filename, volume, pitch
+		sound[] = {"@A3\Sounds_F\sfx\UI\UAV\UAV_09.wss", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {0.1, ""};
+	};
+	class RadioOn
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "RadioOn";
+		// filename, volume, pitch
+		sound[] = {"fnc\sounds\QT_VOIP\on.wav", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {0.1, ""};
+	};
+	class RadioOff
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "RadioOff";
+		// filename, volume, pitch
+		sound[] = {"fnc\sounds\QT_VOIP\off.wav", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {0.1, ""};
+	};
+};
+
+
+// QT Rank Insignia
+class CfgUnitInsignia
+{
+	class PrivateInsignia
+	{
+		displayName = "Private Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\private_gs.paa"; // Image path
+	};
+	class CorporalInsignia
+	{
+		displayName = "Corporal Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\corporal_gs.paa"; // Image path
+	};
+	class SergeantInsignia
+	{
+		displayName = "Sergeant Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\sergeant_gs.paa"; // Image path
+	};
+	class LieutenantInsignia
+	{
+		displayName = "Lieutenant Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\lieutenant_gs.paa"; // Image path
+	};
+	class CaptainInsignia
+	{
+		displayName = "Captain Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\captain_gs.paa"; // Image path
+	};
+	class MajorInsignia
+	{
+		displayName = "Major Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\major_gs.paa"; // Image path
+	};
+	class ColonelInsignia
+	{
+		displayName = "Colonel Insignia"; // Name displayed in Arsenal
+		author = "Bohemia Interactive"; // Author displayed in Arsenal
+		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\colonel_gs.paa"; // Image path
+	};
+};
