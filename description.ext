@@ -1,4 +1,8 @@
-﻿// by Quentin
+// by Quentin
+
+
+// some important commands
+enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
 
 
 // Corpse & Wreck Managing
