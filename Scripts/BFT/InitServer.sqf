@@ -12,9 +12,9 @@ GeCo_BFT_Groups = [];
 
 // assign each group in GeCo_BFT_Groups-Array a marker with its name
 {
-    private _marker = createMarker [str _x +"_Marker",[0,0,0]];
+    private _marker = createMarker [str _x +"_BFT",[0,0,0]];
     _marker setMarkerText ((str _x) select [2]);
-    _marker setMarkerType "b_unknown";
+    _marker setMarkerType "b_inf";
     nil
 } count GeCo_BFT_Groups;
 
