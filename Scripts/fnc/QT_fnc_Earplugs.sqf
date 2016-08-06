@@ -69,5 +69,16 @@ player addEventHandler [	// reset volume on players death
 ];
 
 
+// create diary entry with explanation for player
+if !(player diarySubjectExists "QTS") then {player createDiarySubject ["QTS","QTS"];};
+player createDiaryRecord [
+	"QTS",
+	[
+		"Ohrstöpsel",
+			"<br/><font color='#107b1b'>Linke Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
+	]
+];
+
+
 // return
 true;
