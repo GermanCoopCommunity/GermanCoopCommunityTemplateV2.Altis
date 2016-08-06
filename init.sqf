@@ -52,7 +52,7 @@ removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset E
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
 // Nametags
-JK_fnc_NameTags = compile preprocessFileLineNumbers "fnc\JK_fnc_NameTags.sqf";
+JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\fnc\JK_fnc_NameTags.sqf";
 if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile >> "CfgPatches" >> "A3C_NameTag")) || (isClass (configFile >> "CfgPatches" >> "STNametags")))) then	// if player doesn´t run the nametag mods STNameTags and A3C_NameTag...
 {
 	addMissionEventHandler ["Draw3D", {_this call JK_fnc_NameTags}];	// ...initialize JK Nametags for player
