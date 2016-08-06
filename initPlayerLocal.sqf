@@ -55,5 +55,9 @@ player createDiaryRecord [
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
 
 
+// initialize MissionProtectionSystem
+private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitClient.sqf";
+call _BFT_InitServer;
+
 // log end of execution
 diag_log format ["%1 --- initPlayerLocal.sqf executed",diag_ticktime];
