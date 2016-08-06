@@ -1,6 +1,11 @@
 // by Quentin
 
 
+// fix loadingpics from 3DEN
+overviewPicture = "img/loadingpic.jpg";
+loadScreen = "img/loadingpic.jpg";
+
+
 // some important commands
 enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
 
