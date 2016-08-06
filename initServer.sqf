@@ -17,6 +17,9 @@ publicVariable "a_variable";*/
 // delete player body on disconnect
 addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
+// initialize BFT
+private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\InitServer.sqf";
+call _BFT_InitServer;
 
 // log end of execution
 diag_log format ["%1 --- initServer.sqf executed",diag_ticktime];
