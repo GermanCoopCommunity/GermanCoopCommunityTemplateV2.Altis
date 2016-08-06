@@ -23,6 +23,10 @@ if (didJIP) then
 					if (!isNil "QT_AI_spawn_fncs") then {{[_this select 1] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 				};
 				{_x addCuratorEditableObjects [[_this select 1],true]} count allCurators;	// ...add placed entity to editable objects for the other curators
+				if ((_this select 1) isKindOf "Air") then
+				{
+					(_this select 1) enableCopilot false;
+				};
 			}
 		];
 	};
