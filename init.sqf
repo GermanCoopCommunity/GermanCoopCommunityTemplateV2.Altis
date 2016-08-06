@@ -7,8 +7,8 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 
 ////////////////////////////////////////////////// initialize QTS //////////////////////////////////////////////////
 // precompile fncs
-QT_fnc_Earplugs = compile preprocessFileLineNumbers "fnc\QT_fnc_Earplugs.sqf";
-QT_fnc_Insignia = compile preprocessFileLineNumbers "fnc\QT_fnc_Insignia.sqf";
+QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Earplugs.sqf";
+QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia.sqf";
 
 // define fnc arrays
 QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia];
