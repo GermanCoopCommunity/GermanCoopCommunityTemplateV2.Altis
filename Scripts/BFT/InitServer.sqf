@@ -19,10 +19,11 @@ GeCo_BFT_Groups = [];
 } count GeCo_BFT_Groups;
 
 // refresh each group´s marker position on each frame depending on group leader´s position
-onEachFrame {
+addMissionEventHandler ["EachFrame", {
+  {
     if(!isServer)exitWith{};
     {
         str _x +"_Marker" setMarkerPos (position (leader _x));
         nil
     } count GeCo_BFT_Groups;
-};
+}];
