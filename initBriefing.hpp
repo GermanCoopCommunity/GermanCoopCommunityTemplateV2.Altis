@@ -23,15 +23,7 @@ player createDiaryRecord [
 	]
 ];
 
-// QTS entries
-player createDiarySubject ["QTS","QTS"];
-player createDiaryRecord [
-	"QTS",
-	[
-		"Ohrstöpsel",
-			"<br/><font color='#107b1b'>Linke Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
-	]
-];
+
 // Revive explanation
 player createDiarySubject ["Revive","How To"];
 player createDiaryRecord [
