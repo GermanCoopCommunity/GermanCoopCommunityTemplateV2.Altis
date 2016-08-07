@@ -58,27 +58,6 @@ if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile
 	addMissionEventHandler ["Draw3D", {_this call JK_fnc_NameTags}];	// ...initialize JK Nametags for player
 };
 
-// forbid players to operate vehicles they aren´t in class for
-addMissionEventHandler ["Draw3D", {
-	if (
-		(!isNull objectParent player)	// if player is in a vehicle...
-		&&
-		{!((getText (configfile >> "CfgVehicles" >> typeOf objectParent player >> "vehicleClass") == "Submarine") or (typeOf objectParent player == "Steerable_Parachute_F"))}	// ...which is not an SDV or a parachute...
-		&&
-		{(objectParent player isKindOf "Tank") or {objectParent player isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
-		&&
-		{((typeOf player) != (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
-		&&
-		{((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
-	)
-	then
-	{
-		hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
-		player action ["GetOut", vehicle player];	// ...eject him out of the vehicle
-		//moveOut player;
-	};
-}];
-
 // 3rd Person in vehicles only
 addMissionEventHandler ["Draw3D", {
 	if (
