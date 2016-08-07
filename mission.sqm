@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=17;
+		nextID=18;
 	};
 	class Camera
 	{
-		pos[]={23555.734,8.8148689,18729.105};
-		dir[]={-0.26129231,-0.40474671,0.8763113};
-		up[]={-0.11565424,0.91442627,0.3878766};
-		aside[]={0.95831525,7.1038812e-008,0.28574356};
+		pos[]={23565.393,68.709412,18698.166};
+		dir[]={0.17888419,-0.80683601,0.56307054};
+		up[]={0.24429666,0.59077114,0.76896709};
+		aside[]={0.95307559,2.4746987e-007,-0.30278718};
 	};
 };
 binarizationWanted=0;
@@ -27149,6 +27149,7 @@ class Mission
 						rank="CAPTAIN";
 						name="opz";
 						description="Commanding Officer";
+						isPlayer=1;
 						isPlayable=1;
 						class Inventory
 						{
@@ -27251,6 +27252,29 @@ class Mission
 					};
 					id=1057;
 					type="B_officer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.94999999;
+								};
+							};
+						};
+						nAttributes=1;
+					};
 				};
 				class Item1
 				{
@@ -35042,10 +35066,9 @@ class Mission
 			class PositionInfo
 			{
 				position[]={23597.768,3.1900001,18954.627};
-				angles[]={0,3.071727,0};
+				angles[]={0,0.039959453,0};
 			};
 			name="gamemaster_2";
-			isPlayer=1;
 			isPlayable=1;
 			description="Zeus 2";
 			id=1302;
