@@ -25,11 +25,11 @@ player createDiaryRecord [
 
 
 // Revive explanation
-player createDiarySubject ["Revive","How To"];
+player createDiarySubject ["How To","How To"];
 player createDiaryRecord [
 	"How To",
 	[
-		"How To",
+		"Revive",
 			"Das Revivesystem ist darauf ausgelegt, den Spieler bei Treffern durch großkalibrige Projektile oder bei Treffern auf ungeschützte Areale zu töten. Nur Sanitäter können wiederbeleben, wenn sie ein Medikit bei sich tragen."
 	]
 ];
