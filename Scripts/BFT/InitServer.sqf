@@ -14,7 +14,19 @@ GeCo_BFT_Groups = [];
 {
     private _marker = createMarker [str _x +"_BFT",[0,0,0]];
     _marker setMarkerText ((str _x) select [2]);
-    _marker setMarkerType "b_inf";
+    if(typeOf(leader _x) in GeCo_Pilots) then {
+        _marker setMarkerType "b_air";
+    } else {
+        if(typeOf(leader _x) in GeCo_Crew) then { 
+            _marker setMarkerType "b_mech_inf";
+        } else {
+            if(typeOf(leader _x) in GeCo_OPZ) then {
+                _marker setMarkerType "b_hq";
+            } else {
+                _marker setMarkerType "b_inf";
+            };
+        };
+    };
     nil
 } count GeCo_BFT_Groups;
 
@@ -23,7 +35,7 @@ addMissionEventHandler ["EachFrame", {
   {
     if(!isServer)exitWith{};
     {
-        str _x +"_Marker" setMarkerPos (position (leader _x));
+        str _x +"_BFT" setMarkerPos (position (leader _x));
         nil
     } count GeCo_BFT_Groups;
 }];

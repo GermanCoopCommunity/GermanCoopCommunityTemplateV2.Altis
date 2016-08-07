@@ -14,13 +14,17 @@ publicVariable "a_variable";*/
 // delete player body on disconnect
 addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
+// initialize Core
+private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\InitServer.sqf";
+call _Core_InitServer;
+
 // initialize BFT
 private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\InitServer.sqf";
 call _BFT_InitServer;
 
 // initialize MissionProtectionSystem
-private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitServer.sqf";
-call _BFT_InitServer;
+private _MPS_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitServer.sqf";
+call _MPS_InitServer;
 
 // log end of execution
 diag_log format ["%1 --- initServer.sqf executed",diag_ticktime];
