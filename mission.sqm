@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1321;
+		nextID=1326;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=18;
+		nextID=20;
 	};
 	class Camera
 	{
-		pos[]={23565.393,68.709412,18698.166};
-		dir[]={0.17888419,-0.80683601,0.56307054};
-		up[]={0.24429666,0.59077114,0.76896709};
-		aside[]={0.95307559,2.4746987e-007,-0.30278718};
+		pos[]={23586.07,9.3514261,18737.139};
+		dir[]={-0.90559763,-0.38359949,-0.18129475};
+		up[]={-0.37618381,0.92348027,-0.075309031};
+		aside[]={-0.19630902,-1.2587407e-008,0.98060483};
 	};
 };
 binarizationWanted=0;
@@ -311,9 +311,9 @@ randomSeed=9798051;
 class ScenarioData
 {
 	author="GeCo Team";
-	overViewPicture="img/loadingpic.paa";
-	overViewPictureLocked="img/loadingpic.paa";
-	loadScreen="img/loadingpic.paa";
+	overViewPicture="img\loadingpic.paa";
+	overViewPictureLocked="img\loadingpic.paa";
+	loadScreen="img\loadingpic.paa";
 	saving=0;
 	respawnDialog=0;
 	disabledAI=1;
@@ -454,7 +454,7 @@ class CustomAttributes
 							"SCALAR"
 						};
 					};
-					value=2;
+					value=0;
 				};
 			};
 		};
@@ -623,6 +623,7 @@ class Mission
 	class Intel
 	{
 		briefingName="[GeCo] Almyra Base";
+		overviewText="GeCo Mission Template";
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
 		startWind=0.1;
@@ -641,7 +642,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=911;
+		items=913;
 		class Item0
 		{
 			dataType="Trigger";
@@ -34111,7 +34112,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=4;
+				items=1;
 				class Item0
 				{
 					dataType="Object";
@@ -34130,61 +34131,29 @@ class Mission
 					};
 					id=1256;
 					type="B_Helipilot_F";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
+					class CustomAttributes
 					{
-						position[]={23570.961,3.1914389,18713.244};
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.94999999;
+								};
+							};
+						};
+						nAttributes=1;
 					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						rank="CORPORAL";
-						name="adler_2";
-						description="Adler-2";
-						isPlayable=1;
-					};
-					id=1258;
-					type="B_Helipilot_F";
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={23572.957,3.1914389,18713.213};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						name="adler_3";
-						description="Adler-3";
-						isPlayable=1;
-					};
-					id=1260;
-					type="B_Helipilot_F";
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={23574.939,3.1914389,18713.07};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						name="adler_4";
-						description="Adler-4";
-						isPlayable=1;
-					};
-					id=1262;
-					type="B_Helipilot_F";
 				};
 			};
 			class Attributes
@@ -34208,7 +34177,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Piloten";
+							value="Adler 1";
 						};
 					};
 				};
@@ -35291,7 +35260,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={23549.756,4.0824227,18735.889};
+				position[]={23549.865,4.0824227,18738.197};
 				angles[]={0,1.5787201,0};
 			};
 			side="Empty";
@@ -35327,45 +35296,6 @@ class Mission
 		};
 		class Item903
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={23549.777,4.0824227,18740.693};
-				angles[]={0,1.5707964,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=1307;
-			type="B_supplyCrate_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item904
-		{
 			dataType="Marker";
 			position[]={23607.705,3.1900001,18817.904};
 			name="marker_5";
@@ -35374,7 +35304,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1308;
 		};
-		class Item905
+		class Item904
 		{
 			dataType="Marker";
 			position[]={23608.303,3.1900001,18764.545};
@@ -35384,7 +35314,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1309;
 		};
-		class Item906
+		class Item905
 		{
 			dataType="Marker";
 			position[]={23607.783,3.1900001,18712.783};
@@ -35394,7 +35324,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1310;
 		};
-		class Item907
+		class Item906
 		{
 			dataType="Marker";
 			position[]={23607.666,3.1900001,18665.41};
@@ -35404,7 +35334,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1311;
 		};
-		class Item908
+		class Item907
 		{
 			dataType="Marker";
 			position[]={23455.85,3.1900001,18672.865};
@@ -35414,7 +35344,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1312;
 		};
-		class Item909
+		class Item908
 		{
 			dataType="Marker";
 			position[]={23548.117,3.1900001,18738.43};
@@ -35424,7 +35354,7 @@ class Mission
 			colorName="ColorWEST";
 			id=1313;
 		};
-		class Item910
+		class Item909
 		{
 			dataType="Object";
 			class PositionInfo
@@ -35438,6 +35368,238 @@ class Mission
 			};
 			id=1316;
 			type="Land_Sign_WarningMilAreaSmall_F";
+		};
+		class Item910
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={23570.961,3.1914389,18713.244};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						rank="CORPORAL";
+						name="adler_2";
+						description="Adler-2";
+						isPlayable=1;
+					};
+					id=1258;
+					type="B_Helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.95999998;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1321;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Adler 2";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item911
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={23572.957,3.1914389,18713.213};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="adler_3";
+						description="Adler-3";
+						isPlayable=1;
+					};
+					id=1260;
+					type="B_Helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1322;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Adler 3";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item912
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={23574.939,3.1914389,18713.07};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="adler_4";
+						description="Adler-4";
+						isPlayable=1;
+					};
+					id=1262;
+					type="B_Helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1323;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Adler 4";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
