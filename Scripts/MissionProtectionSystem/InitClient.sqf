@@ -50,7 +50,9 @@ addMissionEventHandler ["Draw3D", {
 		&&
 		{((typeOf player) != (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
 		&&
-		{((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
+		{((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or 
+		//(player isEqualTo gunner objectParent player) or
+		(player == vehicle player turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
 	)
 	then
 	{
