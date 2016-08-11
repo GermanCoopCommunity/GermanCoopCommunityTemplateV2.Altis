@@ -3,6 +3,7 @@
 
 // some important commands
 enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
+respawnOnStart = -1; // disable respawn on start
 
 
 // Corpse & Wreck Managing
