@@ -70,3 +70,26 @@ player addMPEventHandler ["MPKilled",{
         [20] call GeCo_MissionProtection_AddFoul;
     };
 }];
+
+
+// if player is a curator, initialize BFT on units spawned by him
+    if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
+    {
+        player addEventHandler [
+            "CuratorObjectPlaced",
+            {
+                if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+                {
+                    (_this select 1) enableCopilot false;
+                };
+                if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+                {
+                    (_this select 1) _x addEventHandler ["Fired",{
+                        if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then {
+                            deleteVehicle (_this select 6);
+                        };
+                    }];
+                };
+            }
+        ];
+    };

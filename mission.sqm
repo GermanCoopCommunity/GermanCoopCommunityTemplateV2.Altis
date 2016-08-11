@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1326;
+		nextID=1329;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=20;
+		nextID=23;
 	};
 	class Camera
 	{
-		pos[]={23586.07,9.3514261,18737.139};
-		dir[]={-0.90559763,-0.38359949,-0.18129475};
-		up[]={-0.37618381,0.92348027,-0.075309031};
-		aside[]={-0.19630902,-1.2587407e-008,0.98060483};
+		pos[]={23568.084,23.672325,18714.602};
+		dir[]={0.85871446,-0.4799338,0.18017805};
+		up[]={0.46975556,0.87727755,0.098564804};
+		aside[]={0.20536788,-1.9930303e-007,-0.9787814};
 	};
 };
 binarizationWanted=0;
@@ -34664,13 +34664,13 @@ class Mission
 		class Item893
 		{
 			dataType="Marker";
-			position[]={23532.09,-1.8168543e-029,18742.439};
+			position[]={23532.09,-5.1486832e-017,18742.439};
 			name="GeCo_MissionProtection_BaseMarker";
-			markerType="RECTANGLE";
+			markerType="ELLIPSE";
 			type="rectangle";
 			colorName="ColorWEST";
-			a=100;
-			b=140;
+			a=200;
+			b=200;
 			id=1288;
 			atlOffset=-3.1900001;
 		};

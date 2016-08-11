@@ -23,10 +23,6 @@ if (didJIP) then
 					if (!isNil "QT_AI_spawn_fncs") then {{[_this select 1] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 				};
 				{_x addCuratorEditableObjects [[_this select 1],true]} count allCurators;	// ...add placed entity to editable objects for the other curators
-				if ((_this select 1) isKindOf "Air") then	// disable copilot being able to take over controls in Zeus placed air vehicles
-				{
-					(_this select 1) enableCopilot false;
-				};
 			}
 		];
 	};
@@ -39,8 +35,8 @@ if (didJIP) then
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
 
 // initialize MissionProtectionSystem
-private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitClient.sqf";
-call _BFT_InitServer;
+private _BFT_InitClient = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitClient.sqf";
+call _BFT_InitClient;
 
 // log end of execution
 diag_log format ["%1 --- initPlayerLocal.sqf executed",diag_ticktime];
