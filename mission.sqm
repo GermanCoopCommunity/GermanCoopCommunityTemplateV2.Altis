@@ -622,7 +622,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="[GeCo] Almyra Base";
+		briefingName="[GeCo] Basis Almyra";
 		overviewText="GeCo Mission Template";
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
