@@ -2,7 +2,7 @@
 
 
 // array of unit types allowed to fly
-GeCo_MissionProtection_Pilots= ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
+GeCo_MissionProtection_Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
 
 
 // set player´s foul count to 0 initially
@@ -84,7 +84,7 @@ player addMPEventHandler ["MPKilled",{
                 };
                 if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
                 {
-                    (_this select 1) _x addEventHandler ["Fired",{
+                    (_this select 1) addEventHandler ["Fired",{
                         if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then {
                             deleteVehicle (_this select 6);
                         };
