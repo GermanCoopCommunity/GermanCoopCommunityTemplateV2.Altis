@@ -78,8 +78,7 @@ addMissionEventHandler ["Draw3D", {
 	then
 	{
 		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
-		//hint "3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.";
-		["<t size='0.6'>3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>"] spawn bis_fnc_dynamicText;
+		["<t size='0.8'>3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
 	};
 }];
 ////////////////////////////////////////////////////////////////////////////////////////////////////
