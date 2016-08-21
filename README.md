@@ -16,5 +16,14 @@ Features:
 
 
 Complete Zeus support including:
+
 - every vehicle and unit editable for all Zeus
 - Respawn-, JIP- compatible
+
+
+Unit variable names:
+
+- Commanding Officer: co
+- Executive Officer: xo
+- Squadleaders: squadname_lead
+- Pilots: pilot_1 to pilot_4
