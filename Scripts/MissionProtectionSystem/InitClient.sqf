@@ -26,17 +26,18 @@ player addEventHandler["Fired", {
 }];
 
 
-// only pilots are allowed to fly
+/*// only pilots are allowed to fly
 player addEventHandler["GetInMan",{
     if (!((typeOf(_this select 0)) in GeCo_Pilots) && (_this select 1) == "driver" && ((_this select 2) isKindof "Air") && !((_this select 2) isKindof "Steerable_Parachute_F" )) then {
         (_this select 0) action ["GetOut", vehicle (_this select 0)];
         ["<t size='0.8'>Nur die Piloten sind dazu ausgebildet, zu fliegen. Du wurdest verwarnt.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
         [5] call GeCo_MissionProtection_AddFoul;
     };
-}];
+}];*/
 
-/*// forbid players to operate vehicles they aren´t in class for
-addMissionEventHandler ["Draw3D", {
+
+// forbid players to operate vehicles they aren´t in class for
+addMissionEventHandler ["GetInMan", {
 	if (
 		(!isNull objectParent player)	// if player is in a vehicle...
 		&&
@@ -52,14 +53,15 @@ addMissionEventHandler ["Draw3D", {
 	)
 	then
 	{
-		hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
+		["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
+		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
 		player action ["GetOut", vehicle player];	// ...eject him out of the vehicle
 		//moveOut player;
 	};
-}];*/
+}];
 
 
-// Teamkill punisher
+// teamkill punisher
 player addMPEventHandler ["MPKilled",{
     if (_this select 1 == player) then {
 	["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br />Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
