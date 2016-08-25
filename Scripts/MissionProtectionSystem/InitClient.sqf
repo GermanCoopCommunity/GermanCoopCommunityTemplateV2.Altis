@@ -53,7 +53,7 @@ addMissionEventHandler ["GetInMan", {
 	)
 	then
 	{
-		["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
+		[["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
 		player action ["GetOut", vehicle player];	// ...eject him out of the vehicle
 		//moveOut player;
