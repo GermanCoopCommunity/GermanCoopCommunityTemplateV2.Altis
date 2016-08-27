@@ -47,7 +47,7 @@ if (!isNil "QT_AI_spawn_fncs") then
 ///////////////////////// ///////////////////////// QTS initialization complete //////////////////////////////////////////////////
 
 
-removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+//removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
