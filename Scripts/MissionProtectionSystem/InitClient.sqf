@@ -39,24 +39,26 @@ player addEventHandler["GetInMan",{
 // forbid players to operate vehicles they aren´t in class for
 addMissionEventHandler ["GetInMan", {
 	if (
-		(!isNull objectParent player)	// if player is in a vehicle...
+		private _unit = _this select 0;
+		private _pos = _this select 1;
+		private _veh = _this select 2;
+		
+		{!((getText (configfile >> "CfgVehicles" >> typeOf _veh >> "vehicleClass") == "Submarine") or (typeOf _veh == "Steerable_Parachute_F"))}	// ...which is not an SDV or a parachute...
 		&&
-		{!((getText (configfile >> "CfgVehicles" >> typeOf objectParent player >> "vehicleClass") == "Submarine") or (typeOf objectParent player == "Steerable_Parachute_F"))}	// ...which is not an SDV or a parachute...
+		{(_veh isKindOf "Tank") or {_veh isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
 		&&
-		{(objectParent player isKindOf "Tank") or {objectParent player isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
+		{((typeOf _unit) != (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
 		&&
-		{((typeOf player) != (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
-		&&
-		{((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or 
-		//(player isEqualTo gunner objectParent player) or
-		(player == vehicle player turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
+		{((_pos == "driver") or (_pos == "gunner") or 
+		//(_unit isEqualTo gunner objectParent player) or
+		(_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
 	)
 	then
 	{
-		[["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
+		[["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
-		player action ["GetOut", vehicle player];	// ...eject him out of the vehicle
-		//moveOut player;
+		_unit action ["GetOut", _veh];	// ...eject him out of the vehicle
+		//moveOut _unit;
 	};
 }];
 
