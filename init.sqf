@@ -58,31 +58,6 @@ if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile
 	addMissionEventHandler ["Draw3D", {_this call JK_fnc_NameTags}];	// ...initialize JK Nametags for player
 };
 
-// 3rd Person in vehicles only
-addMissionEventHandler ["Draw3D", {
-	if (
-		(
-			isNull objectParent player	// if player is on foot...
-			&&
-			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
-		)
-		or
-		{
-			!isNull objectParent player	// if player isn´t on foot...
-			&&
-			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
-			&&
-			{!((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is only passenger in the vehicle...
-		}
-	)
-	then
-	{
-		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
-		["<t size='0.8'>3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
-	};
-}];
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 // (disable radio callouts and -texts) can be set via difficulty settings
 //0.1 fadeRadio 0;		// <-- out commented by psycho, this command stops working of some required game sounds (f.e. the *pieppiep* if a launcher has a target switched on)
