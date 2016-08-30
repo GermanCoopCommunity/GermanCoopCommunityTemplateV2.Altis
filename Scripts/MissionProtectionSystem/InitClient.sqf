@@ -1,4 +1,4 @@
-// by Fabi, edited by Quentin
+// by Fabi & Quentin
 
 
 // set player´s foul count to 0 initially
@@ -6,67 +6,61 @@ GeCo_MissionProtection_CountFouls = 0;
 
 
 // fnc foul control
-GeCo_MissionProtection_AddFoul = {
+GeCo_MissionProtection_AddFoul =
+{
     params [["_foulWeight", 1]];
     GeCo_MissionProtection_CountFouls = GeCo_MissionProtection_CountFouls + _foulWeight;
     
-    if (GeCo_MissionProtection_CountFouls >= 100) then {
+    if (GeCo_MissionProtection_CountFouls >= 100) then
+	{
         endMission "LOSER";
     };
 };
 
 
 // prevent base shooting
-player addEventHandler["Fired", {
-    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then {
+player addEventHandler["Fired",
+{
+    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then
+	{
         deleteVehicle (_this select 6);
-	["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br />Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+		["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br />Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [15] call GeCo_MissionProtection_AddFoul;
     };
 }];
 
 
-/*// only pilots are allowed to fly
-player addEventHandler["GetInMan",{
-    if (!((typeOf(_this select 0)) in GeCo_Pilots) && (_this select 1) == "driver" && ((_this select 2) isKindof "Air") && !((_this select 2) isKindof "Steerable_Parachute_F" )) then {
-        (_this select 0) action ["GetOut", vehicle (_this select 0)];
-        ["<t size='0.8'>Nur die Piloten sind dazu ausgebildet, zu fliegen. Du wurdest verwarnt.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
-        [5] call GeCo_MissionProtection_AddFoul;
-    };
-}];*/
-
-
 // forbid players to operate vehicles they aren´t in class for
-addMissionEventHandler ["GetInMan", {
-	if (
+player addEventHandler ["GetInMan", {
+		
+		// declare EH variables
 		private _unit = _this select 0;
 		private _pos = _this select 1;
 		private _veh = _this select 2;
 		
-		{!((getText (configfile >> "CfgVehicles" >> typeOf _veh >> "vehicleClass") == "Submarine") or (typeOf _veh == "Steerable_Parachute_F"))}	// ...which is not an SDV or a parachute...
+	if (
+		!((getText (configfile >> "CfgVehicles" >> typeOf _veh >> "vehicleClass") == "Submarine") or (typeOf _veh == "Steerable_Parachute_F"))	// ...which is not an SDV or a parachute...
 		&&
 		{(_veh isKindOf "Tank") or {_veh isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
 		&&
 		{((typeOf _unit) != (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
 		&&
-		{((_pos == "driver") or (_pos == "gunner") or 
-		//(_unit isEqualTo gunner objectParent player) or
-		(_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
+		{((_pos == "driver") or (_pos == "gunner") or (_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
 	)
 	then
 	{
-		[["<t size='0.8'>Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet. Du wurdest verwarnt</t>", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")) >> "DisplayName")],0,0,4,0] spawn bis_fnc_dynamicText;
+		["<t size='0.8'>Du bist für die Bedienung dieses Fahrzeuges nicht ausgebildet. Du wurdest verwarnt.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
 		_unit action ["GetOut", _veh];	// ...eject him out of the vehicle
-		//moveOut _unit;
 	};
 }];
 
 
 // teamkill punisher
 player addMPEventHandler ["MPKilled",{
-    if (_this select 1 == player) then {
-	["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br />Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+    if (_this select 1 == player) then
+	{
+		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;
     };
 }];
@@ -84,9 +78,11 @@ player addMPEventHandler ["MPKilled",{
                 };
                 if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
                 {
-                    (_this select 1) addEventHandler ["Fired",{
-                        if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then {
-                            deleteVehicle (_this select 6);
+                    (_this select 1) addEventHandler ["Fired",
+					{
+                        if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if curator placed unit shoots inside base...
+						{
+                            deleteVehicle (_this select 6);	// ...delete the projectile
                         };
                     }];
                 };

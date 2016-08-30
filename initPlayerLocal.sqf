@@ -4,6 +4,7 @@
 // log start of execution
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
 
+
 ////////////////////////////////////////// initialize QTS for JIPers //////////////////////////////////////////
 if (didJIP) then
 {
@@ -29,14 +30,17 @@ if (didJIP) then
 };
 ////////////////////////////////////////// QTS initialization for JIPers complete //////////////////////////////////////////
 
+
 ////////////////////////////////////////// briefing file //////////////////////////////////////////
 // see initBriefing.hpp file for briefing sections
 #include "initBriefing.hpp"
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
 
+
 // initialize MissionProtectionSystem
 private _BFT_InitClient = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitClient.sqf";
 call _BFT_InitClient;
+
 
 // log end of execution
 diag_log format ["%1 --- initPlayerLocal.sqf executed",diag_ticktime];

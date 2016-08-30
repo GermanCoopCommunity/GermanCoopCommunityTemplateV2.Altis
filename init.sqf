@@ -10,44 +10,71 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Earplugs.sqf";
 QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia.sqf";
 
+
 // define fnc arrays
 QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia];
 QT_spawn_fncs = [];
 QT_AI_call_fncs = [QT_fnc_Insignia];
 QT_AI_spawn_fncs = [];
 
+
 // initialize fncs on player
 if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs;};
 if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs;};
+
 
 // apply to AI units as well
 if (!isNil "QT_AI_call_fncs") then
 {
 	{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
 };
-if (!isNil "QT_AI_spawn_fncs") then
+/*if (!isNil "QT_AI_spawn_fncs") then
 {
-	//{[_x] call QT_fnc_BFT} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
-};
+	
+};*/
+
 
 // apply to AI newly spawned by curators as well
+	// single units
 {_x addEventHandler [
 	"CuratorObjectPlaced",
 		{
-			//_curator = _this select 0;
-			//_entity = _this select 1;			
-			if ((_this select 1) in (allUnits - allPlayers - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
+			// declare EH variables
+			_curator = _this select 0;
+			_entity = _this select 1;
+			
+			if (_entity in (allUnits - allPlayers - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
 			{
-				if (!isNil "QT_AI_call_fncs") then {{[_this select 1] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
-				if (!isNil "QT_AI_spawn_fncs") then {{[_this select 1] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
+				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
+				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 			};
-			{_x addCuratorEditableObjects [[_this select 1],true]} count (allCurators - [_this select 0]);	// ...add placed entity to editable objects for the other curators
+			{_x addCuratorEditableObjects [[_entity],true]} count (allCurators - [_curator]);	// ...add placed entity to editable objects for the other curators
 		}
-];} foreach allCurators;
-///////////////////////// ///////////////////////// QTS initialization complete //////////////////////////////////////////////////
+	];
+} foreach allCurators;
 
 
-//removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+/*	// AI groups
+{_x addEventHandler [
+	"CuratorGroupPlaced",
+		{
+			// declare EH variables
+			_curator = _this select 0;
+			_group = _this select 1;
+			
+			if (_group in allGroups) then	// if group spawned is an AI group...
+			{
+				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
+				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
+			};
+			{_x addCuratorEditableObjects [[_entity],true]} count (allCurators - [_curator]);	// ...add placed entity to editable objects for the other curators
+		}
+	];
+} foreach allCurators;*/
+////////////////////////////////////////////////// QTS initialization complete //////////////////////////////////////////////////
+
+
+removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
@@ -64,15 +91,6 @@ if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile
 enableRadio false;
 enableSentences false;
 
-
-// Joko: make player visible to curators on respawn
-fn_addPlayerToCurator = {
-    params ["_unit"];
-    {
-        _x addCuratorEditableObjects [[_unit],true];
-        nil
-    } count allCurators;
-};
 
 // 3rd Person in vehicles only
 addMissionEventHandler ["Draw3D", {
@@ -97,6 +115,7 @@ addMissionEventHandler ["Draw3D", {
 		["<t size='0.8'>3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
 	};
 }];
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////
