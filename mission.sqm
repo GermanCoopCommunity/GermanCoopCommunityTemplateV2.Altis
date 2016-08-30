@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1351;
+		nextID=1354;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=26;
+		nextID=27;
 	};
 	class Camera
 	{
-		pos[]={23541.826,48.081589,18681.717};
-		dir[]={0.29011908,-0.56369275,0.77347034};
-		up[]={0.1980015,0.82590014,0.52788186};
-		aside[]={0.9363786,-2.2217864e-007,-0.35122657};
+		pos[]={23142.529,8.5139875,18391.084};
+		dir[]={0.10168253,-0.44698477,0.88884979};
+		up[]={0.050816976,0.89446354,0.44421592};
+		aside[]={0.99360615,-5.0090603e-007,-0.11366855};
 	};
 };
 binarizationWanted=0;
@@ -646,7 +646,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=929;
+		items=931;
 		class Item0
 		{
 			dataType="Trigger";
@@ -36232,6 +36232,38 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item929
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={23142.572,4.2738132,18397.455};
+				angles[]={0,4.7258158,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1352;
+			type="Land_PortableLight_double_F";
+		};
+		class Item930
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={23141.262,4.2738132,18397.51};
+				angles[]={0,1.6237103,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1353;
+			type="Land_PortableLight_double_F";
 		};
 	};
 	class Connections
