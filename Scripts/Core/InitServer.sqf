@@ -9,3 +9,18 @@ GeCo_Crew = ["B_crew_F","O_crew_F","I_crew_F"];
 
 // define OPZ
 GeCo_OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
+
+
+// define PFH
+GeCo_PFH = [];
+addMissionEventHandler ["EachFrame", {
+  {
+      _x params [["_function",{}], ["_delay",0], ["_delta", diag_tickTime]];
+    if (diag_tickTime > _delta) then {
+      _x set [2, _delta + _delay];
+      true call _function;
+    };
+    nil
+  } count GeCo_PFH;
+}];
+
