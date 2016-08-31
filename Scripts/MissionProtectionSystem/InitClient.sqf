@@ -58,34 +58,41 @@ player addEventHandler ["GetInMan", {
 
 // teamkill punisher
 player addMPEventHandler ["MPKilled",{
-    if (_this select 1 == player) then
+
+	// declare EH variables
+	private _victim = _this select 0;
+	private _killer = _this select 1;
+	private _triggerer = _this select 2;
+	
+	
+    if ((_victim != _triggerer) && {(_victim in allPlayers) && (side _victim == side player)}) then	// if player killed another player of his own side and he didn´t manually respawn...
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
-        [50] call GeCo_MissionProtection_AddFoul;
+        [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
     };
 }];
 
 
-// if player is a curator, initialize BFT on units spawned by him
-    if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
-    {
-        player addEventHandler [
-            "CuratorObjectPlaced",
+// if player is a curator, initialize MPS on vehicles and units spawned by him
+if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
+{
+    player addEventHandler [
+        "CuratorObjectPlaced",
+        {
+            if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
             {
-                if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
-                {
-                    (_this select 1) enableCopilot false;
-                };
-                if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
-                {
-                    (_this select 1) addEventHandler ["Fired",
+                (_this select 1) enableCopilot false;
+            };
+            if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+            {
+                (_this select 1) addEventHandler ["Fired",
+				{
+                    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if curator placed unit shoots inside base...
 					{
-                        if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if curator placed unit shoots inside base...
-						{
-                            deleteVehicle (_this select 6);	// ...delete the projectile
-                        };
-                    }];
-                };
-            }
-        ];
-    };
+                        deleteVehicle (_this select 6);	// ...delete the projectile
+                    };
+                }];
+            };
+        }
+    ];
+};
