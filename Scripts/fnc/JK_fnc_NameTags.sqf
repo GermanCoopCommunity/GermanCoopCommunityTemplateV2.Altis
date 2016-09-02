@@ -37,8 +37,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				_target != player &&
 				{isPlayer _target} &&
 				{!(_x in allUnitsUAV)} &&
-				{alive player} /*&&*/
-				//{str(playerside) == (_target getVariable ["jk_var_side","CIV"])}
+				{alive player}
 			) then {
 			_targetPos = visiblePositionASL _target;
 			_distance = _targetPos distance _playerPos;
@@ -62,7 +61,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 			
 			_text = name _target;
 			_class = "";
-			_class = getText (configFile >> "CfgVehicles" >> typeOf(_target) >> "DisplayName");
+			_class = getText (configFile >> "CfgVehicles" >> typeOf (_target) >> "DisplayName");
 			_icon = "";
 			
 			if (_target in (missionNamespace getVariable ["BIS_revive_units", []]) || {_target getVariable ["FAR_isUnconscious",0] == 1}) then {
@@ -72,15 +71,13 @@ if ((count _targets) > 0) then {			// only if someone is in array
 			   _text = _text + call {
 					if (str(_target) in ["co"]) exitWith {" (Commanding Officer)"};
 					if (str(_target) in ["xo"]) exitWith {" (Executive Officer)"};
-					if (str(_target) in ["alpha1_sql"]) exitWith {" (Alpha-Squadleader)"};
-					if (str(_target) in ["bravo1_sql"]) exitWith {" (Bravo-Squadleader)"};
-					if (str(_target) in ["charlie1_sql"]) exitWith {" (Charlie-Squadleader)"};
-					if (str(_target) in ["delta1_sql"]) exitWith {" (Delta-Squadleader)"};
-					if (str(_target) in ["echo1_sql"]) exitWith {" (Echo-Squadleader)"};
-					if (str(_target) in ["foxtrot1_sql"]) exitWith {" (Foxtrot-Squadleader)"};
-					if (str(_target) in ["golf1_sql"]) exitWith {" (Golf-Squadleader)"};
-					if (str(_target) in ["ee1_sniper"]) exitWith {" (Eagle Eye Sniper)"};
-					if (str(_target) in ["ee2_spotter"]) exitWith {" (Eagle Eye Spotter)"};
+					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha-Squadlead)"};
+					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo-Squadlead)"};
+					if (str(_target) in ["charlie_lead"]) exitWith {" (Charlie-Squadlead)"};
+					if (str(_target) in ["delta_lead"]) exitWith {" (Delta-Squadlead)"};
+					if (str(_target) in ["echo_lead"]) exitWith {" (Echo-Squadlead)"};
+					if (str(_target) in ["foxtrot_lead"]) exitWith {" (Foxtrot-Squadlead)"};
+					if (str(_target) in ["golf_lead"]) exitWith {" (Golf-Squadlead)"};
 					(" (" + _class + ")");
 				};
 				_icon = TEXTURES_RANKS select ((["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"] find (rank _target)) + 1);
