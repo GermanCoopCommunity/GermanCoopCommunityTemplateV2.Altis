@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1354;
+		nextID=1360;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={23592.145,63.411839,18758.145};
-		dir[]={-0.11691006,-0.57441527,0.81029338};
-		up[]={-0.082043432,0.81847811,0.56862789};
-		aside[]={0.9898411,9.7934389e-009,0.1428133};
+		pos[]={23714.689,59.220993,18722.895};
+		dir[]={-0.91527402,-0.40274316,0.01677829};
+		up[]={-0.40282422,0.91522837,0.0073823044};
+		aside[]={0.018332433,-2.6996304e-007,0.99992388};
 	};
 };
 binarizationWanted=0;
@@ -646,7 +646,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=930;
+		items=936;
 		class Item0
 		{
 			dataType="Trigger";
@@ -659,6 +659,7 @@ class Mission
 				onDeactivation="gate1 animate [""Door_1_rot"", 0]";
 				sizeA=14;
 				sizeB=4.5;
+				sizeC=4.4171767;
 				interuptable=1;
 				repeatable=1;
 				activationBy="WEST";
@@ -1669,7 +1670,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={23525.799,4.229959,18601.42};
+				position[]={23525.799,4.229959,18601.273};
 			};
 			side="Empty";
 			flags=4;
@@ -25228,7 +25229,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=962;
 			type="B_APC_Tracked_01_rcws_F";
@@ -25248,7 +25248,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=963;
 			type="B_APC_Tracked_01_rcws_F";
@@ -25267,7 +25266,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=965;
 			type="B_Heli_Attack_01_F";
@@ -26105,8 +26103,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=986;
 			type="B_Quadbike_01_F";
@@ -26124,8 +26121,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=987;
 			type="B_Quadbike_01_F";
@@ -26143,8 +26139,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=988;
 			type="B_Quadbike_01_F";
@@ -26162,8 +26157,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=989;
 			type="B_Quadbike_01_F";
@@ -26264,7 +26258,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=993;
 			type="B_MBT_01_arty_F";
@@ -26284,7 +26277,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=994;
 			type="B_MBT_01_arty_F";
@@ -26303,8 +26295,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=995;
 			type="B_Truck_01_Repair_F";
@@ -26323,8 +26314,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=996;
 			type="B_Truck_01_fuel_F";
@@ -26342,8 +26332,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
+				lock="LOCKEDPLAYER";
 			};
 			id=997;
 			type="B_Truck_01_ammo_F";
@@ -26362,7 +26351,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=998;
 			type="B_Truck_01_medical_F";
@@ -26381,8 +26369,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="black";
 			};
 			id=999;
 			type="B_Heli_Transport_01_F";
@@ -26418,7 +26404,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=1001;
 			type="B_APC_Wheeled_01_cannon_F";
@@ -26438,7 +26423,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=1002;
 			type="B_APC_Wheeled_01_cannon_F";
@@ -26458,8 +26442,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="blu";
 			};
 			id=1003;
 			type="I_MRAP_03_gmg_F";
@@ -26479,8 +26461,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="blu";
 			};
 			id=1004;
 			type="I_MRAP_03_gmg_F";
@@ -26500,8 +26480,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="blu";
 			};
 			id=1005;
 			type="I_MRAP_03_hmg_F";
@@ -26521,8 +26499,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="blu";
 			};
 			id=1006;
 			type="I_MRAP_03_hmg_F";
@@ -26542,7 +26518,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=1007;
 			type="B_MBT_01_cannon_F";
@@ -26561,7 +26536,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=1008;
 			type="B_MBT_01_TUSK_F";
@@ -26581,7 +26555,6 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 			};
 			id=1009;
 			type="B_APC_Tracked_01_AA_F";
@@ -27160,7 +27133,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
 				textures="black";
 			};
 			id=1029;
@@ -28955,8 +28927,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="black";
 			};
 			id=1089;
 			type="B_Heli_Transport_01_F";
@@ -30110,8 +30080,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="black";
 			};
 			id=1122;
 			type="B_Heli_Transport_01_F";
@@ -31265,8 +31233,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="{_x addCuratorEditableObjects [[this],true];} forEach allCurators;";
-				textures="black";
 			};
 			id=1155;
 			type="B_Heli_Transport_01_F";
@@ -35414,7 +35380,7 @@ class Mission
 		class Item906
 		{
 			dataType="Marker";
-			position[]={23549.002,3.1900001,18740.785};
+			position[]={23551.363,3.1900001,18740.848};
 			name="marker_10";
 			text="Arsenal";
 			type="mil_flag";
@@ -36257,6 +36223,156 @@ class Mission
 			};
 			id=1353;
 			type="Land_PortableLight_double_F";
+		};
+		class Item930
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={23554.125,4.0153027,18735.967};
+				angles[]={0,1.5622786,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1354;
+			type="B_CargoNet_01_ammo_F";
+			atlOffset=-2.3841858e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[""SmokeShellGreen"",""SmokeShellRed"",""SmokeShell"",""1Rnd_HE_Grenade_shell"",""30Rnd_65x39_caseless_mag"",""30Rnd_65x39_caseless_green_mag_Tracer"",""30Rnd_65x39_caseless_mag_Tracer"",""30Rnd_65x39_caseless_green"",""UGL_FlareGreen_F"",""UGL_FlareRed_F"",""UGL_FlareWhite_F"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""1Rnd_Smoke_Grenade_shell""],[]],[[""optic_Arco_blk_F"",""Binocular"",""FirstAidKit"",""ItemGPS"",""ItemMap"",""optic_Holosight_blk_F""],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item931
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={23554.045,4.0153027,18740.883};
+				angles[]={0,1.5622786,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1355;
+			type="B_CargoNet_01_ammo_F";
+			atlOffset=-2.3841858e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[""SmokeShellGreen"",""SmokeShellRed"",""SmokeShell"",""1Rnd_HE_Grenade_shell"",""30Rnd_65x39_caseless_mag"",""30Rnd_65x39_caseless_green_mag_Tracer"",""30Rnd_65x39_caseless_mag_Tracer"",""30Rnd_65x39_caseless_green"",""UGL_FlareGreen_F"",""UGL_FlareRed_F"",""UGL_FlareWhite_F"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""1Rnd_Smoke_Grenade_shell""],[]],[[""optic_Arco_blk_F"",""Binocular"",""FirstAidKit"",""ItemGPS"",""ItemMap"",""optic_Holosight_blk_F""],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item932
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={23553.883,4.0153027,18745.693};
+				angles[]={0,1.5622786,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1356;
+			type="B_CargoNet_01_ammo_F";
+			atlOffset=-2.3841858e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[""SmokeShellGreen"",""SmokeShellRed"",""SmokeShell"",""1Rnd_HE_Grenade_shell"",""30Rnd_65x39_caseless_mag"",""30Rnd_65x39_caseless_green_mag_Tracer"",""30Rnd_65x39_caseless_mag_Tracer"",""30Rnd_65x39_caseless_green"",""UGL_FlareGreen_F"",""UGL_FlareRed_F"",""UGL_FlareWhite_F"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""1Rnd_Smoke_Grenade_shell""],[]],[[""optic_Arco_blk_F"",""Binocular"",""FirstAidKit"",""ItemGPS"",""ItemMap"",""optic_Holosight_blk_F""],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item933
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={23566.105,3.1900001,18730.627};
+			};
+			title="make unit special loadouts persistent on respawn";
+			id=1357;
+		};
+		class Item934
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={23479.242,3.1900001,18805.818};
+			};
+			title="add ARP";
+			id=1358;
+		};
+		class Item935
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={23541.486,3.1900001,18733.807};
+			};
+			title="enhance OPZ";
+			id=1359;
 		};
 	};
 	class Connections
