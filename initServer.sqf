@@ -10,8 +10,9 @@ a_variable = false;
 publicVariable "a_variable";*/
 
 
-// make allUnits (including players) visible for curators
+// make all units including players and also vehicles visible for curators
 {_x addCuratorEditableObjects [allUnits,true]} count allCurators;
+{_x addCuratorEditableObjects [vehicles,true]} count allCurators;
 
 
 // delete player body on disconnect
