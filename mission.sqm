@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=129;
 	class ItemIDProvider
 	{
-		nextID=1360;
+		nextID=1361;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={23714.689,59.220993,18722.895};
-		dir[]={-0.91527402,-0.40274316,0.01677829};
-		up[]={-0.40282422,0.91522837,0.0073823044};
-		aside[]={0.018332433,-2.6996304e-007,0.99992388};
+		pos[]={23536.584,14.666933,18656.193};
+		dir[]={0.10389961,-0.44803736,0.8880735};
+		up[]={0.052076682,0.89392328,0.44514009};
+		aside[]={0.99331319,-1.4351826e-007,-0.11621227};
 	};
 };
 binarizationWanted=0;
@@ -646,7 +646,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=936;
+		items=937;
 		class Item0
 		{
 			dataType="Trigger";
@@ -35321,11 +35321,12 @@ class Mission
 		class Item900
 		{
 			dataType="Marker";
-			position[]={23533.137,3.1900001,18727.738};
+			position[]={23546.014,-2.1151975e-036,18667.342};
 			name="respawn_west";
-			text="Almyra";
+			text="Südliche Barracken";
 			type="Empty";
 			id=1305;
+			atlOffset=-3.1900001;
 		};
 		class Item901
 		{
@@ -36373,6 +36374,15 @@ class Mission
 			};
 			title="enhance OPZ";
 			id=1359;
+		};
+		class Item936
+		{
+			dataType="Marker";
+			position[]={23554.025,3.1900001,18802.887};
+			name="respawn_west_2";
+			text="Nördliche Barracken";
+			type="Empty";
+			id=1360;
 		};
 	};
 	class Connections

@@ -33,49 +33,13 @@ if (!isNil "QT_AI_call_fncs") then
 {
 	
 };*/
-
-
-// apply to AI newly spawned by curators as well
-	// single units
-{_x addEventHandler [
-	"CuratorObjectPlaced",
-		{
-			// declare EH variables
-			_curator = _this select 0;
-			_entity = _this select 1;
-			
-			if (_entity in (allUnits - allPlayers - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
-			{
-				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
-				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
-			};
-			{_x addCuratorEditableObjects [[_entity],true]} count (allCurators - [_curator]);	// ...add placed entity to editable objects for the other curators
-		}
-	];
-} foreach allCurators;
-
-
-/*	// AI groups
-{_x addEventHandler [
-	"CuratorGroupPlaced",
-		{
-			// declare EH variables
-			_curator = _this select 0;
-			_group = _this select 1;
-			
-			if (_group in allGroups) then	// if group spawned is an AI group...
-			{
-				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
-				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
-			};
-			{_x addCuratorEditableObjects [[_entity],true]} count (allCurators - [_curator]);	// ...add placed entity to editable objects for the other curators
-		}
-	];
-} foreach allCurators;*/
 ////////////////////////////////////////////////// QTS initialization complete //////////////////////////////////////////////////
 
 
-removeallMissionEventHandlers "Draw3D";	//<-- added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+// added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+removeallMissionEventHandlers "Draw3D";
+// editing purposes
+if !(isMultiplayer) then {{_x disableAI "MOVE"} forEach allUnits};
 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
@@ -100,6 +64,8 @@ addMissionEventHandler ["Draw3D", {
 			isNull objectParent player	// if player is on foot...
 			&&
 			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
+			&&
+			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0}	// ...and he ist outside base...
 		)
 		or
 		{
@@ -108,12 +74,14 @@ addMissionEventHandler ["Draw3D", {
 			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
 			&&
 			{!((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is only passenger in the vehicle...
+			&&
+			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0}	// ...and he ist outside base...
 		}
 	)
 	then
 	{
 		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
-		["<t size='0.8'>3rd Person ist nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
+		["<t size='0.8'>3rd Person ist außerhalb der Basis nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
 	};
 }];
 ////////////////////////////////////////////////////////////////////////////////////////////////////

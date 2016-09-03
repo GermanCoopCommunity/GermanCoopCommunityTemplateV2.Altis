@@ -17,6 +17,7 @@
 
 - check if buttons already assigned to another important action
 - fade speech and music too (not radio because important for ingame sound)
+- make player move while toggling earplugs
 
 */
 /* Notes

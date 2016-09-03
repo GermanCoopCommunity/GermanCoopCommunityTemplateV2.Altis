@@ -10,11 +10,6 @@ a_variable = false;
 publicVariable "a_variable";*/
 
 
-// make all units including players and also vehicles visible for curators
-{_x addCuratorEditableObjects [allUnits,true]} count allCurators;
-{_x addCuratorEditableObjects [vehicles,true]} count allCurators;
-
-
 // delete player body on disconnect
 addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
@@ -31,6 +26,10 @@ call _BFT_InitServer;
 // MissionProtectionSystem
 private _MPS_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitServer.sqf";
 call _MPS_InitServer;
+
+// ZFW
+private _ZFW_InitServer = compile preprocessFileLineNumbers "Scripts\ZeusFramework\ZFW_InitServer.sqf";
+call _ZFW_InitServer;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -57,8 +57,8 @@ player addEventHandler ["GetInMan", {
 
 
 // teamkill punisher
-player addMPEventHandler ["MPKilled",{
-
+player addMPEventHandler ["MPKilled",
+{
 	// declare EH variables
 	private _victim = _this select 0;
 	private _killer = _this select 1;
