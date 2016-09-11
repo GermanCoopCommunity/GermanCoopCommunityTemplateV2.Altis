@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
 		nextID=1361;
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={23536.584,14.666933,18656.193};
-		dir[]={0.10389961,-0.44803736,0.8880735};
-		up[]={0.052076682,0.89392328,0.44514009};
-		aside[]={0.99331319,-1.4351826e-007,-0.11621227};
+		pos[]={23533.158,8.8555527,18839.727};
+		dir[]={-0.59920347,-0.39057195,0.69902277};
+		up[]={-0.25429246,0.92047942,0.29665121};
+		aside[]={0.75930631,-6.2235631e-007,0.65087837};
 	};
 };
 binarizationWanted=0;
@@ -26442,6 +26442,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
+				textures="Blufor";
 			};
 			id=1003;
 			type="I_MRAP_03_gmg_F";
@@ -26461,6 +26462,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
+				textures="Blufor";
 			};
 			id=1004;
 			type="I_MRAP_03_gmg_F";
@@ -26480,6 +26482,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
+				textures="Blufor";
 			};
 			id=1005;
 			type="I_MRAP_03_hmg_F";
@@ -26499,6 +26502,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="LOCKED";
+				textures="Blufor";
 			};
 			id=1006;
 			type="I_MRAP_03_hmg_F";
