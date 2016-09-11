@@ -20,7 +20,7 @@ private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\InitS
 call _Core_InitServer;
 
 // BFT
-private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\InitServer.sqf";
+private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\BFT_InitServer.sqf";
 call _BFT_InitServer;
 
 // MissionProtectionSystem
