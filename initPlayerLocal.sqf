@@ -53,7 +53,7 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
 
 
 ////////////////////////////////////////// GeCo Intro //////////////////////////////////////////
-0 cutText ["","BLACK IN",7];	// fade in from black
+0 cutText ["","BLACK IN",13];	// fade in from black
 [[ 
   ["US-Basis Almyra,","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"], 
   ["Altis","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"],

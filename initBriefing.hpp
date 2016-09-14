@@ -25,6 +25,7 @@ player createDiaryRecord [
 
 
 // QTS entries (must be here, otherwise diary entries aren´t shown in map before mission start)
+// QT Gestures
 player createDiarySubject ["Gesten","Gesten"];
 player createDiaryRecord [
 	"Gesten",
@@ -33,6 +34,9 @@ player createDiaryRecord [
 			"Folgende Zahlen auf der Tastatur unter den F-Tasten, um folgende Gesten auszuführen:<br/><br/>5 - ""<font color='#107b1b'>Los!</font color>""<br/>6 - ""<font color='#107b1b'>Stop!</font color>""<br/>7 - ""<font color='#107b1b'>Ja!</font color>""<br/>8 - ""<font color='#107b1b'>Nein!</font color>""<br/>9 - ""<font color='#107b1b'>Sichtung auf (Gradangabe)!</font color>"""""
 	]
 ];
+
+
+// QT Earplugs
 player createDiarySubject ["Ohrstöpsel","Ohrstöpsel"];
 player createDiaryRecord [
 	"Ohrstöpsel",
@@ -50,6 +54,17 @@ player createDiaryRecord [
 	[
 		"Info",
 			"Das Revivesystem ist darauf ausgelegt, den Spieler bei Treffern durch großkalibrige Projektile oder bei Treffern auf ungeschützte Areale zu töten. <font color='#107b1b'>Nur Sanitäter können wiederbeleben</font color>, wenn sie ein Medikit bei sich tragen."
+	]
+];
+
+
+// QT Jump
+player createDiarySubject ["Springen","Springen"];
+player createDiaryRecord [
+	"Springen",
+	[
+		"Info",
+			"<br/><font color='#107b1b'>V</font color> auf der Tastatur, um während des Laufens zu springen."
 	]
 ];
 

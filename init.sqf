@@ -10,21 +10,17 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Earplugs.sqf";
 QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia.sqf";
 QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Gestures.sqf";
+QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Jump.sqf";
 
 
 // define fnc arrays
-QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures];
+QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
 QT_spawn_fncs = [];
 QT_AI_call_fncs = [QT_fnc_Insignia];
 QT_AI_spawn_fncs = [];
 
 
-// initialize fncs on player
-if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs;};
-if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs;};
-
-
-// apply to AI units as well
+// apply QTS to AI units
 if (!isNil "QT_AI_call_fncs") then
 {
 	{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
