@@ -39,7 +39,10 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 		private _DIK = _this select 1;
 			
 		// code
+		if (_DIK == 47 && {!isWalking player} && {stance player == "STAND"}) then	// if player presses assigned button, isn´t walking and is standing (which means he must be running)...
 		{
+			player switchMove "AovrPercMrunSrasWrflDf";	// ...let player play jump move...
+			true	// ... and prevent default step-over-move
 		};
 	}
 ];

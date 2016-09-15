@@ -17,7 +17,7 @@
 
 - check if buttons already assigned to another important action
 - fade speech and music too (not radio because important for ingame sound)
-- make player move while toggling earplugs
+- make player play a move while toggling earplugs
 
 */
 /* Notes
@@ -28,7 +28,7 @@
 
 
 // set earplugs to "out" initially
-player setVariable ["EarplugsIn",false];
+player setVariable ["EarplugsIn",false,false];
 
 
 // add EHs to unit
@@ -47,16 +47,16 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 				0.1 fadeSound (soundVolume / 2);	// ...decrease sound volume by half...
 				//0.1 fadeSpeech 0.25;
 				//0.1 fadeMusic 0.25;
-				["Ohrstöpsel eingesetzt.",1,0,3,0] spawn bis_fnc_dynamicText;
-				player setVariable ["EarplugsIn",true]; // ...and set earplugs to "in"
+				["Ohrstöpsel eingesetzt.",1,0,3,0] spawn BIS_fnc_dynamicText;
+				player setVariable ["EarplugsIn",true,false]; // ...and set earplugs to "in"
 			}
 			else	// ...but if they are already in...
 			{
 				0.1 fadeSound (soundVolume * 2);	// ...double sound volume
 				//0.1 fadeSpeech 1;
 				//0.1 fadeMusic 1;
-				["Ohrstöpsel entfernt.",1,0.1,3,0] spawn bis_fnc_dynamicText;
-				player setVariable ["EarplugsIn",false];	// ...and set earplugs to "out"
+				["Ohrstöpsel entfernt.",1,0.1,3,0] spawn BIS_fnc_dynamicText;
+				player setVariable ["EarplugsIn",false,false];	// ...and set earplugs to "out"
 			};
 		};
 	}

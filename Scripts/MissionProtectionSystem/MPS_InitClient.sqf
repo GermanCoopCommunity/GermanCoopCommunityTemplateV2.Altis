@@ -13,18 +13,20 @@ GeCo_MissionProtection_AddFoul =
     
     if (GeCo_MissionProtection_CountFouls >= 100) then
 	{
-        endMission "LOSER";
+		endMission "LOSER";
+		//("#exec kick" + (name player)) remoteExec ["serverCommand", 2];	// kick player from game server (doesn´t work like this)
+		//serverCommand ("#kick" + (name player));
     };
 };
 
 
 // prevent base shooting
-player addEventHandler["Fired",
+player addEventHandler ["Fired",
 {
     if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then
 	{
         deleteVehicle (_this select 6);
-		["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br />Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+		["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [15] call GeCo_MissionProtection_AddFoul;
     };
 }];
@@ -65,7 +67,7 @@ player addMPEventHandler ["MPKilled",
 	private _triggerer = _this select 2;
 	
 	
-    if ((_victim != _triggerer) && {(_victim in allPlayers) && (side _victim == side player)}) then	// if player killed another player of his own side and he didn´t manually respawn...
+    if ((_victim != _triggerer) && (_victim != _killer) && {_victim in allPlayers} && {side _victim == side player}) then	// if player killed another player of his own side and he didn´t manually respawn...
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;	// ...warn him

@@ -46,6 +46,15 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
 ////////////////////////////////////////// QTS initialization for JIPers complete //////////////////////////////////////////
 
 
+// initialize MissionProtectionSystem
+private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
+call _MPS_InitClient;
+
+
+// save default unit loadout to apply on respawn later
+plyr_ldt = getUnitLoadout player;
+
+
 ////////////////////////////////////////// briefing file //////////////////////////////////////////
 // see initBriefing.hpp file for briefing sections
 #include "initBriefing.hpp"
@@ -62,11 +71,6 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
  ]] spawn BIS_fnc_typeText;
 ["img\loadingpic.paa"] spawn BIS_fnc_textTiles;	// show GeCo logo
 ////////////////////////////////////////// Intro complete //////////////////////////////////////////
-
-
-// initialize MissionProtectionSystem
-private _BFT_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\InitClient.sqf";
-call _BFT_InitClient;
 
 
 // log end of execution

@@ -16,7 +16,7 @@ addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
 ////////////////////////////////////////////////// initialize InitServers //////////////////////////////////////////////////
 // Core
-private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\InitServer.sqf";
+private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\CR_InitServer.sqf";
 call _Core_InitServer;
 
 // BFT
@@ -24,7 +24,7 @@ private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\BFT_Ini
 call _BFT_InitServer;
 
 // MissionProtectionSystem
-private _MPS_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\InitServer.sqf";
+private _MPS_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\MPS_InitServer.sqf";
 call _MPS_InitServer;
 
 // ZFW
