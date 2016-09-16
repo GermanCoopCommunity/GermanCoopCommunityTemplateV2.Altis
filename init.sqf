@@ -11,6 +11,7 @@ QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Earplugs
 QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia.sqf";
 QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Gestures.sqf";
 QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Jump.sqf";
+KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\fnc\KK_fnc_StreamUAV.sqf";
 
 
 // define fnc arrays
@@ -61,7 +62,7 @@ addMissionEventHandler ["Draw3D", {
 			&&
 			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
 			&&
-			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0}	// ...and he ist outside base...
+			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)}	// ...and he ist outside base...
 		)
 		or
 		{

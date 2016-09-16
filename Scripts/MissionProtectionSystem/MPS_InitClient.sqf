@@ -14,7 +14,8 @@ GeCo_MissionProtection_AddFoul =
     if (GeCo_MissionProtection_CountFouls >= 100) then
 	{
 		endMission "LOSER";
-		//("#exec kick" + (name player)) remoteExec ["serverCommand", 2];	// kick player from game server (doesn´t work like this)
+		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
+		//("#exec kick" + (name player)) remoteExec ["serverCommand", 2];	// kick player from game server (doesn´t work atm)
 		//serverCommand ("#kick" + (name player));
     };
 };
@@ -33,8 +34,8 @@ player addEventHandler ["Fired",
 
 
 // forbid players to operate vehicles they aren´t in class for
-player addEventHandler ["GetInMan", {
-		
+player addEventHandler ["GetInMan",
+{		
 		// declare EH variables
 		private _unit = _this select 0;
 		private _pos = _this select 1;
@@ -89,7 +90,7 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
             {
                 (_this select 1) addEventHandler ["Fired",
 				{
-                    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if curator placed unit shoots inside base...
+                    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)) then	// if curator placed unit shoots inside base...
 					{
                         deleteVehicle (_this select 6);	// ...delete the projectile
                     };

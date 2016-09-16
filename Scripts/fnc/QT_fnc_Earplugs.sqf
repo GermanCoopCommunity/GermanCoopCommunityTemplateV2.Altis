@@ -10,7 +10,7 @@
 			OBJECT - player unit
 
 	Returns:
-	String
+	true
 */
 
 /* To Do

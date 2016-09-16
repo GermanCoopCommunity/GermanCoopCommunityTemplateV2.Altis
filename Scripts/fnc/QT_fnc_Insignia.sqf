@@ -10,7 +10,7 @@
 			OBJECT - unit
 
 	Returns:
-	String
+	true
 */
 
 /* To Do
