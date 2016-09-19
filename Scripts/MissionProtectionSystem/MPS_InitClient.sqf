@@ -63,12 +63,11 @@ player addEventHandler ["GetInMan",
 player addMPEventHandler ["MPKilled",
 {
 	// declare EH variables
-	private _victim = _this select 0;
+	private _victim = _this select 0;	// = local player
 	private _killer = _this select 1;
 	private _triggerer = _this select 2;
 	
-	
-    if ((_victim != _triggerer) && (_victim != _killer) && {_victim in allPlayers} && {side _victim == side player}) then	// if player killed another player of his own side and he didn´t manually respawn...
+    if ((_victim != _triggerer) && /*{_victim != _killer} && */{side _victim == side player}) then	// if player was killed by another player of his own side, didn´t die from a collision and didn´t manually respawn...
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
