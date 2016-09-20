@@ -1,27 +1,33 @@
 # GermanCoopCommunityTemplateV2
 
-This is the new version of the German Coop Community Mission Template.
+This is the new (second) version of the German Coop Community Mission Template.
 
 General:
 
 - Side: BLUFOR
 - Faction: NATO
-- Playable Units: 77
+- Playable Units: 79, which are...
+                      - 7x 10 per squad
+                      - 2 OPZ
+                      - 4 pilots
+                      - 1 jet pilot
+                      - 2 curators
 
 
 Features:
 
-- Nametags
-- MPS (Teamkill, Baserape, Vehicles)
-- 3rd Person in vehicles only
-- Briefing
-- Earplugs
-- Insignia
+- nametags
+- Mission Protection System (Teamkill, Baserape, Vehicle Restriction) with Foul System
+- 3rd person in vehicles and in base only
+- briefing
+- earplugs
+- insignia
+- some minor enhancements like jumping
 
 
 Complete Zeus support including:
 
-- every vehicle and unit editable for all Zeus
+- every vehicle and unit editable for all curators
 - Respawn-, JIP- compatible
 
 
