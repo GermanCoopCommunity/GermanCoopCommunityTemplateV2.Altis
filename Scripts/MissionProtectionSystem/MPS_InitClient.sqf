@@ -98,3 +98,56 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
         }
     ];
 };
+// Check on Join
+GeCo_PasswordCorrect =false;
+//Check Pilot Password
+if(typeOf(player) in GeCo_Pilots ) then{
+    GeCo_Try = 1;
+    fn_Passwort = {
+        _ok = createDialog "GeCo_CheckPilot";
+        waitUntil { !dialog };
+        if(!GeCo_PasswordCorrect) then{
+            if(GeCo_Try<3) then {
+                GeCo_Try= GeCo_Try+1;
+                []spawn fn_Passwort;
+            } else { 
+                hint "kick"
+            };
+        };
+    };
+    []spawn fn_Passwort;
+};
+//Check Curator Password
+if(typeOf(player) in GeCo_Curators ) then{
+    GeCo_Try = 1;
+    fn_Passwort = {
+        _ok = createDialog "GeCo_CheckCurator";
+        waitUntil { !dialog };
+        if(!GeCo_PasswordCorrect) then{
+            if(GeCo_Try<3) then {
+                GeCo_Try= GeCo_Try+1;
+                []spawn fn_Passwort;
+            } else { 
+                hint "kick"
+            };
+        };
+    };
+    []spawn fn_Passwort;
+};
+//Check German
+if(!(typeOf(player) in (GeCo_Curators + GeCo_Pilots))) then {
+    GeCo_Try = 1;
+    fn_Passwort = {
+        _ok = createDialog "GeCo_CheckGerman";
+        waitUntil { !dialog };
+        if(!GeCo_PasswordCorrect) then{
+            if(GeCo_Try<3) then {
+                GeCo_Try= GeCo_Try+1;
+                []spawn fn_Passwort;
+            } else { 
+                hint "kick"
+            };
+        };
+    };
+    []spawn fn_Passwort;
+}

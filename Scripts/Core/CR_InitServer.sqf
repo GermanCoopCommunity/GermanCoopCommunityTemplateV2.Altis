@@ -10,6 +10,8 @@ GeCo_Crew = ["B_crew_F","O_crew_F","I_crew_F"];
 // define OPZ
 GeCo_OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
 
+// define Curators
+GeCo_Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
 
 // define PFH
 GeCo_PFH = [];
