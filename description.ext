@@ -54,6 +54,9 @@ class CfgDebriefing
 	};
 };
 
+//Dialogs for Mission Protection System
+#include "Scripts\MissionProtectionSystem\MPS_Description.hpp"
+
 
 // QT Rank Insignia
 class CfgUnitInsignia
