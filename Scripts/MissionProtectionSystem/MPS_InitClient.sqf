@@ -98,56 +98,79 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
         }
     ];
 };
-// Check on Join
-GeCo_PasswordCorrect =false;
-//Check Pilot Password
-if(typeOf(player) in GeCo_Pilots ) then{
+
+
+// check on join, if...
+GeCo_PasswordCorrect = false;
+
+// ...player has pilot password
+if (typeOf player in GeCo_Pilots) then
+{
     GeCo_Try = 1;
-    GeCo_fn_Passwort = {
+    GeCo_fn_Passwort =
+	{
         _ok = createDialog "GeCo_CheckPilot";
-        waitUntil { !dialog };
-        if(!GeCo_PasswordCorrect) then{
-            if(GeCo_Try<3) then {
-                GeCo_Try= GeCo_Try+1;
-                []call GeCo_fn_Passwort;
-            } else { 
-                [500] call GeCo_MissionProtection_AddFoul;
+        waitUntil {!dialog};
+        if(!GeCo_PasswordCorrect) then
+		{
+            if (GeCo_Try < 3) then
+			{
+                GeCo_Try = GeCo_Try + 1;
+                [] call GeCo_fn_Passwort;
+            }
+			else
+			{ 
+                [100] call GeCo_MissionProtection_AddFoul;
             };
         };
     };
-    []call GeCo_fn_Passwort;
+    [] call GeCo_fn_Passwort;
 };
-//Check Curator Password
-if(typeOf(player) in GeCo_Curators ) then{
+
+// ...player has curator password
+if (typeOf(player) in GeCo_Curators ) then
+{
     GeCo_Try = 1;
-    GeCo_fn_Passwort = {
+    GeCo_fn_Passwort =
+	{
         _ok = createDialog "GeCo_CheckCurator";
-        waitUntil { !dialog };
-        if(!GeCo_PasswordCorrect) then{
-            if(GeCo_Try<3) then {
-                GeCo_Try= GeCo_Try+1;
-                []call GeCo_fn_Passwort;
-            } else { 
-                [500] call GeCo_MissionProtection_AddFoul;
+        waitUntil {!dialog };
+        if (!GeCo_PasswordCorrect) then
+		{
+            if(GeCo_Try < 3) then
+			{
+                GeCo_Try = GeCo_Try + 1;
+                [] call GeCo_fn_Passwort;
+            }
+			else
+			{ 
+                [100] call GeCo_MissionProtection_AddFoul;
             };
         };
     };
-    []call GeCo_GeCo_fn_Passwort;
+    [] call GeCo_GeCo_fn_Passwort;
 };
-//Check German
-if(!GeCo_PasswordCorrect) then {
+
+// ...player speaks German
+if (!GeCo_PasswordCorrect) then
+{
     GeCo_Try = 1;
-    GeCo_fn_Passwort = {
+    GeCo_fn_Passwort =
+	{
         _ok = createDialog "GeCo_CheckGerman";
-        waitUntil { !dialog };
-        if(!GeCo_PasswordCorrect) then{
-            if(GeCo_Try<3) then {
-                GeCo_Try= GeCo_Try+1;
-                []call GeCo_fn_Passwort;
-            } else { 
-                [500] call GeCo_MissionProtection_AddFoul;
+        waitUntil {!dialog};
+        if (!GeCo_PasswordCorrect) then
+		{
+            if (GeCo_Try < 3) then
+			{
+                GeCo_Try = GeCo_Try + 1;
+                [] call GeCo_fn_Passwort;
+            }
+			else
+			{ 
+                [100] call GeCo_MissionProtection_AddFoul;
             };
         };
     };
-    []call GeCo_fn_Passwort;
+    [] call GeCo_fn_Passwort;
 }

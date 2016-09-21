@@ -1,4 +1,6 @@
-#include "Scripts\MissionProtectionSystem\MPS_Defines.hpp"
-#include "Scripts\MissionProtectionSystem\dialogs\CheckPilot.hpp"
-#include "Scripts\MissionProtectionSystem\dialogs\CheckCurator.hpp"
-#include "Scripts\MissionProtectionSystem\dialogs\CheckGerman.hpp"
+// by Fabi, edited by Quentin
+
+#include "MPS_Defines.hpp"
+#include "dialogs\CheckPilot.hpp"
+#include "dialogs\CheckCurator.hpp"
+#include "dialogs\CheckGerman.hpp"

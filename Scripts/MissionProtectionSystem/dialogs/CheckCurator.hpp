@@ -1,3 +1,6 @@
+// by Fabi
+
+
 class GeCo_CheckCurator
 {
 	idd = 1500;
@@ -14,7 +17,7 @@ class GeCo_CheckCurator
 		};
 		class GeCo_CheckCurator_RscText : GeCo_RscText
 		{
-			text = "Dies ist ein Zeus Slot. Bitte Passwort eingeben:";
+			text = "Dies ist ein Zeusslot. Bitte Passwort eingeben:";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";
@@ -37,7 +40,7 @@ class GeCo_CheckCurator
 			w = "(109 / 1920) * SafeZoneW";
 			h = "(31 / 1080) * SafeZoneH";
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
-			text = "Bestaetigen";
+			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
             action = "if(ctrlText 1600 == ""Zeus"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false};closeDialog 0;";
 		};

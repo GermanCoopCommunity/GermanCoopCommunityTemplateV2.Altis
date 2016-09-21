@@ -1,3 +1,6 @@
+// by Fabi
+
+
 class GeCo_CheckGerman
 {
 	idd = 1500;
@@ -14,7 +17,7 @@ class GeCo_CheckGerman
 		};
 		class GeCo_CheckGerman_RscText : GeCo_RscText
 		{
-			text = "In welcher Sprache wird auf dem Server gespielt?:";
+			text = "In welcher Sprache wird auf dem Server gespielt?";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";
@@ -37,7 +40,7 @@ class GeCo_CheckGerman
 			w = "(109 / 1920) * SafeZoneW";
 			h = "(31 / 1080) * SafeZoneH";
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
-			text = "Bestaetigen";
+			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
             action = "if(ctrlText 1600 == ""deutsch"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false};closeDialog 0;";
 		};
