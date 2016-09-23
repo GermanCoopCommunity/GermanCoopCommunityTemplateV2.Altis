@@ -1,4 +1,4 @@
-// by Fabi
+// by Fabi & Quentin
 
 
 // define Pilots
@@ -28,3 +28,8 @@ addMissionEventHandler ["EachFrame",
   } count GeCo_PFH;
 }];
 
+// GeCo whitelist of trustworthy people
+GeCo_Whitelist = ["Grey Wolf","Deathbite","Quentin"];
+
+// GeCo blacklist containing players which exceeded the fouls limit and were killed
+GeCo_Blacklist = [];

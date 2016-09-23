@@ -5,6 +5,22 @@
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
 
 
+// fade in from black
+0 cutText ["","BLACK IN",13];
+
+
+// initialize MissionProtectionSystem
+private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
+call _MPS_InitClient;
+
+
+if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
+{
+	// create dialog asking for password in case player was kicked accidentally and wants to rejoin (if password true, erase his name from the blacklist), otherwise...
+	endMission "LOSER";	// ...kick him again
+};
+
+
 ////////////////////////////////////////// initialize QTS (also for JIPers) //////////////////////////////////////////
 // initialize QTS on player
 if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs};
@@ -57,7 +73,6 @@ plyr_ldt = getUnitLoadout player;
 
 
 ////////////////////////////////////////// GeCo Intro //////////////////////////////////////////
-0 cutText ["","BLACK IN",13];	// fade in from black
 [[ 
   ["US-Basis Almyra,","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"], 
   ["Altis","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"],
@@ -66,11 +81,6 @@ plyr_ldt = getUnitLoadout player;
  ]] spawn BIS_fnc_typeText;
 ["img\loadingpic.paa"] spawn BIS_fnc_textTiles;	// show GeCo logo
 ////////////////////////////////////////// Intro complete //////////////////////////////////////////
-
-
-// initialize MissionProtectionSystem
-private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
-call _MPS_InitClient;
 
 
 // log end of execution

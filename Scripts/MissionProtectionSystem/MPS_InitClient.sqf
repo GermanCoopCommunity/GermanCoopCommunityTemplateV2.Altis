@@ -11,12 +11,13 @@ GeCo_MissionProtection_AddFoul =
     params [["_foulWeight", 1]];
     GeCo_MissionProtection_CountFouls = GeCo_MissionProtection_CountFouls + _foulWeight;
     
-    if (GeCo_MissionProtection_CountFouls >= 100) then
+    if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player´s fouls exceed limit and he isn´t a trustworthy person on the whitelist...
 	{
-		endMission "LOSER";
+		endMission "LOSER";	// ...kick him
 		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
 		//("#exec kick" + (name player)) remoteExec ["serverCommand", 2];	// kick player from game server (doesn´t work atm)
 		//serverCommand ("#kick" + (name player));
+		GeCo_Blacklist pushbackUnique (getPlayerUID player);	// ...add player´s UID (equal to steamID64 of the player) to blacklist to prevent him from rejoining the mission
     };
 };
 
@@ -24,12 +25,13 @@ GeCo_MissionProtection_AddFoul =
 // prevent base shooting
 player addEventHandler ["Fired",
 {
-    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then
+    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if player fires inside base...
 	{
-        deleteVehicle (_this select 6);
+        deleteVehicle (_this select 6);	// ...delete the projectile
 		["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
-        [15] call GeCo_MissionProtection_AddFoul;
+        [15] call GeCo_MissionProtection_AddFoul;	// ...warn him
     };
+	//nil	// prevent weapon firing anim & sound (doesn´t work like this)
 }];
 
 
@@ -64,13 +66,14 @@ player addMPEventHandler ["MPKilled",
 {
 	// declare EH variables
 	private _victim = _this select 0;	// = local player
-	private _killer = _this select 1;
-	private _triggerer = _this select 2;
+	private _killer = _this select 1;	// contains unit itself in case of collisions
+	private _instigator = _this select 2;	// person who pulled the trigger
 	
-    if ((_victim != _triggerer) && /*{_victim != _killer} && */{side _victim == side player}) then	// if player was killed by another player of his own side, didn´t die from a collision and didn´t manually respawn...
+    if ((isPlayer _victim) && {_victim != objNull} && {_victim != _killer} && {side _victim == side player}) then	// if player killed another player of his own side, didn´t die from a collision and didn´t manually respawn...
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
+		hint format ["Opfer: %1, Killer: %2",_victim,_killer];
     };
 }];
 
@@ -81,10 +84,10 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
     player addEventHandler [
         "CuratorObjectPlaced",
         {
-            if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+            /*if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
             {
                 (_this select 1) enableCopilot false;
-            };
+            };*/
             if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
             {
                 (_this select 1) addEventHandler ["Fired",
@@ -104,23 +107,25 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
 GeCo_PasswordCorrect = false;
 
 // ...player has pilot password
-if (typeOf player in GeCo_Pilots) then
+if (typeOf player in GeCo_Pilots) then	// if player is a pilot...
 {
-    GeCo_Try = 1;
+    GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
 	{
-        _ok = createDialog "GeCo_CheckPilot";
-        waitUntil {!dialog};
-        if(!GeCo_PasswordCorrect) then
+        _ok = createDialog "GeCo_CheckPilot";	// ...open the dialog for entering password
+        waitUntil {!dialog};	// ...wait until dialog is created
+        if(!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
 		{
-            if (GeCo_Try < 3) then
+            if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
 			{
-                GeCo_Try = GeCo_Try + 1;
-                [] call GeCo_fn_Passwort;
+                GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
+				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				hint "";	// remove hint remainings
+                [] call GeCo_fn_Passwort;	// ...and reopen dialog
             }
-			else
+			else	// ...if it was his third attempt...
 			{ 
-                [100] call GeCo_MissionProtection_AddFoul;
+                [100] call GeCo_MissionProtection_AddFoul;	// ...kick him
             };
         };
     };
@@ -128,49 +133,80 @@ if (typeOf player in GeCo_Pilots) then
 };
 
 // ...player has curator password
-if (typeOf(player) in GeCo_Curators ) then
+if (typeOf player in GeCo_Curators) then	// if player is a curator...
 {
-    GeCo_Try = 1;
+    GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
 	{
-        _ok = createDialog "GeCo_CheckCurator";
-        waitUntil {!dialog };
-        if (!GeCo_PasswordCorrect) then
+        _ok = createDialog "GeCo_CheckCurator";	// ...open the dialog for entering password
+        waitUntil {!dialog};	// ...wait until dialog is created
+        if (!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
 		{
-            if(GeCo_Try < 3) then
+            if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
 			{
-                GeCo_Try = GeCo_Try + 1;
-                [] call GeCo_fn_Passwort;
+                GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
+				//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error (doesn´t seem to work in Zeus interface)
+				//hint "";	// remove hint remainings
+                [] call GeCo_fn_Passwort;	// ...and reopen dialog
             }
-			else
+			else	// ...if it was his third attempt...
 			{ 
-                [100] call GeCo_MissionProtection_AddFoul;
-            };
-        };
-    };
-    [] call GeCo_GeCo_fn_Passwort;
-};
-
-// ...player speaks German
-if (!GeCo_PasswordCorrect) then
-{
-    GeCo_Try = 1;
-    GeCo_fn_Passwort =
-	{
-        _ok = createDialog "GeCo_CheckGerman";
-        waitUntil {!dialog};
-        if (!GeCo_PasswordCorrect) then
-		{
-            if (GeCo_Try < 3) then
-			{
-                GeCo_Try = GeCo_Try + 1;
-                [] call GeCo_fn_Passwort;
-            }
-			else
-			{ 
-                [100] call GeCo_MissionProtection_AddFoul;
+                [100] call GeCo_MissionProtection_AddFoul;	// ...kick him
             };
         };
     };
     [] call GeCo_fn_Passwort;
-}
+};
+
+// ...player has OPZ password
+if (typeOf player in GeCo_OPZ) then	// if player is a curator...
+{
+    GeCo_Try = 1;	// ...set this as his first password attempt
+    GeCo_fn_Passwort =
+	{
+        _ok = createDialog "GeCo_CheckOPZ";	// ...open the dialog for entering password
+        waitUntil {!dialog};	// ...wait until dialog is created
+        if (!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
+		{
+            if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
+			{
+                GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
+				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				hint "";	// remove hint remainings
+                [] call GeCo_fn_Passwort;	// ...and reopen dialog
+            }
+			else	// ...if it was his third attempt...
+			{ 
+                [100] call GeCo_MissionProtection_AddFoul;	// ...kick him
+            };
+        };
+    };
+    [] call GeCo_fn_Passwort;
+};
+
+
+// ...player speaks German
+if (!GeCo_PasswordCorrect) then	// if entered password is wrong...
+{
+    GeCo_Try = 1;	// ...set this as his first password attempt
+    GeCo_fn_Passwort =
+	{
+        _ok = createDialog "GeCo_CheckGerman";	// ...open the dialog for answering a question
+        waitUntil {!dialog};	// ...wait until dialog is created
+        if (!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
+		{
+            if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
+			{
+                GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
+				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				hint "";	// remove hint remainings
+                [] call GeCo_fn_Passwort;	// ...and reopen dialog
+            }
+			else	// ...if it was his third attempt...
+			{ 
+                [100] call GeCo_MissionProtection_AddFoul;	// ...kick him
+            };
+        };
+    };
+    [] call GeCo_fn_Passwort;
+};
