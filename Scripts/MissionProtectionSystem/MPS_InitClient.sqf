@@ -107,7 +107,7 @@ if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F"
 GeCo_PasswordCorrect = false;
 
 // ...player has pilot password
-if (typeOf player in GeCo_Pilots) then	// if player is a pilot...
+if (typeOf player in GeCo_Pilots && isMultiplayer) then	// if player is a pilot...	(and only if it is multiplayer mode, for editor purposes)
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -133,7 +133,7 @@ if (typeOf player in GeCo_Pilots) then	// if player is a pilot...
 };
 
 // ...player has curator password
-if (typeOf player in GeCo_Curators) then	// if player is a curator...
+if (typeOf player in GeCo_Curators && isMultiplayer) then	// if player is a curator...	(and only if it is multiplayer mode, for editor purposes)
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -159,7 +159,7 @@ if (typeOf player in GeCo_Curators) then	// if player is a curator...
 };
 
 // ...player has OPZ password
-if (typeOf player in GeCo_OPZ) then	// if player is a curator...
+if (typeOf player in GeCo_OPZ && isMultiplayer) then	// if player is a curator...
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -186,7 +186,7 @@ if (typeOf player in GeCo_OPZ) then	// if player is a curator...
 
 
 // ...player speaks German
-if (!GeCo_PasswordCorrect) then	// if entered password is wrong...
+if (!GeCo_PasswordCorrect && isMultiplayer) then	// if entered password is wrong...	(and only if it is multiplayer mode, for editor purposes)
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =

@@ -1,4 +1,4 @@
-// by Fabi
+// by Fabi, edited by Quentin
 
 
 // predefine groups to be tracked
@@ -14,11 +14,18 @@ GeCo_BFT_Groups = [];
 
 // assign each group in GeCo_BFT_Groups-Array a marker with its name
 {
-    private _marker = createMarker [str _x +"_BFT",[0,0,0]];
+    private _marker = createMarker [str _x + "_BFT",[0,0,0]];
     _marker setMarkerText ((str _x) select [2]);
     if (typeOf (leader _x) in GeCo_Pilots) then
 	{
-        _marker setMarkerType "b_air";
+		if (typeOf leader _x == "B_Pilot_F" or {typeOf leader _x == "O_Pilot_F"} or {typeOf leader _x == "I_Pilot_F"}) then
+		{
+			_marker setMarkerType "b_plane";
+		}
+		else
+		{
+			_marker setMarkerType "b_air";
+		};
     }
 	else
 	{
