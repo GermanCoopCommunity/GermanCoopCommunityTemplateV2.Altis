@@ -5,20 +5,13 @@
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
 
 
-// fade in from black
+// fade in from black (placed here to be executed before security dialog)
 0 cutText ["","BLACK IN",13];
 
 
 // initialize MissionProtectionSystem
 private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
 call _MPS_InitClient;
-
-
-if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
-{
-	// create dialog asking for password in case player was kicked accidentally and wants to rejoin (if password true, erase his name from the blacklist), otherwise...
-	endMission "LOSER";	// ...kick him again
-};
 
 
 ////////////////////////////////////////// initialize QTS (also for JIPers) //////////////////////////////////////////
@@ -69,6 +62,17 @@ plyr_ldt = getUnitLoadout player;
 ////////////////////////////////////////// briefing file //////////////////////////////////////////
 // see initBriefing.hpp file for briefing sections
 #include "initBriefing.hpp"
+if (typeOf player in GeCo_OPZ) then
+{
+	player createDiarySubject ["Sicherheit","Sicherheit"];
+	player createDiaryRecord [
+		"Sicherheit",
+		[
+			"Passwörter",
+				"Folgende Passwörter schützen die Slots:<br/>OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>Zeus:  <font color='#107b1b'>""Zeus""</font color><br/>allgemein:  <font color='#107b1b'>""deutsch""</font color>"
+		]
+	];
+};
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
 
 

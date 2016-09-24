@@ -38,3 +38,11 @@ Unit variable names:
 - Squadleaders: squadname_lead
 - Pilots: pilot_1 to pilot_4
 - Fighter Pilot: jet_pilot
+
+
+slot passwords:
+
+- OPZ: "OPZ"
+- Curator: "Zeus"
+- Pilot: "Pilot"
+- Serversprache: "deutsch"

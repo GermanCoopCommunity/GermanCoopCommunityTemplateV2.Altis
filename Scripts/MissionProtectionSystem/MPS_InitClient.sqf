@@ -1,6 +1,13 @@
 // by Fabi & Quentin
 
 
+if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
+{
+	// create dialog asking for password in case player was kicked accidentally and wants to rejoin (if password true, erase his name from the blacklist), otherwise...
+	endMission "LOSER";	// ...kick him again
+};
+
+
 // set player´s foul count to 0 initially
 GeCo_MissionProtection_CountFouls = 0;
 
