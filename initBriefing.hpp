@@ -9,7 +9,7 @@ player createDiaryRecord [
 ];
 player createDiaryRecord [
 	"Diary", [
-		"Rules Of Engagement",""
+		"Einsatzregeln",""
 	]
 ];
 player createDiaryRecord [
