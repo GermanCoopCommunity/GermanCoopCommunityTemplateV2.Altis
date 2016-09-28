@@ -127,8 +127,8 @@ if (typeOf player in GeCo_Pilots && isMultiplayer) then	// if player is a pilot.
             if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
 			{
 				GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
-				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
-				hint "";	// remove hint remains
+				//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				//hint "";	// remove hint remains
                 [] call GeCo_fn_Passwort;	// ...and reopen dialog
             }
 			else	// ...if it was his third attempt...
@@ -179,8 +179,8 @@ if (typeOf player in GeCo_OPZ && isMultiplayer) then	// if player is a curator..
             if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
 			{
 				GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
-				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
-				hint "";	// remove hint remains
+				//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				//hint "";	// remove hint remains
                 [] call GeCo_fn_Passwort;	// ...and reopen dialog
             }
 			else	// ...if it was his third attempt...
@@ -206,8 +206,8 @@ if (!GeCo_PasswordCorrect && isMultiplayer) then	// if entered password is wrong
             if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
 			{
 				GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
-				hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
-				hint "";	// remove hint remains
+				//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+				//hint "";	// remove hint remains
                 [] call GeCo_fn_Passwort;	// ...and reopen dialog
             }
 			else	// ...if it was his third attempt...

@@ -15,6 +15,7 @@ GeCo_Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I
 
 // GeCo whitelist of trustworthy people (@Fabi, deinen und Yoshis Ingame-Namen habe ich nicht)
 GeCo_Whitelist = ["Grey Wolf","Deathbite","Quentin"];
+publicVariable "GeCo_Whitelist";
 
 // GeCo blacklist containing players which exceeded the fouls limit and were kicked
 GeCo_Blacklist = [];
