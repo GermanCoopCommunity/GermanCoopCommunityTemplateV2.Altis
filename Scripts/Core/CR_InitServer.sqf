@@ -13,6 +13,12 @@ GeCo_OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
 // define Curators
 GeCo_Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
 
+// GeCo whitelist of trustworthy people (@Fabi, deinen und Yoshis Ingame-Namen habe ich nicht)
+GeCo_Whitelist = ["Grey Wolf","Deathbite","Quentin"];
+
+// GeCo blacklist containing players which exceeded the fouls limit and were kicked
+GeCo_Blacklist = [];
+
 // define PFH
 GeCo_PFH = [];
 addMissionEventHandler ["EachFrame",
@@ -27,9 +33,3 @@ addMissionEventHandler ["EachFrame",
     nil
   } count GeCo_PFH;
 }];
-
-// GeCo whitelist of trustworthy people
-GeCo_Whitelist = ["Grey Wolf","Deathbite","Quentin"];
-
-// GeCo blacklist containing players which exceeded the fouls limit and were killed
-GeCo_Blacklist = [];
