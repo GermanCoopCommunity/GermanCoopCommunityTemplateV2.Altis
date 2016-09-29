@@ -57,33 +57,35 @@ enableSentences false;
 // 3rd Person in vehicles only
 addMissionEventHandler ["Draw3D", {
 	if (
-		(
+		//(
 			isNull objectParent player	// if player is on foot...
 			&&
 			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
 			&&
 			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)}	// ...and he ist outside base...
-		)
-		or
-		{
-			!isNull objectParent player	// if player isn´t on foot...
-			&&
-			{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
-			&&
-			{!((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is only passenger in the vehicle...
-			&&
-			{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0}	// ...and he ist outside base...
-		}
+		//)
+		//or
+		//{
+		//	!isNull objectParent player	// if player isn´t on foot...
+		//	&&
+		//	{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
+		//	&&
+		//	{!((player isEqualTo commander objectParent player) or (player isEqualTo driver objectParent player) or /*(player isEqualTo gunner objectParent player) or */(player == vehicle player turretUnit [0]))}	// ...and he is only passenger in the vehicle...
+		//	&&
+		//	{(player distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) >= (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0}	// ...and he ist outside base...
+		//}
 	)
 	then
 	{
 		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
-		["<t size='0.8'>3rd Person ist außerhalb der Basis nur für Crewmitglieder (Fahrer/(Co-)Piloten, Kommandanten, Bordschützen...) in ihren Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
+		["<t size='0.8'>3rd Person ist außerhalb der Basis nur in Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
 	};
 }];
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// increase view distance
+setViewDistance 6000;
 
 
 ////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////

@@ -20,20 +20,6 @@ private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProt
 call _MPS_InitClient;
 
 
-// if player is judged trustworthy by MPS and he is an OPZ slot, tell him the passwords to all slots
-if (typeOf player in GeCo_OPZ) then
-{
-	player createDiarySubject ["Sicherheit","Sicherheit"];
-	player createDiaryRecord [
-		"Sicherheit",
-		[
-			"Passwörter",
-				"Folgende Passwörter schützen die Slots:<br/>OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>Zeus:  <font color='#107b1b'>""Zeus""</font color><br/>allgemein:  <font color='#107b1b'>""deutsch""</font color>"
-		]
-	];
-};
-
-
 ////////////////////////////////////////// initialize QTS (also for JIPers) //////////////////////////////////////////
 // initialize QTS on player
 if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs};

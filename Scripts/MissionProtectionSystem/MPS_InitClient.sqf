@@ -1,7 +1,7 @@
 // by Fabi & Quentin
 
 
-if ((getPlayerUID player) in GeCo_Blacklist && {!(name player in GeCo_Whitelist)}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
+if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
 {
 	// create dialog asking for password in case player was kicked accidentally and wants to rejoin (if password true, erase his name from the blacklist), otherwise...
 	endMission "LOSER";	// ...kick him again
@@ -193,28 +193,45 @@ if (typeOf player in GeCo_OPZ && isMultiplayer) then	// if player is a curator..
 };
 
 
-// ...player speaks German
-if (!GeCo_PasswordCorrect && isMultiplayer) then	// if entered password is wrong...	(and only if it is multiplayer mode, for editor purposes)
+// ...JIPer speaks German
+if (didJIP) then
 {
-    GeCo_Try = 1;	// ...set this as his first password attempt
-    GeCo_fn_Passwort =
+	if (!GeCo_PasswordCorrect && isMultiplayer) then	// if entered password is wrong...	(and only if it is multiplayer mode, for editor purposes)
 	{
-        _ok = createDialog "GeCo_CheckGerman";	// ...open the dialog for answering a question
-        waitUntil {!dialog};	// ...wait until dialog is created
-        if (!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
+		GeCo_Try = 1;	// ...set this as his first password attempt
+		GeCo_fn_Passwort =
 		{
-            if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
+			_ok = createDialog "GeCo_CheckGerman";	// ...open the dialog for answering a question
+			waitUntil {!dialog};	// ...wait until dialog is created
+			if (!GeCo_PasswordCorrect) then	// ...if entered password is wrong...
 			{
-				GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
-				//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
-				//hint "";	// remove hint remains
-                [] call GeCo_fn_Passwort;	// ...and reopen dialog
-            }
-			else	// ...if it was his third attempt...
-			{ 
-                [100] call GeCo_MissionProtection_AddFoul;	// ...kick him
-            };
-        };
-    };
-    [] call GeCo_fn_Passwort;
+				if (GeCo_Try < 3) then	// ...if that wasn´t his third attempt...
+				{
+					GeCo_Try = GeCo_Try + 1;	// ...increase attempt counter
+					//hintC format ["Falsch. Du hast noch %1 Versuche.", 4 - GeCo_Try];	// ...show him an error
+					//hint "";	// remove hint remains
+					[] call GeCo_fn_Passwort;	// ...and reopen dialog
+				}
+				else	// ...if it was his third attempt...
+				{ 
+					[100] call GeCo_MissionProtection_AddFoul;	// ...kick him
+				};
+			};
+		};
+		[] call GeCo_fn_Passwort;
+	};
+};
+
+
+// if player is judged trustworthy by MPS and he is an OPZ slot, tell him the passwords to all slots
+if ((getPlayerUID player) in GeCo_Whitelist) then
+{
+	player createDiarySubject ["Sicherheit","Sicherheit"];
+	player createDiaryRecord [
+		"Sicherheit",
+		[
+			"Passwörter",
+				"Diesen Tagebucheintrag bekommst nur du als Mitglied des GeCo-Teams angezeigt.<br/><br/>Folgende Passwörter schützen die Slots:<br/>OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>Zeus:  <font color='#107b1b'>""Zeus""</font color><br/>allgemein:  <font color='#107b1b'>""deutsch""</font color>"
+		]
+	];
 };

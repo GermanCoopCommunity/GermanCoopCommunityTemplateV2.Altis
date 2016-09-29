@@ -3,22 +3,27 @@
 
 // define Pilots
 GeCo_Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
+publicVariable "GeCo_Pilots";
 
 // define Crew
 GeCo_Crew = ["B_crew_F","O_crew_F","I_crew_F"];
+publicVariable "GeCo_Pilots";
 
 // define OPZ
 GeCo_OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
+publicVariable "GeCo_Pilots";
 
 // define Curators
 GeCo_Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
+publicVariable "GeCo_Pilots";
 
-// GeCo whitelist of trustworthy people (@Fabi, deinen und Yoshis Ingame-Namen habe ich nicht)
-GeCo_Whitelist = ["Grey Wolf","Deathbite","Quentin"];
-publicVariable "GeCo_Whitelist";
+// GeCo whitelist of trustworthy people
+GeCo_Whitelist = ["76561198024503777"];
+publicVariable "GeCo_Pilots";
 
 // GeCo blacklist containing players which exceeded the fouls limit and were kicked
 GeCo_Blacklist = [];
+publicVariable "GeCo_Pilots";
 
 // define PFH
 GeCo_PFH = [];
