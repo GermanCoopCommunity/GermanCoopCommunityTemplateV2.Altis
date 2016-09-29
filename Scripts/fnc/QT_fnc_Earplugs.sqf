@@ -44,8 +44,7 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 		{
 			if !(player getVariable "EarplugsIn") then	// ...if earplugs aren´t in yet...
 			{
-				//0.1 fadeSound (soundVolume / 2);	// ...decrease sound volume by half...
-				0.1 fadeSound 0.3;                      // ...decrease sound by to 30%
+				0.1 fadeSound (soundVolume / 4);	// ...decrease sound volume...
 				//0.1 fadeSpeech 0.25;
 				//0.1 fadeMusic 0.25;
 				["Ohrstöpsel eingesetzt.",1,0,3,0] spawn BIS_fnc_dynamicText;
@@ -53,8 +52,7 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 			}
 			else	// ...but if they are already in...
 			{
-				//0.1 fadeSound (soundVolume * 2);	// ...double sound volume
-				0.1 fadeSound 1;                        // ...reset sound volume
+				0.1 fadeSound (soundVolume * 4);	// ...reset sound volume
 				//0.1 fadeSpeech 1;
 				//0.1 fadeMusic 1;
 				["Ohrstöpsel entfernt.",1,0.1,3,0] spawn BIS_fnc_dynamicText;
@@ -70,16 +68,14 @@ player addEventHandler [	// reset volume on players death
 	{
 		if !(player getVariable "EarplugsIn") then
 		{
-			//0.1 fadeSound (soundVolume / 2);
-			0.1 fadeSound 0.3;
+			0.1 fadeSound (soundVolume / 4);
 			//0.1 fadeSpeech 0.25;
 			//0.1 fadeMusic 0.25;
 			player setVariable ["EarplugsIn",true];
 		}
 		else
 		{
-			//0.1 fadeSound (soundVolume * 2);
-			0.1 fadeSound 0.3;
+			0.1 fadeSound (soundVolume * 4);
 			//0.1 fadeSpeech 1;
 			//0.1 fadeMusic 1;
 			player setVariable ["EarplugsIn",false];
