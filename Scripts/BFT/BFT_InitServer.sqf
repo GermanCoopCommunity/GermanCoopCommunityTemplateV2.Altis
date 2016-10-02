@@ -1,7 +1,7 @@
 // by Fabi, edited by Quentin
 
 
-// check every player's group and add it to GeCo_BFT_Groups-Array
+// check every player's group and add it to array of groups to be tracked
 GeCo_BFT_Groups = [];
 {
     GeCo_BFT_Groups pushBackUnique group _x;
@@ -46,12 +46,12 @@ GeCo_BFT_Groups = [];
 } count GeCo_BFT_Groups;
 
 
-// refresh each group´s marker position on each frame depending on group leader´s position
+// refresh each group's marker position on each frame depending on group leader's position
 GeCo_BFT_fn_PFH =
 {
     if (!isServer) exitWith{};
     {
-        str _x +"_BFT" setMarkerPos (position (leader _x));
+        str _x + "_BFT" setMarkerPos (position (leader _x));
         nil
     } count GeCo_BFT_Groups;
 };

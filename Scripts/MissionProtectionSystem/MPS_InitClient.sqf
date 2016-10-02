@@ -81,6 +81,7 @@ player addMPEventHandler ["MPKilled",
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
+		//[50] remoteExec ["GeCo_MissionProtection_AddFoul",owner _killer];
 		//hint format ["Opfer: %1, Killer: %2",_victim,_killer];
     };
 }];
