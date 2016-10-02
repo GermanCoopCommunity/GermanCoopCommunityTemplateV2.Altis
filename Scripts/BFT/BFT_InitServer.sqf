@@ -1,15 +1,12 @@
 // by Fabi, edited by Quentin
 
 
-// predefine groups to be tracked
+// check every player's group and add it to GeCo_BFT_Groups-Array
 GeCo_BFT_Groups = [];
-
-
-// check every player´s group and add it to GeCo_BFT_Groups-Array
 {
     GeCo_BFT_Groups pushBackUnique group _x;
     nil
-} count allPlayers;
+} count (allPlayers - entities "VirtualCurator_F");	// exclude curators
 
 
 // assign each group in GeCo_BFT_Groups-Array a marker with its name

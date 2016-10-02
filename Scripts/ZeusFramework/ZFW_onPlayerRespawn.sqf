@@ -7,7 +7,7 @@ diag_log format ["%1 --- Executing ZFW_onPlayerRespawn.sqf",diag_ticktime];
 
 // make player visible to curators on respawn
 _newUnit = _this select 0;
-{_x addCuratorEditableObjects [[_newUnit],true]} count allCurators;	// (DOESN'T WORK, MUST BE EXECUTED ON SERVER)
+{[_x,[[_newUnit],true]] remoteExec ["addCuratorEditableObjects",2]; nil;} count allCurators;	// add placed entity to editable objects for the other curators
 
 
 // log end of execution

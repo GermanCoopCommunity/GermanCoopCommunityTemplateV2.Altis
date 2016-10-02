@@ -40,8 +40,7 @@ if (typeOf player == "VirtualCurator_F" or {typeOf player == "B_VirtualCurator_F
 				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
 				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 			};
-			//{_x addCuratorEditableObjects [[_entity],true]} count allCurators;	// add placed entity to editable objects for the other curators (DOESN'T WORK, MUST BE EXECUTED ON SERVER)
-			//{[_x,[[_entity],true]] remoteExec ["addCuratorEditableObjects",-2];} count allCurators;
+			{[_x,[[_entity],true]] remoteExec ["addCuratorEditableObjects",2]; nil;} count (allCurators - [getAssignedCuratorLogic player]);	// add placed entity to editable objects for the other curators
 		}
 	];
 /*	// AI groups
