@@ -34,9 +34,9 @@ if (!isNil "QT_AI_call_fncs") then
 
 
 // added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
-removeallMissionEventHandlers "Draw3D";
+removeAllMissionEventHandlers "Draw3D";
 // editing purposes
-if !(isMultiplayer) then {{_x disableAI "MOVE"} forEach allUnits};
+//if !(isMultiplayer) then {{_x disableAI "MOVE"} forEach allUnits};
 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
@@ -46,12 +46,6 @@ if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile
 {
 	addMissionEventHandler ["Draw3D", {_this call JK_fnc_NameTags}];	// ...initialize JK Nametags for player
 };
-
-
-// (disable radio callouts and -texts) can be set via difficulty settings
-//0.1 fadeRadio 0;		// <-- out commented by psycho, this command stops working of some required game sounds (f.e. the *pieppiep* if a launcher has a target switched on)
-enableRadio false;
-enableSentences false;
 
 
 // 3rd Person in vehicles only
@@ -88,13 +82,17 @@ addMissionEventHandler ["Draw3D", {
 setViewDistance 6000;
 
 
+// (disable radio callouts and -texts) can be set via difficulty settings
+//0.1 fadeRadio 0;		// <-- out commented by psycho, this command stops working of some required game sounds (f.e. the *pieppiep* if a launcher has a target switched on)
+enableRadio false;
+enableSentences false;
+
+
 ////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////
 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 // log end of execution

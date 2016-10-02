@@ -7,7 +7,7 @@ diag_log format ["%1 --- Executing ZFW_onPlayerRespawn.sqf",diag_ticktime];
 
 // make player visible to curators on respawn
 _newUnit = _this select 0;
-{_x addCuratorEditableObjects [[_newUnit],true]} count allCurators;
+{_x addCuratorEditableObjects [[_newUnit],true]} count allCurators;	// (DOESN'T WORK, MUST BE EXECUTED ON SERVER)
 
 
 // log end of execution

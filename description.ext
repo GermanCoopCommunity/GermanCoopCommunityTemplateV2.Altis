@@ -104,3 +104,17 @@ class CfgUnitInsignia
 		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\colonel_gs.paa"; // Image path
 	};
 };
+
+
+// part of ZFW
+class CfgRemoteExec
+{        
+	class Commands
+    {
+		class addCuratorEditableObjects
+		{
+			allowedTargets = 2;
+			JIP = 0;
+		};
+	};
+};

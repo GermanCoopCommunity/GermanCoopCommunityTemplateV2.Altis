@@ -26,23 +26,26 @@ if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs};
 if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs};
 
 // if player is a curator, initialize QTS on units spawned by him
-if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
+if (typeOf player == "VirtualCurator_F" or {typeOf player == "B_VirtualCurator_F"} or {typeOf player == "C_VirtualCurator_F"} or {typeOf player == "I_VirtualCurator_F"} or {typeOf player == "O_VirtualCurator_F"}) then
 {
 	// single units
-	player addEventHandler [
+	// SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
+	waitUntil {!isNull (getAssignedCuratorLogic player)};
+	(getAssignedCuratorLogic player) addEventHandler [
 		"CuratorObjectPlaced",
 		{
-			_entity = _this select 1;			
-			if (_entity in (allUnits - allPlayers - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
+			private _entity = _this select 1;			
+			if (_entity in (allUnits - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
 			{
 				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
 				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 			};
-			{_x addCuratorEditableObjects [[_this select 1],true]} count allCurators;	// ...add placed entity to editable objects for the other curators
+			//{_x addCuratorEditableObjects [[_entity],true]} count allCurators;	// add placed entity to editable objects for the other curators (DOESN'T WORK, MUST BE EXECUTED ON SERVER)
+			//{[_x,[[_entity],true]] remoteExec ["addCuratorEditableObjects",-2];} count allCurators;
 		}
 	];
 /*	// AI groups
-	player addEventHandler [
+	(getAssignedCuratorLogic player) addEventHandler [
 		"CuratorGroupPlaced",
 		{
 			// declare EH variables

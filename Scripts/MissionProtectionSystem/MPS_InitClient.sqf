@@ -3,7 +3,7 @@
 
 if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
 {
-	// create dialog asking for password in case player was kicked accidentally and wants to rejoin (if password true, erase his name from the blacklist), otherwise...
+	// ...create dialog asking for password in case player was kicked accidentally and wants to rejoin. if password true, erase his name from the blacklist, otherwise...
 	endMission "LOSER";	// ...kick him again
 };
 
@@ -18,7 +18,7 @@ GeCo_MissionProtection_AddFoul =
     params [["_foulWeight", 1]];
     GeCo_MissionProtection_CountFouls = GeCo_MissionProtection_CountFouls + _foulWeight;
     
-    if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player´s fouls exceed limit and he isn´t a trustworthy person on the whitelist...
+    if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player´s fouls exceed limit and he isn't a trustworthy person on the whitelist...
 	{
 		endMission "LOSER";	// ...kick him
 		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
@@ -77,11 +77,11 @@ player addMPEventHandler ["MPKilled",
 	private _killer = _this select 1;	// contains unit itself in case of collisions
 	private _instigator = _this select 2;	// person who pulled the trigger
 	
-    if ((isPlayer _victim) && {_victim != objNull} && {_victim != _killer} && {side _victim == side player}) then	// if player killed another player of his own side, didn´t die from a collision and didn´t manually respawn...
+    if ((_victim != objNull) && {_victim != _killer} && {side _victim == side _killer}) then	// if player was killed by another player of his own side, didn´t die from a collision and didn´t manually respawn...
 	{
 		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
-		hint format ["Opfer: %1, Killer: %2",_victim,_killer];
+		//hint format ["Opfer: %1, Killer: %2",_victim,_killer];
     };
 }];
 
@@ -89,20 +89,25 @@ player addMPEventHandler ["MPKilled",
 // if player is a curator, initialize MPS on vehicles and units spawned by him
 if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
 {
-    player addEventHandler [
+    // SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
+	waitUntil {!isNull (getAssignedCuratorLogic player)};
+	(getAssignedCuratorLogic player) addEventHandler [
         "CuratorObjectPlaced",
         {
-            /*if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+            private _entity = _this select 0;
+			/*if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
             {
                 (_this select 1) enableCopilot false;
             };*/
-            if ((_this select 1) isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+            if (_entity isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
             {
-                (_this select 1) addEventHandler ["Fired",
+                _entity addEventHandler ["Fired",
 				{
-                    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)) then	// if curator placed unit shoots inside base...
+                    private _entity = _this select 0;
+					private _projectile = _this select 6;
+					if ((_entity distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)) then	// if curator placed unit shoots inside base...
 					{
-                        deleteVehicle (_this select 6);	// ...delete the projectile
+                        deleteVehicle _projectile;	// ...delete the projectile
                     };
                 }];
             };
@@ -223,7 +228,7 @@ if (didJIP) then
 };
 
 
-// if player is judged trustworthy by MPS and he is an OPZ slot, tell him the passwords to all slots
+// if player is judged trustworthy by MPS, tell him the passwords to all slots
 if ((getPlayerUID player) in GeCo_Whitelist) then
 {
 	player createDiarySubject ["Sicherheit","Sicherheit"];
