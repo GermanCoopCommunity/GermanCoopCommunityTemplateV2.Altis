@@ -8,7 +8,7 @@ if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_W
 };
 
 
-// set player´s foul count to 0 initially
+// set player's foul count to 0 initially
 GeCo_MissionProtection_CountFouls = 0;
 
 
@@ -20,10 +20,11 @@ GeCo_MissionProtection_AddFoul =
     
     if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player´s fouls exceed limit and he isn't a trustworthy person on the whitelist...
 	{
-		endMission "LOSER";	// ...kick him
+		[""] spawn BIS_fnc_dynamicText;	// ...remove currently displayed dynamic text
+		endMission "LOSER";	// ...end mission for him
+		titleCut ["Du wurdest wegen deines Fehlverhaltens der Mission verwiesen.","BLACK FADED", 0];	// ...inform him about the kick
 		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
-		//("#exec kick" + (name player)) remoteExec ["serverCommand", 2];	// kick player from game server (doesn´t work atm)
-		//serverCommand ("#kick" + (name player));
+		//["password",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		GeCo_Blacklist pushbackUnique (getPlayerUID player);	// ...add player´s UID (equal to steamID64 of the player) to blacklist to prevent him from rejoining the mission
 		publicVariable "GeCo_Blacklist";	// broadcast current blacklist to each connected computer
     };
@@ -33,10 +34,10 @@ GeCo_MissionProtection_AddFoul =
 // prevent base shooting
 player addEventHandler ["Fired",
 {
-    if (((_this select 0) distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if player fires inside base...
+    if (((_this select 0) distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if player fires inside base...
 	{
         deleteVehicle (_this select 6);	// ...delete the projectile
-		["<t color='#ff0000' size = '1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+		["<t color='#ff0000' size ='1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [15] call GeCo_MissionProtection_AddFoul;	// ...warn him
     };
 	//nil	// prevent weapon firing anim & sound (doesn´t work like this)
@@ -88,7 +89,7 @@ player addMPEventHandler ["MPKilled",
 
 
 // if player is a curator, initialize MPS on vehicles and units spawned by him
-if (typeOf player == "VirtualCurator_F" or typeOf player == "B_VirtualCurator_F" or typeOf player == "C_VirtualCurator_F" or typeOf player == "I_VirtualCurator_F" or typeOf player == "O_VirtualCurator_F") then
+if (typeOf player in GeCo_Curators) then
 {
     // SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
 	waitUntil {!isNull (getAssignedCuratorLogic player)};

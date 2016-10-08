@@ -26,7 +26,7 @@ if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs};
 if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs};
 
 // if player is a curator, initialize QTS on units spawned by him
-if (typeOf player == "VirtualCurator_F" or {typeOf player == "B_VirtualCurator_F"} or {typeOf player == "C_VirtualCurator_F"} or {typeOf player == "I_VirtualCurator_F"} or {typeOf player == "O_VirtualCurator_F"}) then
+if (typeOf player in GeCo_Curators) then
 {
 	// single units
 	// SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
@@ -64,6 +64,12 @@ if (typeOf player == "VirtualCurator_F" or {typeOf player == "B_VirtualCurator_F
 
 
 // save default unit loadout to apply on respawn later
+/*if ((uniform player == "U_B_CombatUniform_mcam") or {uniform player == "U_B_CombatUniform_mcam_tshirt"} or {uniform player == "U_B_CombatUniform_mcam_vest"}) then
+{
+	player setObjectTextureGlobal [0,"\a3\characters_f\BLUFOR\Data\clothing_wdl_co.paa"];
+	//player addVest "V_PlateCarrier2_rgr";
+	//player addHeadgear "H_HelmetB_light";
+};*/
 plyr_ldt = getUnitLoadout player;
 
 

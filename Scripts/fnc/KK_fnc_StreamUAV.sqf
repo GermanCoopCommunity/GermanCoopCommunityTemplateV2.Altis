@@ -28,14 +28,14 @@ private _surface = _this select 1;
 
 
 /* create render surface */
-_surface setObjectTexture [0, "#(argb,512,512,1)r2t(uavrtt,1)"];
+_surface setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
 
 /* create camera and stream to render surface */
-cam = "camera" camCreate [0,0,0];
-cam cameraEffect ["Internal", "Back", "uavrtt"];
+_cam = "camera" camCreate [0,0,0];
+_cam cameraEffect ["Internal", "Back", "uavrtt"];
 
 /* attach cam to gunner cam position */
-cam attachTo [_uav, [0,0,0], "laserstart"];
+_cam attachTo [_uav, [0,0,0], "laserstart"];
 
 /* make it zoom in a little */
 //cam camSetFov 0.1;
@@ -46,8 +46,8 @@ cam attachTo [_uav, [0,0,0], "laserstart"];
 /* adjust cam orientation */
 addMissionEventHandler ["Draw3D",
 {
-    _dir = (uav selectionPosition "laserstart") vectorFromTo (uav selectionPosition "commanderview");
-    cam setVectorDirAndUp [_dir, _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]];
+    _dir = (_uav selectionPosition "laserstart") vectorFromTo (_uav selectionPosition "commanderview");
+    _cam setVectorDirAndUp [_dir, _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]];
 }];
 
 
