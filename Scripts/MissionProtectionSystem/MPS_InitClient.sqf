@@ -1,7 +1,7 @@
 // by Fabi & Quentin
 
 
-if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefore is on blacklist and not on the whitelist of trustworthy people...
+if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefor is on blacklist and not on the whitelist of trustworthy people...
 {
 	// ...create dialog asking for password in case player was kicked accidentally and wants to rejoin. if password true, erase his name from the blacklist, otherwise...
 	endMission "LOSER";	// ...kick him again
@@ -40,11 +40,11 @@ player addEventHandler ["Fired",
 		["<t color='#ff0000' size ='1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [15] call GeCo_MissionProtection_AddFoul;	// ...warn him
     };
-	//nil	// prevent weapon firing anim & sound (doesn´t work like this)
+	//nil;	// prevent weapon firing anim & sound (doesn´t work like this)
 }];
 
 
-// forbid players to operate vehicles they aren´t in class for
+/*// forbid players to operate vehicles they aren´t in class for
 player addEventHandler ["GetInMan",
 {		
 		// declare EH variables
@@ -59,7 +59,7 @@ player addEventHandler ["GetInMan",
 		&&
 		{((typeOf _unit) != (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
 		&&
-		{((_pos == "driver") or /*(_pos == "gunner") or */(_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver, gunner or copilot of the vehicle...
+		{((_pos == "driver") or (_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver or copilot of the vehicle...
 	)
 	then
 	{
@@ -67,7 +67,7 @@ player addEventHandler ["GetInMan",
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
 		_unit action ["GetOut", _veh];	// ...eject him out of the vehicle
 	};
-}];
+}];*/
 
 
 // teamkill punisher
@@ -80,8 +80,9 @@ player addMPEventHandler ["MPKilled",
 	
     if ((_victim != objNull) && {_victim != _killer} && {side _victim == side _killer}) then	// if player was killed by another player of his own side, didn´t die from a collision and didn´t manually respawn...
 	{
-		["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
-        [50] call GeCo_MissionProtection_AddFoul;	// ...warn him
+		//hint format ["Du wurdest von deinem Kameraden %1 getötet.", name _killer];	// ...tell him, who killed him
+		//["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+		//[50] call GeCo_MissionProtection_AddFoul;	// ...warn him
 		//[50] remoteExec ["GeCo_MissionProtection_AddFoul",owner _killer];
 		//hint format ["Opfer: %1, Killer: %2",_victim,_killer];
     };
@@ -97,17 +98,13 @@ if (typeOf player in GeCo_Curators) then
         "CuratorObjectPlaced",
         {
             private _entity = _this select 0;
-			/*if ((_this select 1) isKindOf "Air") then    // disable copilot being able to take over controls in Zeus placed air vehicles
-            {
-                (_this select 1) enableCopilot false;
-            };*/
-            if (_entity isKindOf "AllVehicle") then    // disable copilot being able to take over controls in Zeus placed air vehicles
+            if (_entity isKindOf "AllVehicle") then
             {
                 _entity addEventHandler ["Fired",
 				{
                     private _entity = _this select 0;
 					private _projectile = _this select 6;
-					if ((_entity distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < ((((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) + ((getMarkerSize "GeCo_MissionProtection_BaseMarker") select 1)) / 2)) then	// if curator placed unit shoots inside base...
+					if ((_entity distance (getmarkerpos "GeCo_MissionProtection_BaseMarker")) < 500) then	// if curator placed unit shoots inside base...
 					{
                         deleteVehicle _projectile;	// ...delete the projectile
                     };
