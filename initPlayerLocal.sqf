@@ -6,7 +6,7 @@ diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
 
 
 // fade in from black (placed here to be executed before security dialog)
-0 cutText ["","BLACK IN",13];
+0 cutText ["","BLACK IN",8];
 
 
 ////////////////////////////////////////// briefing file //////////////////////////////////////////

@@ -12,7 +12,7 @@ QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia
 QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Gestures.sqf";
 QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Jump.sqf";
 KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\fnc\KK_fnc_StreamUAV.sqf";
-
+JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\fnc\JK_fnc_NameTags.sqf";
 
 // define fnc arrays
 QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
@@ -20,12 +20,9 @@ QT_spawn_fncs = [];
 QT_AI_call_fncs = [QT_fnc_Insignia];
 QT_AI_spawn_fncs = [];
 
-
 // apply QTS to AI units
 if (!isNil "QT_AI_call_fncs") then
-{
-	{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
-};
+{{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));};
 /*if (!isNil "QT_AI_spawn_fncs") then
 {
 	
@@ -38,10 +35,8 @@ removeAllMissionEventHandlers "Draw3D"; // added by psycho, needed to reset EH, 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
 // Nametags
-JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\fnc\JK_fnc_NameTags.sqf";
 if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile >> "CfgPatches" >> "A3C_NameTag")) or (isClass (configFile >> "CfgPatches" >> "STNametags")))) then	// if player doesn´t run the nametag mods STNameTags and A3C_NameTag...
 {addMissionEventHandler ["Draw3D",{_this call JK_fnc_NameTags}];};	// ...initialize JK Nametags for player
-
 
 // 3rd Person in vehicles only
 addMissionEventHandler ["Draw3D",{
@@ -59,7 +54,6 @@ addMissionEventHandler ["Draw3D",{
 		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
 	};
 }];
-
 
 // forbid players to operate vehicles they aren´t in class for
 addMissionEventHandler ["Draw3D",{
