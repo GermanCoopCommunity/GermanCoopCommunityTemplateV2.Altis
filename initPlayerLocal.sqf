@@ -26,7 +26,7 @@ if (!isNil "QT_call_fncs") then {{[player] call _x} count QT_call_fncs};
 if (!isNil "QT_spawn_fncs") then {{[player] spawn _x} forEach QT_spawn_fncs};
 
 // if player is a curator, initialize QTS on units spawned by him
-if (typeOf player in GeCo_Curators) then
+if (typeOf player in ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"]) then
 {
 	// single units
 	// SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand

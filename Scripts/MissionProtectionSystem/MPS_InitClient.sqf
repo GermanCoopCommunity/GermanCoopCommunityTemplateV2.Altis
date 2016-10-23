@@ -1,11 +1,12 @@
 // by Fabi & Quentin
 
 
-if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefor is on blacklist and not on the whitelist of trustworthy people...
+/*if ((getPlayerUID player) in GeCo_Blacklist && {!(getPlayerUID player) in GeCo_Whitelist}) then	// if player has already been kicked and therefor is on blacklist and not on the whitelist of trustworthy people...
 {
 	// ...create dialog asking for password in case player was kicked accidentally and wants to rejoin. if password true, erase his name from the blacklist, otherwise...
-	endMission "LOSER";	// ...kick him again
-};
+	endMission "LOSER";	// ...end mission for him
+	["",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
+};*/
 
 
 // set player's foul count to 0 initially
@@ -18,15 +19,16 @@ GeCo_MissionProtection_AddFoul =
     params [["_foulWeight", 1]];
     GeCo_MissionProtection_CountFouls = GeCo_MissionProtection_CountFouls + _foulWeight;
     
-    if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player´s fouls exceed limit and he isn't a trustworthy person on the whitelist...
+    if (GeCo_MissionProtection_CountFouls >= 100 && {!(getPlayerUID player in GeCo_Whitelist)}) then	// if player's fouls exceed limit and he isn't a trustworthy person on the whitelist...
 	{
 		[""] spawn BIS_fnc_dynamicText;	// ...remove currently displayed dynamic text
 		endMission "LOSER";	// ...end mission for him
-		titleCut ["Du wurdest wegen deines Fehlverhaltens der Mission verwiesen.","BLACK FADED", 0];	// ...inform him about the kick
+		titleCut ["Du wurdest wegen deines Fehlverhaltens der Mission verwiesen.","BLACK FADED",0];	// ...inform him about the reason for the kick
 		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
-		//["password",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		GeCo_Blacklist pushbackUnique (getPlayerUID player);	// ...add player´s UID (equal to steamID64 of the player) to blacklist to prevent him from rejoining the mission
-		publicVariable "GeCo_Blacklist";	// broadcast current blacklist to each connected computer
+		publicVariable "GeCo_Blacklist";	// ...broadcast current blacklist to each connected computer
+		("Der Spieler " + (name player) + " wurde vom Schutzsystem automatisch gekickt.") remoteExec ["systemChat",0];	// ...show system info message for the other players
+		["",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
     };
 };
 
@@ -34,63 +36,39 @@ GeCo_MissionProtection_AddFoul =
 // prevent base shooting
 player addEventHandler ["Fired",
 {
-    if (((_this select 0) distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) < (getMarkerSize "GeCo_MissionProtection_BaseMarker") select 0) then	// if player fires inside base...
+    if (((_this select 0) distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) < 500) then	// if player fires inside base...
 	{
         deleteVehicle (_this select 6);	// ...delete the projectile
 		["<t color='#ff0000' size ='1.5'>Das Schießen in der Basis ist strengstens verboten!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
         [15] call GeCo_MissionProtection_AddFoul;	// ...warn him
     };
-	//nil;	// prevent weapon firing anim & sound (doesn´t work like this)
+	//nil;	// prevent weapon firing anim & sound (doesn't work like this)
 }];
-
-
-/*// forbid players to operate vehicles they aren´t in class for
-player addEventHandler ["GetInMan",
-{		
-		// declare EH variables
-		private _unit = _this select 0;
-		private _pos = _this select 1;
-		private _veh = _this select 2;
-		
-	if (
-		!((getText (configfile >> "CfgVehicles" >> typeOf _veh >> "vehicleClass") == "Submarine") or (typeOf _veh == "Steerable_Parachute_F"))	// ...which is not an SDV or a parachute...
-		&&
-		{(_veh isKindOf "Tank") or {_veh isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
-		&&
-		{((typeOf _unit) != (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
-		&&
-		{((_pos == "driver") or (_unit == _veh turretUnit [0]))}	// ...and he is either commander, driver or copilot of the vehicle...
-	)
-	then
-	{
-		["<t size='0.8'>Du bist für die Bedienung dieses Fahrzeuges nicht ausgebildet. Du wurdest verwarnt.</t>",0,0,4,0] spawn bis_fnc_dynamicText;
-		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf(vehicle player) >> "crew")) >> "DisplayName")];
-		_unit action ["GetOut", _veh];	// ...eject him out of the vehicle
-	};
-}];*/
 
 
 // teamkill punisher
 player addMPEventHandler ["MPKilled",
 {
-	// declare EH variables
-	private _victim = _this select 0;	// = local player
-	private _killer = _this select 1;	// contains unit itself in case of collisions
-	private _instigator = _this select 2;	// person who pulled the trigger
-	
-    if ((_victim != objNull) && {_victim != _killer} && {side _victim == side _killer}) then	// if player was killed by another player of his own side, didn´t die from a collision and didn´t manually respawn...
+	private _victim = _this select 0;
+	private _killer = _this select 1;
+	private _instigator = _this select 2;
+	if (player == _victim) then 
 	{
-		//hint format ["Du wurdest von deinem Kameraden %1 getötet.", name _killer];	// ...tell him, who killed him
-		//["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Du wurdest verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
-		//[50] call GeCo_MissionProtection_AddFoul;	// ...warn him
-		//[50] remoteExec ["GeCo_MissionProtection_AddFoul",owner _killer];
-		//hint format ["Opfer: %1, Killer: %2",_victim,_killer];
-    };
+		hint format ["Du wurdest von deinem Kameraden %1 %2 aus der %3-Einheit getötet. Er wurde verwarnt.",toLower (rank _killer),name _killer,group _killer];
+	}
+	else
+	{ 
+		if (player == _killer) then
+		{
+			[50] call GeCo_MissionProtection_AddFoul;
+			["<t color='#ff0000' size = '1.5'>Teambeschuss wird nicht toleriert!<br/>Beim nächsten Feindbeschuss wirst du der Mission verwiesen.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+		};
+	};
 }];
 
 
 // if player is a curator, initialize MPS on vehicles and units spawned by him
-if (typeOf player in GeCo_Curators) then
+if (typeOf player in ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"]) then
 {
     // SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
 	waitUntil {!isNull (getAssignedCuratorLogic player)};
@@ -119,7 +97,7 @@ if (typeOf player in GeCo_Curators) then
 GeCo_PasswordCorrect = false;
 
 // ...player has pilot password
-if (typeOf player in GeCo_Pilots && isMultiplayer) then	// if player is a pilot...	(and only if it is multiplayer mode, for editor purposes)
+if (typeOf player in ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"] && {isMultiplayer}) then	// if player is a pilot...	(and only if it is multiplayer mode, for editor purposes)
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -145,7 +123,7 @@ if (typeOf player in GeCo_Pilots && isMultiplayer) then	// if player is a pilot.
 };
 
 // ...player has curator password
-if (typeOf player in GeCo_Curators && isMultiplayer) then	// if player is a curator...	(and only if it is multiplayer mode, for editor purposes)
+if (typeOf player in ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"] && {isMultiplayer}) then	// if player is a curator...	(and only if it is multiplayer mode, for editor purposes)
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -171,7 +149,7 @@ if (typeOf player in GeCo_Curators && isMultiplayer) then	// if player is a cura
 };
 
 // ...player has OPZ password
-if (typeOf player in GeCo_OPZ && isMultiplayer) then	// if player is a curator...
+if (typeOf player in ["B_officer_F","O_officer_F","I_officer_F"] && {isMultiplayer}) then	// if player is a curator...
 {
     GeCo_Try = 1;	// ...set this as his first password attempt
     GeCo_fn_Passwort =
@@ -200,7 +178,7 @@ if (typeOf player in GeCo_OPZ && isMultiplayer) then	// if player is a curator..
 // ...JIPer speaks German
 if (didJIP) then
 {
-	if (!GeCo_PasswordCorrect && isMultiplayer) then	// if entered password is wrong...	(and only if it is multiplayer mode, for editor purposes)
+	if (!GeCo_PasswordCorrect && {isMultiplayer}) then	// if entered password is wrong...	(and only if it is multiplayer mode, for editor purposes)
 	{
 		GeCo_Try = 1;	// ...set this as his first password attempt
 		GeCo_fn_Passwort =
