@@ -8,7 +8,7 @@ General:
 - Faction: NATO
 - Playable Units: 79, which are...
                       - 7x 10 per squad
-                      - 2 OPZ
+                      - 2 OPZ (Commanding Officer & Executive Officer)
                       - 4 pilots
                       - 1 jet pilot
                       - 2 curators
@@ -16,19 +16,24 @@ General:
 
 Features:
 
-- nametags
-- Mission Protection System (Teamkill, Baserape, Vehicle Restriction) with Foul System
-- 3rd person in vehicles and in base only
-- briefing
-- earplugs
-- insignia
-- some minor enhancements like jumping
-
-
-Complete Zeus support including:
-
-- every vehicle and unit editable for all curators
-- Respawn-, JIP- compatible
+- Nametags
+- Mission Protection System, consisting of
+  ...Vehicle Restriction
+  ...Teamkill Protection
+  ...Baserape Protection
+  ...Slot Protection
+  ...Fouler Rejoin Protection
+  ...JIP Protection (Idiotentest)
+- BLUFORCE Tracking
+- 3rd Person Restriction (only in base and in vehicles)
+- Briefing
+- Earplugs
+- Unit Insignia
+- Jumping
+- Gestures
+- fully equipped US-Base on salt lake Almyra
+- Zeus Support (every vehicle and unit editable for all curators, Respawn- & JIP-compatible)
+- Admin Curator Access
 
 
 Unit variable names:
@@ -40,9 +45,12 @@ Unit variable names:
 - Fighter Pilot: jet_pilot
 
 
-slot passwords:
+Slot Protection passwords:
 
 - OPZ: "OPZ"
 - Curator: "Zeus"
 - Pilot: "Pilot"
 - Serversprache: "deutsch"
+
+
+Fouler Rejoin Password: "rejoin"
