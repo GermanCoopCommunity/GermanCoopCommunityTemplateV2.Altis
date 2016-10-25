@@ -43,6 +43,7 @@ Unit variable names:
 - Squadleaders: squadname_lead
 - Pilots: pilot_1 to pilot_4
 - Fighter Pilot: jet_pilot
+- Greyhawk UAV: greyhawk
 
 
 Slot Protection passwords:
