@@ -30,7 +30,8 @@ if (!isNil "QT_AI_call_fncs") then
 ////////////////////////////////////////////////// QTS initialization complete //////////////////////////////////////////////////
 
 
-removeAllMissionEventHandlers "Draw3D"; // added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+// added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+removeAllMissionEventHandlers "Draw3D";
 
 
 ////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
@@ -39,24 +40,24 @@ if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile
 {addMissionEventHandler ["Draw3D",{_this call JK_fnc_NameTags}];};	// ...initialize JK Nametags for player
 
 // 3rd Person in vehicles only
-addMissionEventHandler ["Draw3D",{
+ThrdPrs_MEH = addMissionEventHandler ["Draw3D",{
 	if
 	(
 		isNull objectParent player	// if player is on foot...
 		&&
 		{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
 		&&
-		{(player distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) > 500}	// ...and he is outside base...
+		{(player distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) > 400}	// ...and he is outside base...
 	)
 	then
 	{
-		["<t size='0.8'>3rd Person ist außerhalb der Basis nur in Fahrzeugen verfügbar.</t>",0,0,4,0] spawn bis_fnc_dynamicText;	// ...inform him
+		["<t size='0.8'>3rd Person ist außerhalb der Basis nur in Fahrzeugen verfügbar, Soldat.</t>",0,0,4,0] spawn bis_fnc_dynamicText;	// ...inform him
 		player switchCamera "INTERNAL";	// ...switch camera back to 1st Person
 	};
 }];
 
 // forbid players to operate vehicles they aren´t in class for
-addMissionEventHandler ["Draw3D",{
+Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",{
 	if
 	(
 		!isNull objectParent player	// if player is in vehicle...
@@ -71,7 +72,7 @@ addMissionEventHandler ["Draw3D",{
 	)
 	then
 	{
-		["<t size='0.8'>Du bist für die Bedienung dieses Fahrzeuges nicht ausgebildet. Du wurdest verwarnt.</t>",0,0,4,0] spawn bis_fnc_dynamicText;	// ...warn him
+		["<t size='0.8'>Überlassen Sie diesen Platz jemandem, der dafür auch ausgebildet ist, Soldat.</t>",0,0,4,0] spawn bis_fnc_dynamicText;	// ...warn him
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf (objectParent player) >> "crew")) >> "DisplayName")];
 		player action ["GetOut", objectParent player];	// ...eject him out of the vehicle
 	};
@@ -87,6 +88,10 @@ setViewDistance 6000;
 //0.1 fadeRadio 0;		// <-- out commented by psycho, this command stops working of some required game sounds (f.e. the *pieppiep* if a launcher has a target switched on)
 enableRadio false;
 enableSentences false;
+
+
+// initialize UAV streaming to OPZ
+[greyhawk,whiteboard,dronecontrol] call KK_fnc_StreamUAV;
 
 
 ////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////

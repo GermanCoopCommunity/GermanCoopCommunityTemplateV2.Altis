@@ -11,7 +11,7 @@ publicVariable "a_variable";*/
 
 
 // delete player body on disconnect
-addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
+DC_EH = addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
 
 ////////////////////////////////////////////////// initialize InitServers //////////////////////////////////////////////////

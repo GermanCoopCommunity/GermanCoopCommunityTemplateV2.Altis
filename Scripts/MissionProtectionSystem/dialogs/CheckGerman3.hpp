@@ -1,7 +1,7 @@
 // by Fabi
 
 
-class GeCo_CheckGerman
+class GeCo_CheckGerman3
 {
 	idd = 1500;
 	class controls
@@ -17,7 +17,7 @@ class GeCo_CheckGerman
 		};
 		class GeCo_CheckGerman_RscText : GeCo_RscText
 		{
-			text = "In welcher Sprache wird auf dem Server gespielt?";
+			text = "Wie viele Bundesländer hat Deutschland?";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";
@@ -42,7 +42,7 @@ class GeCo_CheckGerman
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""deutsch"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false}; closeDialog 0; createDialog ""CheckGerman2"";";
+            action = "if(ctrlText 1600 == ""16"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false}; closeDialog 0; createDialog ""CheckGerman4"";";
 		};
 	};
 };

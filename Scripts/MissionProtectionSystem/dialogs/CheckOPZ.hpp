@@ -42,7 +42,7 @@ class GeCo_CheckOPZ
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""OPZ"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false};closeDialog 0;";
+            action = "if(ctrlText 1600 == ""OPZ"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false}; closeDialog 0;";
 		};
 	};
 };

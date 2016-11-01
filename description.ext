@@ -131,6 +131,11 @@ class CfgRemoteExec
 		};
 		class systemChat
 		{
+			allowedTargets = -2;
+			JIP = 1;
+		};
+		class serverCommand
+		{
 			allowedTargets = 0;
 			JIP = 1;
 		};

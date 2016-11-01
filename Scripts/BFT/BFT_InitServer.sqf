@@ -49,7 +49,7 @@ GeCo_BFT_Groups = [];
 // refresh each group's marker position on each frame depending on group leader's position
 GeCo_BFT_fn_PFH =
 {
-    if (!isServer) exitWith{};
+	if (!isServer) exitWith{};
     {
         str _x + "_BFT" setMarkerPos (position (leader _x));
         nil

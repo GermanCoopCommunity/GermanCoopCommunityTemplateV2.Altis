@@ -14,5 +14,9 @@ _didJIP = _this select 1;
 if (_didJIP) then {{_x addCuratorEditableObjects [[_player],true]} count allCurators;};
 
 
+/*// GeCo members can access Zeus interface
+if (getPlayerUID in GeCo_Whitelist) then {player assignCurator (getPlayerUID player);};*/
+
+
 // log end of execution
 diag_log format ["%1 --- ZFW_initPlayerServer.sqf executed",diag_ticktime];

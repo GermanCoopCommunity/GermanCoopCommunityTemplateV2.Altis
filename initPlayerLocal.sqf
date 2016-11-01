@@ -5,6 +5,12 @@
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
 
 
+// reset EH to avoid unwanted impacts on mission flow (for example after player slot changed)
+player removeAllMPEventHandlers "MPKilled";
+player removeAllEventHandlers "Fired";
+player removeAllEventHandlers "CuratorObjectPlaced";
+
+
 // fade in from black (placed here to be executed before security dialog)
 0 cutText ["","BLACK IN",8];
 
@@ -31,7 +37,7 @@ if (typeOf player in ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_
 	// single units
 	// SilentSpike: getAssignedCuratorLogic command will return objNull if used immediately after the curator logic is assigned to the unit in question (this includes at mission time 0). To avoid problems use the following beforehand
 	waitUntil {!isNull (getAssignedCuratorLogic player)};
-	(getAssignedCuratorLogic player) addEventHandler [
+	COP_EH = (getAssignedCuratorLogic player) addEventHandler [
 		"CuratorObjectPlaced",
 		{
 			private _entity = _this select 1;			
