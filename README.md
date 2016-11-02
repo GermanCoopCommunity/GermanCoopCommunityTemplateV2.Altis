@@ -6,12 +6,13 @@ General:
 
 - Side: BLUFOR
 - Faction: NATO
-- Playable Units: 79, which are...
+- Playable Units: 83, which are...
                       - 7x 10 per squad
                       - 2 OPZ (Commanding Officer & Executive Officer)
                       - 4 pilots
                       - 1 jet pilot
                       - 2 curators
+                      - 4 crewmen
 
 
 Features:
