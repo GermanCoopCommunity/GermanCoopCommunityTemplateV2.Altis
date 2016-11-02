@@ -30,15 +30,15 @@ example: [greyhawk,whiteboard,dronecontrol] call KK_fnc_StreamUAV;
 // declare local variables
 private _uav = _this select 0;
 private _surface_1 = _this select 1;
-UAV_surface_2 = _this select 2;
+//UAV_surface_2 = _this select 2;
 
 
 /* make respawned drone stream */
-_uav addEventHandler ["Respawn",{[(_this select 0),whiteboard,dronecontrol] call KK_fnc_StreamUAV;}];
+_uav addEventHandler ["Respawn",{[_uav,_surface_1,dronecontrol] call KK_fnc_StreamUAV;}];
 
 /* create render surface */
 _surface_1 setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
-UAV_surface_2 setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
+dronecontrol setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
 
 /* create camera and stream to render surface */
 _cam = "camera" camCreate [0,0,0];
@@ -62,7 +62,7 @@ UAV_Stream_MEH = addMissionEventHandler ["Draw3D",
 
 
 /* add action to UAV terminal */
-UAV_surface_2 addAction [
+dronecontrol addAction [
 	"Drohnensteuerung übernehmen",
 	{
 		private _caller = (_this select 1);
@@ -71,7 +71,7 @@ UAV_surface_2 addAction [
 			case ("WEST"): {UAV_terminal = "B_UavTerminal"; _caller addWeapon UAV_terminal;};
 			case ("EAST"): {UAV_terminal = "O_UavTerminal"; _caller addWeapon UAV_terminal;};
 			case ("RESISTANCE"): {UAV_terminal = "I_UavTerminal"; _caller addWeapon UAV_terminal;};
-			default {UAV_terminal = "B_UavTerminal"; _caller addWeapon UAV_terminal; hint format ["Sie sind keiner Seite zugehörig, Soldat %1. Der Zugriff wird Ihnen verweigert.", name _caller]};
+			default {UAV_terminal = "B_UavTerminal"; _caller addWeapon UAV_terminal; hint format ["Sie sind keiner Seite zugehörig, Soldat %1. Ihnen wurde deshalb ein UAV-Terminal der BLUFOR-Kräfte zugewiesen.", name _caller]};
 		};
 		_caller action ["UAVTerminalOpen",_caller];
 		sleep 2;
@@ -87,7 +87,7 @@ UAV_surface_2 addAction [
 	true,
 	true,
 	"",
-	"typeOf player == ""B_officer_F"" && {(player distance UAV_surface_2) < 5}"
+	"typeOf player in OPZ && {(player distance dronecontrol) < 5}"
 ];
 
 

@@ -7,12 +7,12 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 
 ////////////////////////////////////////////////// initialize QTS //////////////////////////////////////////////////
 // precompile fncs
-QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Earplugs.sqf";
-QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Insignia.sqf";
-QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Gestures.sqf";
-QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\fnc\QT_fnc_Jump.sqf";
-KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\fnc\KK_fnc_StreamUAV.sqf";
-JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\fnc\JK_fnc_NameTags.sqf";
+QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Earplugs.sqf";
+QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Insignia.sqf";
+QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Gestures.sqf";
+QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Jump.sqf";
+KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\KK_fnc_StreamUAV.sqf";
+JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\QTS\JK_fnc_NameTags.sqf";
 
 // define fnc arrays
 QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
@@ -47,7 +47,7 @@ ThrdPrs_MEH = addMissionEventHandler ["Draw3D",{
 		&&
 		{cameraView == "EXTERNAL"}	// ...and he switches his camera to 3rd Person...
 		&&
-		{(player distance (getMarkerPos "GeCo_MissionProtection_BaseMarker")) > 400}	// ...and he is outside base...
+		{(player distance (getMarkerPos "MPS_BaseMrkr")) > 400}	// ...and he is outside base...
 	)
 	then
 	{
@@ -62,7 +62,7 @@ Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",{
 	(
 		!isNull objectParent player	// if player is in vehicle...
 		&&
-		!((getText (configfile >> "CfgVehicles" >> typeOf objectParent player >> "vehicleClass") == "Submarine") or (typeOf objectParent player == "Steerable_Parachute_F"))	// ...which is not an SDV or a parachute...
+		!((getText (configfile >> "CfgVehicles" >> typeOf objectParent player >> "vehicleClass") == "Submarine") or (typeOf objectParent player == "Steerable_Parachute_F"))	// ...which is not an SDV (as only basic divers can maneuver them) or a parachute (for players mustn't be ejected out of them)...
 		&&
 		{(objectParent player isKindOf "Tank") or {objectParent player isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
 		&&

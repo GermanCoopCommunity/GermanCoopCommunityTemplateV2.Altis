@@ -2,31 +2,35 @@
 
 
 // define Pilots
-GeCo_Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
-publicVariable "GeCo_Pilots";
+Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
+publicVariable "Pilots";
 
 // define Crew
-GeCo_Crew = ["B_crew_F","O_crew_F","I_crew_F"];
-publicVariable "GeCo_Crew";
+Crews = ["B_crew_F","O_crew_F","I_crew_F"];
+publicVariable "Crew";
 
 // define OPZ
-GeCo_OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
-publicVariable "GeCo_OPZ";
+OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
+publicVariable "OPZ";
 
 // define Curators
-GeCo_Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
-publicVariable "GeCo_Curators";
+Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
+publicVariable "Curators";
 
-// GeCo whitelist of trustworthy people
-GeCo_Whitelist = ["76561198024503777"];
-publicVariable "GeCo_Whitelist";
+// whitelist of trustworthy people
+Whitelist = ["76561198024503777","76561198029924112"];
+publicVariable "Whitelist";
 
-// GeCo blacklist containing players which exceeded the fouls limit and were kicked
-GeCo_Blacklist = [];
-publicVariable "GeCo_Blacklist";
+// blacklist containing players which exceeded the fouls limit and were kicked
+Blacklist = [];
+publicVariable "Blacklist";
+
+// array containing names of players which exceeded the fouls limit and were kicked
+AllFoulers = [];
+publicVariable "AllFoulers";
 
 // define PFH
-GeCo_PFH = [];
+PFH = [];
 addMissionEventHandler ["EachFrame",
 {
   {
@@ -37,5 +41,5 @@ addMissionEventHandler ["EachFrame",
 		true call _function;
     };
     nil
-  } count GeCo_PFH;
+  } count PFH;
 }];

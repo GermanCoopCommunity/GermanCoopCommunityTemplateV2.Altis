@@ -71,13 +71,13 @@ if ((count _targets) > 0) then {			// only if someone is in array
 			   _text = _text + call {
 					if (str(_target) in ["co"]) exitWith {" (Commanding Officer)"};
 					if (str(_target) in ["xo"]) exitWith {" (Executive Officer)"};
-					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha Squadlead)"};
-					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo Squadlead)"};
-					if (str(_target) in ["charlie_lead"]) exitWith {" (Charlie Squadlead)"};
-					if (str(_target) in ["delta_lead"]) exitWith {" (Delta Squadlead)"};
-					if (str(_target) in ["echo_lead"]) exitWith {" (Echo Squadlead)"};
-					if (str(_target) in ["foxtrot_lead"]) exitWith {" (Foxtrot Squadlead)"};
-					if (str(_target) in ["golf_lead"]) exitWith {" (Golf Squadlead)"};
+					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha-Truppführer)"};
+					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo-Truppführer)"};
+					if (str(_target) in ["charlie_lead"]) exitWith {" (Charlie-Truppführer)"};
+					if (str(_target) in ["delta_lead"]) exitWith {" (Delta-Truppführer)"};
+					if (str(_target) in ["echo_lead"]) exitWith {" (Echo-Truppführer)"};
+					if (str(_target) in ["foxtrot_lead"]) exitWith {" (Foxtrot-Truppführer)"};
+					if (str(_target) in ["golf_lead"]) exitWith {" (Golf-Truppführer)"};
 					(" (" + _class + ")");
 				};
 				_icon = TEXTURES_RANKS select ((["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"] find (rank _target)) + 1);

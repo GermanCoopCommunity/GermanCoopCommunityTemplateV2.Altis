@@ -1,7 +1,7 @@
 // by Fabi
 
 
-class GeCo_CheckGerman
+class CheckGerman
 {
 	idd = 1500;
 	class controls
@@ -42,7 +42,7 @@ class GeCo_CheckGerman
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""deutsch"") then {GeCo_PasswordCorrect = true} else {GeCo_PasswordCorrect = false}; closeDialog 0; createDialog ""CheckGerman2"";";
+            action = "if(ctrlText 1600 == ""deutsch"") then {PW_correct = true} else {PW_correct = false}; closeDialog 0; createDialog ""CheckGerman2"";";
 		};
 	};
 };

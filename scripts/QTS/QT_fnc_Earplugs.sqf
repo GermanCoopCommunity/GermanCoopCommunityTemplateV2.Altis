@@ -15,7 +15,7 @@
 
 /* To Do
 
-- check if buttons already assigned to another important action
+- check if button is already assigned to another important action
 - fade speech and music too (not radio because important for ingame sound)
 - make player play a move while toggling earplugs
 
@@ -44,7 +44,7 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 		{
 			if !(player getVariable "EarplugsIn") then	// ...if earplugs aren´t in yet...
 			{
-				0.1 fadeSound (soundVolume / 6);	// ...decrease sound volume...
+				0.1 fadeSound (soundVolume / 5);	// ...decrease sound volume...
 				//0.1 fadeSpeech 0.25;
 				//0.1 fadeMusic 0.25;
 				["Ohrstöpsel eingesetzt.",1,0,3,0] spawn BIS_fnc_dynamicText;
@@ -52,7 +52,7 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 			}
 			else	// ...but if they are already in...
 			{
-				0.1 fadeSound (soundVolume * 6);	// ...reset sound volume
+				0.1 fadeSound (soundVolume * 5);	// ...reset sound volume
 				//0.1 fadeSpeech 1;
 				//0.1 fadeMusic 1;
 				["Ohrstöpsel entfernt.",1,0.1,3,0] spawn BIS_fnc_dynamicText;
