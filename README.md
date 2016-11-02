@@ -45,6 +45,12 @@ Unit variable names:
 - Fighter Pilot: jet_pilot
 - Greyhawk UAV: greyhawk
 
+Other variable names:
+
+- Drone Control Station: dronecontrol
+- Mission Protection System:
+  - Base Protection Marker: MPS_BaseMrkr
+
 
 Slot Protection passwords:
 
