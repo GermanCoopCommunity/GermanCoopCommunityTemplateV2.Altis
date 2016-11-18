@@ -11,19 +11,15 @@ player removeAllEventHandlers "Fired";
 player removeAllEventHandlers "CuratorObjectPlaced";
 
 
-// initialize MissionProtectionSystem
-private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
-call _MPS_InitClient;
-
-
-// fade in from black (placed here to be executed before security dialog)
-if (isMultiplayer) then {0 cutText ["","BLACK IN",5];};
-
-
 ////////////////////////////////////////// briefing file //////////////////////////////////////////
 // see initBriefing.hpp file for briefing sections
 #include "initBriefing.hpp"
 ////////////////////////////////////////// briefing complete //////////////////////////////////////////
+
+
+// initialize MissionProtectionSystem
+private _MPS_InitClient = compile preprocessFileLineNumbers "scripts\MissionProtectionSystem\MPS_InitClient.sqf";
+call _MPS_InitClient;
 
 
 ////////////////////////////////////////// initialize QTS //////////////////////////////////////////
@@ -102,6 +98,7 @@ if (isMultiplayer) then
 	  [""]
 	 ]] spawn BIS_fnc_typeText;
 	["img\loadingpic.paa"] spawn BIS_fnc_textTiles;	// show logo
+	0 cutText ["","BLACK IN",5];
 };
 ////////////////////////////////////////// Intro complete //////////////////////////////////////////
 

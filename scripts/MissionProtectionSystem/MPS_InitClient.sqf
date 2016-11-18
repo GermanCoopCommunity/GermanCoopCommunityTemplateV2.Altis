@@ -87,6 +87,7 @@ if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)
 	SP_fn_PW =
 	{
 		private _ok = createDialog "FRP";	// ...open the dialog for answering a question
+		0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 		waitUntil {!dialog};	// ...wait until dialog is created
 		if (!PW_correct) then	// ...if entered password is wrong...
 		{
@@ -121,6 +122,7 @@ if (isMultiplayer) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckPilot";	// ...open the dialog for entering password
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if(!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -147,6 +149,7 @@ if (isMultiplayer) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckCurator";	// ...open the dialog for entering password
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -173,6 +176,7 @@ if (isMultiplayer) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckOPZ";	// ...open the dialog for entering password
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -205,6 +209,7 @@ if (isMultiplayer && {didJIP}) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckGerman";	// ...open the dialog for answering a question
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -229,6 +234,7 @@ if (isMultiplayer && {didJIP}) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckGerman2";	// ...open the dialog for answering a question
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -253,6 +259,7 @@ if (isMultiplayer && {didJIP}) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckGerman3";	// ...open the dialog for answering a question
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -277,6 +284,7 @@ if (isMultiplayer && {didJIP}) then
 		SP_fn_PW =
 		{
 			private _ok = createDialog "CheckGerman4";	// ...open the dialog for answering a question
+			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			waitUntil {!dialog};	// ...wait until dialog is created
 			if (!PW_correct) then	// ...if entered password is wrong...
 			{
@@ -332,7 +340,18 @@ if ((getPlayerUID player) in Whitelist) then
 		"Sicherheit",
 		[
 			"Passwörter",
-				"Diesen Tagebucheintrag bekommst nur du als vertrauenswürdiger Spieler angezeigt.<br/><br/>Folgende Passwörter schützen die Slots:<br/>OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>Zeus:  <font color='#107b1b'>""Zeus""</font color><br/>allgemein:  <font color='#107b1b'>""deutsch""</font color>"
+			"Diesen Tagebucheintrag bekommst nur du als vertrauenswürdiger Spieler angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
+			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
+				OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>
+				Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
+				Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
+				<font color='#1d49d1'>Idiotentest:</font color><br/>
+				Serversprache:  <font color='#107b1b'>""deutsch""</font color><br/>
+				Hauptstadt:  <font color='#107b1b'>""Berlin""</font color><br/>
+				Bundesländer:  <font color='#107b1b'>""16""</font color><br/>
+				Bundeskanzler:  <font color='#107b1b'>""Angela Merkel""</font color><br/><br/>
+				<font color='#1d49d1'>Fouler Rejoin Protection:</font color><br/>
+				<font color='#107b1b'>""rejoin""</font color>"
 		]
 	];
 };

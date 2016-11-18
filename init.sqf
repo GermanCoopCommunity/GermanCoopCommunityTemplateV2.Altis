@@ -11,7 +11,7 @@ QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Earplugs
 QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Insignia.sqf";
 QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Gestures.sqf";
 QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Jump.sqf";
-KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\KK_fnc_StreamUAV.sqf";
+KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\UAVStream\KK_fnc_StreamUAV.sqf";
 JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\QTS\JK_fnc_NameTags.sqf";
 
 // define fnc arrays
