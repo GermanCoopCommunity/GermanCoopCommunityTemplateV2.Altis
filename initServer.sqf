@@ -5,16 +5,17 @@
 diag_log format ["%1 --- Executing initServer.sqf",diag_ticktime];
 
 
-/*// initialize variables and publicize them to everyone
-a_variable = false;
-publicVariable "a_variable";*/
+/* public variables */
+a_variable = true;
+publicVariable "a_variable";
+/* public variables initialized and puclicized */
 
 
 // delete player body on disconnect
 DC_EH = addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 0);}];
 
 
-////////////////////////////////////////////////// initialize InitServers //////////////////////////////////////////////////
+/* initialize InitServers */
 // Core
 private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\CR_InitServer.sqf";
 call _Core_InitServer;
@@ -31,14 +32,14 @@ call _ZFW_InitServer;
 waitUntil {time > 0};
 private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\BFT_InitServer.sqf";
 call _BFT_InitServer;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* initServers initialized */
 
 
-////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////
+/* mission specific code comes here */
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* end of mission specific code */
 
 
 // log end of execution

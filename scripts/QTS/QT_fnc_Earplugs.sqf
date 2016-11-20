@@ -84,5 +84,16 @@ player addEventHandler [	// reset volume on players death
 ];
 
 
+// create diary entry explanation
+player createDiarySubject ["Ohrstöpsel","Ohrstöpsel"];
+player createDiaryRecord [
+	"Ohrstöpsel",
+	[
+		"Info",
+			"<br/><font color='#107b1b'>Linke Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
+	]
+];
+
+
 // return
 true;

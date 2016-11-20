@@ -33,27 +33,27 @@ private _surface_1 = _this select 1;
 //UAV_surface_2 = _this select 2;
 
 
-/* make respawned drone stream */
+// make respawned drone stream
 _uav addEventHandler ["Respawn",{[_uav,_surface_1,dronecontrol] call KK_fnc_StreamUAV;}];
 
-/* create render surface */
+// create render surface */
 _surface_1 setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
 dronecontrol setObjectTexture [0,"#(argb,512,512,1)r2t(uavrtt,1)"];
 
-/* create camera and stream to render surface */
+// create camera and stream to render surface
 _cam = "camera" camCreate [0,0,0];
 _cam cameraEffect ["Internal","Back","uavrtt"];
 
-/* attach cam to gunner cam position */
+// attach cam to gunner cam position
 _cam attachTo [_uav,[0,0,0],"laserstart"];
 
-/* make it zoom in a little */
+// make it zoom in a little
 //cam camSetFov 0.1;
 
-/* switch cam to thermal */
+// switch cam to thermal
 "uavrtt" setPiPEffect [2];
 
-/* adjust cam orientation */
+// adjust cam orientation
 UAV_Stream_MEH = addMissionEventHandler ["Draw3D",
 {
     _dir = (_uav selectionPosition "laserstart") vectorFromTo (_uav selectionPosition "commanderview");
@@ -61,7 +61,7 @@ UAV_Stream_MEH = addMissionEventHandler ["Draw3D",
 }];
 
 
-/* add action to UAV terminal */
+// add action to UAV terminal
 dronecontrol addAction [
 	"Drohnensteuerung übernehmen",
 	{

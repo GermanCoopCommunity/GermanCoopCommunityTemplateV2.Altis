@@ -1,11 +1,11 @@
 // by Fabi & Quentin
 
 
-// self explaining
+// wait until all core variables are publicized
 waitUntil {!isNil "AllFoulers"};
 
 
-////////////////////////////////////////////////// Fouls section //////////////////////////////////////////////////
+/* Fouls section */
 // set player's foul count to 0 initially
 MPS_FoulsCount = 0;
 
@@ -29,10 +29,10 @@ MPS_fn_AddFoul =
 		((name player) + " wurde wegen seines Fehlverhaltens vom Einsatz abgezogen.") remoteExec ["systemChat",-2];	// ...show system info message for the other players
     };
 };
-////////////////////////////////////////////////// Fouls section finished //////////////////////////////////////////////////
+/* Fouls section finished */
 
 
-////////////////////////////////////////////////// Baserape Protection section //////////////////////////////////////////////////
+/* Baserape Protection section */
 Fired_EH = player addEventHandler ["Fired",
 {
     if (((_this select 0) distance (getMarkerPos "MPS_BaseMrkr")) < 400) then	// if player fires inside base...
@@ -51,10 +51,10 @@ Fired_EH = player addEventHandler ["Fired",
     };
 	//nil;	// prevent weapon firing anim & sound (doesn't work like this)
 }];
-////////////////////////////////////////////////// Baserape Protection section finished //////////////////////////////////////////////////
+/* Baserape Protection section finished */
 
 
-////////////////////////////////////////////////// Teamkill Protection //////////////////////////////////////////////////
+/* Teamkill Protection */
 // teamkill punisher
 MPKilled_EH = player addMPEventHandler ["MPKilled",
 {
@@ -77,10 +77,10 @@ MPKilled_EH = player addMPEventHandler ["MPKilled",
 		};
 	};
 }];
-////////////////////////////////////////////////// Teamkill Protection section finished //////////////////////////////////////////////////
+/* Teamkill Protection section finished */
 
 
-////////////////////////////////////////////////// Fouler Rejoin Protection //////////////////////////////////////////////////
+/* Fouler Rejoin Protection */
 if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)}) then	// if player has already been kicked and therefor is on blacklist and not on the whitelist of trustworthy people...
 {
 	Attempts = 1;	// ...set this as his first password attempt
@@ -106,13 +106,13 @@ if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)
 	};
 	[] call SP_fn_PW;
 };
-////////////////////////////////////////////////// Fouler Rejoin Protection section finished //////////////////////////////////////////////////
+/* Fouler Rejoin Protection section finished */
 
 
-////////////////////////////////////////////////// Slot Protection dialogs //////////////////////////////////////////////////
+/* Slot Protection dialogs */
 PW_correct = false;
-// check on join, if...
 
+// check on join, if...
 if (isMultiplayer) then
 {
 	// ...player has pilot password
@@ -196,10 +196,10 @@ if (isMultiplayer) then
 		[] call SP_fn_PW;
 	};
 };
-////////////////////////////////////////////////// Slot Protection section finished //////////////////////////////////////////////////
+/* Slot Protection section finished */
 
 
-////////////////////////////////////////////////// Idiotentest //////////////////////////////////////////////////
+/* Idiotentest */
 // ...JIPer speaks German
 if (isMultiplayer && {didJIP}) then
 {
@@ -304,7 +304,7 @@ if (isMultiplayer && {didJIP}) then
 		[] call SP_fn_PW;
 	};
 };
-////////////////////////////////////////////////// Idiotentest section finished //////////////////////////////////////////////////
+/* Idiotentest section finished */
 
 
 // if player is a curator, initialize MPS on vehicles and units spawned by him

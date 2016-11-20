@@ -48,6 +48,17 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 ];
 
 
+// create diary entry explanation
+player createDiarySubject ["Springen","Springen"];
+player createDiaryRecord [
+	"Springen",
+	[
+		"Info",
+			"<br/><font color='#107b1b'>V</font color> auf der Tastatur, um während des Laufens zu springen."
+	]
+];
+
+
 // return
 _return = true;
 _return;

@@ -1,0 +1,9 @@
+Lieber GeCo-Missionsbauer,
+
+dieses Template verfügt über alle Funktionen, die bei der GeCo nötig sind.
+Im Folgenden wird dir erklärt, wie du das Template auf deine eigene Mission anpassen kannst.
+WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
+
+1. Trage in der initBriefing.hpp dein Missionsbriefing ein (Situation, Mission, Durchführung, Einsatzregeln).
+2. Wähle in der initPlayerLocal.sqf, ob die Spieler die Waldland-Uniform tragen sollen, indem du "#define NoNVG" entweder so stehen lässt oder mit "//" davor auskommentierst, sodass der Befehl nicht vom System gelesen wird.
+3. Wähle in der initPlayerLocal.sqf, ob die Spieler Nachtsichtgeräte erhalten sollen, indem du "#define Woodland" entweder so stehen lässt oder mit "//" davor auskommentierst, sodass der Befehl nicht vom System gelesen wird.

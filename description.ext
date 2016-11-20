@@ -106,7 +106,7 @@ class CfgUnitInsignia
 };
 
 
-// part of ZFW
+// Remote Execution
 class CfgRemoteExec
 {        
 	class Functions

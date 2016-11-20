@@ -53,12 +53,4 @@ Other variable names:
   - Base Protection Marker: MPS_BaseMrkr
 
 
-Slot Protection passwords:
-
-- OPZ: "OPZ"
-- Curator: "Zeus"
-- Pilot: "Pilot"
-- Serversprache: "deutsch"
-
-
-Fouler Rejoin Password: "rejoin"
+Passwords not shown for safety reasons.

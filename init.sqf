@@ -5,36 +5,38 @@
 diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 
 
-////////////////////////////////////////////////// initialize QTS //////////////////////////////////////////////////
-// precompile fncs
-QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Earplugs.sqf";
-QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Insignia.sqf";
-QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Gestures.sqf";
-QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Jump.sqf";
-KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\UAVStream\KK_fnc_StreamUAV.sqf";
-JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\QTS\JK_fnc_NameTags.sqf";
-
-// define fnc arrays
-QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
-QT_spawn_fncs = [];
-QT_AI_call_fncs = [QT_fnc_Insignia];
-QT_AI_spawn_fncs = [];
-
-// apply QTS to AI units
-if (!isNil "QT_AI_call_fncs") then
-{{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));};
-/*if (!isNil "QT_AI_spawn_fncs") then
+/* initialize QTS */
+if (isNil "QT_call_fncs") then	// if QTS wasn't initialized yet...
 {
-	
-};*/
-////////////////////////////////////////////////// QTS initialization complete //////////////////////////////////////////////////
+	// ...precompile fncs	
+	QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Earplugs.sqf";
+	QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Insignia.sqf";
+	QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Gestures.sqf";
+	QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Jump.sqf";
+	KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\UAVStream\KK_fnc_StreamUAV.sqf";
+	JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\QTS\JK_fnc_NameTags.sqf";
+
+	// ...define fnc arrays
+	QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
+	QT_spawn_fncs = [];
+	QT_AI_call_fncs = [QT_fnc_Insignia];
+	QT_AI_spawn_fncs = [];
+
+	// apply QTS to AI units
+	{[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
+
+	// apply QTS on player
+	{[player] call _x} count QT_call_fncs;
+	{[player] spawn _x} forEach QT_spawn_fncs;
+};
+/* QTS initialization complete */
 
 
-// added by psycho, needed to reset EH, mission EH's can avoid unwanted impacts on mission flow (for example after player slot changed)
+// added by psycho, needed to reset EH, mission EHs can avoid unwanted impacts on mission flow (for example after player slot changed)
 removeAllMissionEventHandlers "Draw3D";
 
 
-////////////////////////////////////////////////// add Mission EHs //////////////////////////////////////////////////
+/* add Mission EHs */
 // Nametags
 if !((isClass (configFile >> "CfgPatches" >> "cba_ee")) && ((isClass (configFile >> "CfgPatches" >> "A3C_NameTag")) or (isClass (configFile >> "CfgPatches" >> "STNametags")))) then	// if player doesn´t run the nametag mods STNameTags and A3C_NameTag...
 {addMissionEventHandler ["Draw3D",{_this call JK_fnc_NameTags}];};	// ...initialize JK Nametags for player
@@ -56,7 +58,7 @@ ThrdPrs_MEH = addMissionEventHandler ["Draw3D",{
 	};
 }];
 
-// forbid players to operate vehicles they aren´t in class for
+// Vehicle Restriction: forbid players to operate vehicles they aren't in class for
 Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",{
 	if
 	(
@@ -77,11 +79,11 @@ Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",{
 		player action ["GetOut", objectParent player];	// ...eject him out of the vehicle
 	};
 }];
-////////////////////////////////////////////////////////////////////////////////////////////////////
+/* mission EHs added */
 
 
 // increase view distance
-setViewDistance 6000;
+setViewDistance 4000;
 
 
 // (disable radio callouts and -texts) can be set via difficulty settings
@@ -90,15 +92,11 @@ enableRadio false;
 enableSentences false;
 
 
-// initialize UAV streaming to OPZ
-[greyhawk,whiteboard,dronecontrol] call KK_fnc_StreamUAV;
-
-
-////////////////////////////////////////////////// mission specific code comes here //////////////////////////////////////////////////
+/* mission specific code comes here */
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* end of mission specific code */
 
 
 // log end of execution
