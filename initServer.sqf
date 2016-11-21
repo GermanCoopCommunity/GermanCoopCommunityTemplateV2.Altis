@@ -17,20 +17,20 @@ DC_EH = addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 
 
 /* initialize InitServers */
 // Core
-private _Core_InitServer = compile preprocessFileLineNumbers "Scripts\Core\CR_InitServer.sqf";
+private _Core_InitServer = compile preprocessFileLineNumbers "modules\Core\CR_InitServer.sqf";
 call _Core_InitServer;
 
 // MissionProtectionSystem
-private _MPS_InitServer = compile preprocessFileLineNumbers "Scripts\MissionProtectionSystem\MPS_InitServer.sqf";
+private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
 call _MPS_InitServer;
 
 // ZFW
-private _ZFW_InitServer = compile preprocessFileLineNumbers "Scripts\ZeusFramework\ZFW_InitServer.sqf";
+private _ZFW_InitServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_InitServer.sqf";
 call _ZFW_InitServer;
 
 // BFT
 waitUntil {time > 0};
-private _BFT_InitServer = compile preprocessFileLineNumbers "Scripts\BFT\BFT_InitServer.sqf";
+private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BFT\BFT_InitServer.sqf";
 call _BFT_InitServer;
 /* initServers initialized */
 

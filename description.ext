@@ -4,9 +4,10 @@
 // some important commands
 enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
 respawnOnStart = -1; // disable respawn on start
+#include "modules\MissionProtectionSystem\MPS_Description.hpp"	// dialogs for Mission Protection System
 
 
-// Corpse & Wreck Managing
+/* Corpse & Wreck Management */
 corpseManagerMode = 2;
 /*
 	0 = None - None of the units are managed by the manager
@@ -31,9 +32,10 @@ wreckLimit = 15;
 wreckRemovalMinTime = 300;
 wreckRemovalMaxTime = 600;
 */
+/* end of Corpse & Wreck Management */
 
 
-// Debriefing
+/* Debriefing */
 class CfgDebriefing
 {
 	class Success
@@ -53,12 +55,10 @@ class CfgDebriefing
 		picture = "";
 	};
 };
-
-// dialogs for Mission Protection System
-#include "scripts\MissionProtectionSystem\MPS_Description.hpp"
+/* end of Debriefing */
 
 
-// QT Rank Insignia
+/* QT Rank Insignia */
 class CfgUnitInsignia
 {
 	class PrivateInsignia
@@ -104,9 +104,10 @@ class CfgUnitInsignia
 		texture = "\A3\Ui_f\data\GUI\Cfg\Ranks\colonel_gs.paa"; // Image path
 	};
 };
+/* end of QT Rank Insignia */
 
 
-// Remote Execution
+/* Remote Execution */
 class CfgRemoteExec
 {        
 	class Functions
@@ -141,3 +142,196 @@ class CfgRemoteExec
 		};
 	};
 };
+/* end of Remote Execution */
+
+
+/* ORBAT */
+class CfgORBAT
+{
+	class 7thInfantry
+	{
+		side = "West";	// Unit side from CfgChainOfCommand >> Sides
+		size = "Division";	// Unit size from CfgChainOfCommand >> Sizes
+		type = "HQ";	// Unit type from CfgChainOfCommand >> Types
+		insignia = "\ca\missions_f\data\orbat\7thInfantry_ca.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
+		//colorInsignia[] = {0,0,1,1};	// Insignia image color (white default), can be either RGBA array, or class from CfgMarkerColors
+		commander = "Grey Wolf";	// Name of unit commander. Can be either direct name, or class from CfgWorlds >> GenericNames (random name from the list is then selected)
+		commanderRank = "Captain";	// Rank of unit commander (by default selected based on unit size)
+		tags[] = {BLUFOR,USArmy};	// Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
+		text = "7th Infantry Company";	// Custom text and short text, can still use some arguments when defined:
+		// 	%1 - ID (e.g. "7th")
+		// 	%2 - Type (e.g. "Infantry")
+		// 	%3 - Size (e.g. "Division")
+		textShort = "Siebte Infanterie-Kompanie";
+		texture = "\ca\missions_f\data\orbat\customTexture_ca.paa";	// Custom texture, will replace icon set by 'type' param.
+		//color[] = {0,0,1,1};	// Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors
+        description = "All of your text would go here.";	// A brief description of the group or unit.
+		//assets[] = {{B_Heli_Transport_03_F,5},{B_Heli_Light_01_F,3},{B_Heli_Light_01_armed_F,4},B_Heli_Transport_01_camo_F}; // Will display pictures of all available assets to the unit commander
+		
+		class Alpha
+		{
+			textShort = "Alpha";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Bravo
+		{
+			textShort = "Bravo";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Charlie
+		{
+			textShort = "Charlie";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Delta
+		{
+			textShort = "Delta";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Echo
+		{
+			textShort = "Echo";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Foxtrot
+		{
+			textShort = "Foxtrot";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Golf
+		{
+			textShort = "Golf";
+			text = "Infanterie-Squad";
+			description = "All of your text would go here.";
+			type = "Infantry";
+			size = "Squad";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+ 		};
+		class Pilots
+		{
+			textShort = "Piloten";
+			text = "Adler";
+			description = "All of your text would go here.";
+			type = "AviationSupport";
+			size = "FireTeam";
+			commanderRank = "Lieutenant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+			//assets[] = {B_Heli_Transport_01_F};
+			
+			class Pilot1
+			{
+				textShort = "Pilot #1";
+				text = "Adler #1";
+				description = "All of your text would go here.";
+				type = "AviationSupport";
+				//size = "FireTeam";
+				commander = "Deathbite";
+				commanderRank = "Lieutenant";
+				side = "West";
+				commander = "NATOMen";
+				tags[] = {"BLUFOR","USArmy"};
+				//assets[] = {B_Heli_Transport_01_F};
+			};
+			class Pilot2
+			{
+				textShort = "Pilot #2";
+				text = "Adler #2";
+				description = "All of your text would go here.";
+				type = "AviationSupport";
+				//size = "FireTeam";
+				commanderRank = "Sergeant";
+				side = "West";
+				commander = "NATOMen";
+				tags[] = {"BLUFOR","USArmy"};
+				//assets[] = {B_Heli_Transport_01_F};
+			};
+			class Pilot3
+			{
+				textShort = "Pilot #3";
+				text = "Adler #3";
+				description = "All of your text would go here.";
+				type = "AviationSupport";
+				//size = "FireTeam";
+				commanderRank = "Sergeant";
+				side = "West";
+				commander = "NATOMen";
+				tags[] = {"BLUFOR","USArmy"};
+				//assets[] = {B_Heli_Transport_01_F};
+			};
+			class Pilot4
+			{
+				textShort = "Pilot #4";
+				text = "Adler #4";
+				description = "All of your text would go here.";
+				type = "AviationSupport";
+				//size = "FireTeam";
+				commanderRank = "Sergeant";
+				side = "West";
+				commander = "NATOMen";
+				tags[] = {"BLUFOR","USArmy"};
+				//assets[] = {B_Heli_Transport_01_F};
+			};
+ 		};
+		class Crew
+		{
+			textShort = "Striker";
+			text = "Crew";
+			description = "Gepanzerte Unterstützung";
+			type = "Armored";
+			size = "FireTeam";
+			commanderRank = "Sergeant";
+			side = "West";
+			commander = "NATOMen";
+			tags[] = {"BLUFOR","USArmy"};
+			//assets[] = {B_MBT_01_cannon_F};
+ 		};
+	};
+};
+/* end of ORBAT */

@@ -43,11 +43,13 @@ Unit variable names:
 - Executive Officer: xo
 - Squadleaders: squadname_lead
 - Pilots: pilot_1 to pilot_4
+- Crew: crew_1 to crew_4
 - Fighter Pilot: jet_pilot
 - Greyhawk UAV: greyhawk
 
 Other variable names:
 
+- Whiteboard UAV Stream surface: whiteboard
 - Drone Control Station: dronecontrol
 - Mission Protection System:
   - Base Protection Marker: MPS_BaseMrkr

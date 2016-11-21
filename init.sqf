@@ -6,15 +6,15 @@ diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
 
 
 /* initialize QTS */
-if (isNil "QT_call_fncs") then	// if QTS wasn't initialized yet...
+if (isNil "QT_call_fncs") then	// if QTS hasn't been initialized yet...
 {
 	// ...precompile fncs	
-	QT_fnc_Earplugs = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Earplugs.sqf";
-	QT_fnc_Insignia = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Insignia.sqf";
-	QT_fnc_Gestures = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Gestures.sqf";
-	QT_fnc_Jump = compile preprocessFileLineNumbers "scripts\QTS\QT_fnc_Jump.sqf";
-	KK_fnc_StreamUAV = compile preprocessFileLineNumbers "scripts\QTS\UAVStream\KK_fnc_StreamUAV.sqf";
-	JK_fnc_NameTags = compile preprocessFileLineNumbers "scripts\QTS\JK_fnc_NameTags.sqf";
+	QT_fnc_Earplugs = compile preprocessFileLineNumbers "modules\QTS\QT_fnc_Earplugs.sqf";
+	QT_fnc_Insignia = compile preprocessFileLineNumbers "modules\QTS\QT_fnc_Insignia.sqf";
+	QT_fnc_Gestures = compile preprocessFileLineNumbers "modules\QTS\QT_fnc_Gestures.sqf";
+	QT_fnc_Jump = compile preprocessFileLineNumbers "modules\QTS\QT_fnc_Jump.sqf";
+	KK_fnc_StreamUAV = compile preprocessFileLineNumbers "modules\QTS\UAVStream\KK_fnc_StreamUAV.sqf";
+	JK_fnc_NameTags = compile preprocessFileLineNumbers "modules\QTS\JK_fnc_NameTags.sqf";
 
 	// ...define fnc arrays
 	QT_call_fncs = [QT_fnc_Earplugs,QT_fnc_Insignia,QT_fnc_Gestures,QT_fnc_Jump];
@@ -76,7 +76,7 @@ Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",{
 	{
 		["<t size='0.8'>Überlassen Sie diesen Platz jemandem, der dafür auch ausgebildet ist, Soldat.</t>",0,0,4,0] spawn bis_fnc_dynamicText;	// ...warn him
 		//hintSilent format ["Nur ein %1 ist für die Bedienung dieses Fahrzeuges ausgebildet.", getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf (objectParent player) >> "crew")) >> "DisplayName")];
-		player action ["GetOut", objectParent player];	// ...eject him out of the vehicle
+		player action ["GetOut",objectParent player];	// ...eject him out of the vehicle
 	};
 }];
 /* mission EHs added */
