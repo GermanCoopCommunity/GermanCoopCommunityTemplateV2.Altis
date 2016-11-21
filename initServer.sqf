@@ -30,7 +30,7 @@ call _ZFW_InitServer;
 
 // BFT
 waitUntil {time > 0};
-private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BFT\BFT_InitServer.sqf";
+private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
 call _BFT_InitServer;
 /* initServers initialized */
 
