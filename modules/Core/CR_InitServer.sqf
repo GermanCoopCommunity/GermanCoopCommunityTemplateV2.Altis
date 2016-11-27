@@ -1,6 +1,7 @@
 // by Fabi & Quentin
 
 
+/* let server define all arrays and publicize them to the clients, so JIPers don't reset the arrays each time they JIP */
 // define Pilots
 Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
 publicVariable "Pilots";
@@ -18,7 +19,7 @@ Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_Virt
 publicVariable "Curators";
 
 // whitelist of trustworthy people
-Whitelist = ["76561198024503777","76561198029924112"];
+Whitelist = ["76561198024503777","76561198029924112","76561198063094413"];
 publicVariable "Whitelist";
 
 // blacklist containing players which exceeded the fouls limit and were kicked
@@ -26,8 +27,12 @@ Blacklist = [];
 publicVariable "Blacklist";
 
 // array containing names of players which exceeded the fouls limit and were kicked
-AllFoulers = [];
-publicVariable "AllFoulers";
+AllKicked = [];
+publicVariable "AllKicked";
+
+// array containing names of players which fouled, but weren't kicked yet
+AllWarned = [];
+publicVariable "AllWarned";
 
 // define PFH
 PFH = [];

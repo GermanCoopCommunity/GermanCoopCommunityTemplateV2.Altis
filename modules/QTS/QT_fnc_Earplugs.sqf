@@ -12,7 +12,6 @@
 	Returns:
 	true
 */
-
 /* To Do
 
 - check if button is already assigned to another important action
@@ -22,7 +21,7 @@
 */
 /* Notes
 
-- Left Windows Key to toggle earplugs
+- Right Windows Key to toggle earplugs (also usable by laptop players)
 
 */
 
@@ -33,14 +32,14 @@ player setVariable ["EarplugsIn",false,false];
 
 // add EHs to unit
 waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialized
-(findDisplay 46) displayAddEventHandler [
+QT_Earplugs_Display_EH = (findDisplay 46) displayAddEventHandler [
 	"KeyDown",
 	{
 		// declare EH variables
 		private _DIK = _this select 1;
 		
 		
-		if (_DIK == 219) then	// when player presses assigned key...
+		if (_DIK == 220) then	// when player presses assigned key...
 		{
 			if !(player getVariable "EarplugsIn") then	// ...if earplugs aren´t in yet...
 			{
@@ -63,7 +62,7 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 ];
 
 
-player addEventHandler [	// reset volume on players death
+QT_Earplugs_Respawn_EH = player addEventHandler [	// reset volume on players death
 	"Respawn",
 	{
 		if !(player getVariable "EarplugsIn") then
@@ -90,7 +89,7 @@ player createDiaryRecord [
 	"Ohrstöpsel",
 	[
 		"Info",
-			"<br/><font color='#107b1b'>Linke Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
+			"<br/><font color='#107b1b'>Rechte Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
 	]
 ];
 

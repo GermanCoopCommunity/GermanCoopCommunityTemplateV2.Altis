@@ -12,7 +12,6 @@
 	Returns:
 	true
 */
-
 /* To Do
 
 
@@ -23,12 +22,11 @@
 
 
 */
-
 // declare local variables
 private _unit = _this select 0;
 
 
-if (!(side _unit == civilian) or {captive _unit}) then	// if unit is neither civilian nor a captive...
+if (!(side _unit == civilian) && {!(captive _unit)}) then	// if unit is neither civilian nor a captive...
 {
 	// ...assign player an insignia according to his rank
 	switch (rank _unit) do

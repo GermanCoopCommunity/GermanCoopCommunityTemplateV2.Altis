@@ -42,7 +42,7 @@ class FRP
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""rejoin"") then {PW_correct = true} else {PW_correct = false}; closeDialog 0;";
+            action = "if(ctrlText 1600 == ""rejoin"") then {[true,""FRP"",1,false,true] call MPS_fnc_PW;} else {[false,""FRP"",1,true,true] call MPS_fnc_PW;}; closeDialog 0;";
 		};
 	};
 };

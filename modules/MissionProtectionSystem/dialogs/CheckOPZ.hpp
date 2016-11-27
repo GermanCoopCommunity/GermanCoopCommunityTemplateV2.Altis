@@ -42,7 +42,7 @@ class CheckOPZ
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""OPZ"") then {PW_correct = true} else {PW_correct = false}; closeDialog 0;";
+            action = "if(ctrlText 1600 == ""OPZ"") then {[true,""CheckOPZ"",3,false,true] call MPS_fnc_PW;} else {[false,""CheckOPZ"",3,false,true] call MPS_fnc_PW;}; closeDialog 0;";
 		};
 	};
 };

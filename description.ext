@@ -3,7 +3,7 @@
 
 // some important commands
 enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
-respawnOnStart = -1; // disable respawn on start
+respawnOnStart = -1;	// disable respawn on start
 #include "modules\MissionProtectionSystem\MPS_Description.hpp"	// dialogs for Mission Protection System
 
 
@@ -117,7 +117,7 @@ class CfgRemoteExec
         // Ability to send jip messages: 0-disabled, 1-enabled (default)
         JIP = 1;
         /*your functions here*/
-        class MPS_fn_AddFoul
+		class KK_fnc_StreamUAV
         {
 			allowedTargets = 0;
 			JIP = 1;
@@ -128,14 +128,29 @@ class CfgRemoteExec
 		class addCuratorEditableObjects
 		{
 			allowedTargets = 2;
-			JIP = 0;
+			JIP = 1;
 		};
 		class systemChat
 		{
-			allowedTargets = -2;
+			allowedTargets = 0;
 			JIP = 1;
 		};
 		class serverCommand
+		{
+			allowedTargets = 2;
+			JIP = 1;
+		};
+		class createDiaryRecord
+		{
+			allowedTargets = 0;
+			JIP = 1;
+		};
+		class call
+		{
+			allowedTargets = 0;
+			JIP = 1;
+		};
+		class switchMove
 		{
 			allowedTargets = 0;
 			JIP = 1;
@@ -148,174 +163,173 @@ class CfgRemoteExec
 /* ORBAT */
 class CfgORBAT
 {
-	class 7thInfantry
+	class 111thInfantry
 	{
 		side = "West";	// Unit side from CfgChainOfCommand >> Sides
 		size = "Division";	// Unit size from CfgChainOfCommand >> Sizes
 		type = "HQ";	// Unit type from CfgChainOfCommand >> Types
-		insignia = "\ca\missions_f\data\orbat\7thInfantry_ca.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
+		//insignia = "\ca\missions_f\data\orbat\7thInfantry_ca.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
 		//colorInsignia[] = {0,0,1,1};	// Insignia image color (white default), can be either RGBA array, or class from CfgMarkerColors
 		commander = "Grey Wolf";	// Name of unit commander. Can be either direct name, or class from CfgWorlds >> GenericNames (random name from the list is then selected)
 		commanderRank = "Captain";	// Rank of unit commander (by default selected based on unit size)
-		tags[] = {BLUFOR,USArmy};	// Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
-		text = "7th Infantry Company";	// Custom text and short text, can still use some arguments when defined:
+		//tags[] = {BLUFOR,USArmy};	// Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
+		text = "111te Infanterie-Kompanie";	// Custom text and short text, can still use some arguments when defined:
 		// 	%1 - ID (e.g. "7th")
 		// 	%2 - Type (e.g. "Infantry")
 		// 	%3 - Size (e.g. "Division")
-		textShort = "Siebte Infanterie-Kompanie";
-		texture = "\ca\missions_f\data\orbat\customTexture_ca.paa";	// Custom texture, will replace icon set by 'type' param.
+		textShort = "111te Infanterie-Kompanie";
+		texture = "\a3\missions_F_epa\data\img\ORBAT\B_111_texture_ca.paa";	// Custom texture, will replace icon set by 'type' param.
 		//color[] = {0,0,1,1};	// Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors
-        description = "All of your text would go here.";	// A brief description of the group or unit.
+        description = "Die 111te ist ein aus US-Truppen bestehendes NATO-Kommando.";	// A brief description of the group or unit.
 		//assets[] = {{B_Heli_Transport_03_F,5},{B_Heli_Light_01_F,3},{B_Heli_Light_01_armed_F,4},B_Heli_Transport_01_camo_F}; // Will display pictures of all available assets to the unit commander
 		
 		class Alpha
 		{
 			textShort = "Alpha";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Bravo
 		{
 			textShort = "Bravo";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Charlie
 		{
 			textShort = "Charlie";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Delta
 		{
 			textShort = "Delta";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Echo
 		{
 			textShort = "Echo";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Foxtrot
 		{
 			textShort = "Foxtrot";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Golf
 		{
 			textShort = "Golf";
 			text = "Infanterie-Squad";
-			description = "All of your text would go here.";
+			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
-			commanderRank = "Sergeant";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//commander = "NATOMen";
+			//tags[] = {"BLUFOR","USArmy"};
  		};
 		class Pilots
 		{
 			textShort = "Piloten";
 			text = "Adler";
-			description = "All of your text would go here.";
+			description = "Für Luftverlegung von Mann und Material und Luftunterstützung verantwortlich.";
 			type = "AviationSupport";
 			size = "FireTeam";
+			commander = "Deathbite";
 			commanderRank = "Lieutenant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//tags[] = {"BLUFOR","USArmy"};
 			//assets[] = {B_Heli_Transport_01_F};
 			
 			class Pilot1
 			{
 				textShort = "Pilot #1";
 				text = "Adler #1";
-				description = "All of your text would go here.";
+				//description = "All of your text would go here.";
 				type = "AviationSupport";
 				//size = "FireTeam";
-				commander = "Deathbite";
-				commanderRank = "Lieutenant";
+				//commander = "Deathbite";
+				//commanderRank = "Lieutenant";
 				side = "West";
-				commander = "NATOMen";
-				tags[] = {"BLUFOR","USArmy"};
+				//tags[] = {"BLUFOR","USArmy"};
 				//assets[] = {B_Heli_Transport_01_F};
 			};
 			class Pilot2
 			{
 				textShort = "Pilot #2";
 				text = "Adler #2";
-				description = "All of your text would go here.";
+				//description = "All of your text would go here.";
 				type = "AviationSupport";
 				//size = "FireTeam";
-				commanderRank = "Sergeant";
+				//commander = "NATOMen";
+				//commanderRank = "Sergeant";
 				side = "West";
-				commander = "NATOMen";
-				tags[] = {"BLUFOR","USArmy"};
+				//tags[] = {"BLUFOR","USArmy"};
 				//assets[] = {B_Heli_Transport_01_F};
 			};
 			class Pilot3
 			{
 				textShort = "Pilot #3";
 				text = "Adler #3";
-				description = "All of your text would go here.";
+				//description = "All of your text would go here.";
 				type = "AviationSupport";
 				//size = "FireTeam";
-				commanderRank = "Sergeant";
+				//commander = "NATOMen";
+				//commanderRank = "Sergeant";
 				side = "West";
-				commander = "NATOMen";
-				tags[] = {"BLUFOR","USArmy"};
+				//tags[] = {"BLUFOR","USArmy"};
 				//assets[] = {B_Heli_Transport_01_F};
 			};
 			class Pilot4
 			{
 				textShort = "Pilot #4";
 				text = "Adler #4";
-				description = "All of your text would go here.";
+				//description = "All of your text would go here.";
 				type = "AviationSupport";
 				//size = "FireTeam";
-				commanderRank = "Sergeant";
+				//commander = "NATOMen";
+				//commanderRank = "Sergeant";
 				side = "West";
-				commander = "NATOMen";
-				tags[] = {"BLUFOR","USArmy"};
+				//tags[] = {"BLUFOR","USArmy"};
 				//assets[] = {B_Heli_Transport_01_F};
 			};
  		};
@@ -326,12 +340,73 @@ class CfgORBAT
 			description = "Gepanzerte Unterstützung";
 			type = "Armored";
 			size = "FireTeam";
-			commanderRank = "Sergeant";
+			//commander = "NATOMen";
+			//commanderRank = "Sergeant";
 			side = "West";
-			commander = "NATOMen";
-			tags[] = {"BLUFOR","USArmy"};
+			//tags[] = {"BLUFOR","USArmy"};
 			//assets[] = {B_MBT_01_cannon_F};
  		};
 	};
 };
 /* end of ORBAT */
+
+
+/* Mission Params */
+class Params
+{
+	class AISkill
+	{
+		title = "KI-Stärke"; // Param name visible in the list
+		values[] = {25,50,75,100}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Schwach","Normal","Stark","Elite"}; // Description of each selectable item
+		default = 50; // Default value; must be listed in 'values' array, otherwise 0 is used
+		file = "modules\MissionParams\setAISkill.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+        // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+	class ViewDistance
+	{
+		title = "Sichtweite in Metern";
+		values[] = {500,1000,2000,4000};
+		// When 'texts' are missing, values will be displayed directly instead
+		texts[] = {"500","1000","2000","4000"}; // Description of each selectable item
+		default = 4000;
+		file = "modules\MissionParams\setViewDistance.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	class NVG
+	{
+		title = "Spieler haben Nachtsichtgeräte";
+		texts[] = {"Ja","Nein"};
+		values[] = {1,0};
+		default = 1;
+		file = "modules\MissionParams\setPlayerNVG.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	class AINVG
+	{
+		title = "KI haben Nachtsichtgeräte";
+		texts[] = {"Ja","Nein"};
+		values[] = {1,0};
+		default = 1;
+		file = "modules\MissionParams\setAINVG.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 0; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	class Woodland
+	{
+		title = "Spieler tragen Waldland-Tarnung";
+		texts[] = {"Ja","Nein"};
+		values[] = {1,0};
+		default = 0;
+		file = "modules\MissionParams\setWoodland.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	/*class Daytime
+	{
+		title = "Tageszeit";
+		texts[] = {"Morgen","Mittag","Abend","Nacht"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime"; // (Optional) Function called when player joins, selected value is passed as an argument
+	};*/
+};
+/* end of Mission Params */

@@ -20,18 +20,17 @@ DC_EH = addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 
 private _Core_InitServer = compile preprocessFileLineNumbers "modules\Core\CR_InitServer.sqf";
 call _Core_InitServer;
 
-// MissionProtectionSystem
-private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
-call _MPS_InitServer;
-
-// ZFW
+// Zeus Framework
 private _ZFW_InitServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_InitServer.sqf";
 call _ZFW_InitServer;
 
-// BFT
-waitUntil {time > 0};
+// BLUFORCE Tracking
 private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
 call _BFT_InitServer;
+
+// Mission Protection System
+private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
+call _MPS_InitServer;
 /* initServers initialized */
 
 

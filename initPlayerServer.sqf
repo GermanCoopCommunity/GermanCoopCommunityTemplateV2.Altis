@@ -5,7 +5,7 @@
 diag_log format ["%1 --- Executing initPlayerServer.sqf",diag_ticktime];
 
 
-// ZFW
+// initialize Zeus Framework
 private _ZFW_initPlayerServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_initPlayerServer.sqf";
 call _ZFW_initPlayerServer;
 

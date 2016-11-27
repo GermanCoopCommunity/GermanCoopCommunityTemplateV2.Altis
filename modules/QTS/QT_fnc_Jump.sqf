@@ -16,12 +16,12 @@
 /* To Do
 
 - check if V button in fact assigned to step over and not changed by user
+- add switchMove command to CfgRemoteExecution
 
 */
 /* Notes
 
-// jump move
-- AovrPercMrunSrasWrflDf
+- AovrPercMrunSrasWrflDf	// jump move
 
 */
 
@@ -31,7 +31,7 @@ private _unit = _this select 0;
 
 // add EHs to unit
 waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialized
-(findDisplay 46) displayAddEventHandler
+QT_Jump_Display_EH = (findDisplay 46) displayAddEventHandler
 [
 	"KeyDown",
 	{
@@ -39,9 +39,9 @@ waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialize
 		private _DIK = _this select 1;
 			
 		// code
-		if (_DIK == 47 && {!isWalking player} && {stance player == "STAND"}) then	// if player presses assigned button, isn´t walking and is standing (which means he must be running)...
+		if (_DIK == 47 && {!isWalking player} && {stance player == "STAND"} && {speed player > 0}) then	// if player presses assigned button, isn´t walking and is standing (which means he must be running)...
 		{
-			player switchMove "AovrPercMrunSrasWrflDf";	// ...let player play jump move...
+			[player,"AovrPercMrunSrasWrflDf"] remoteExec ["switchMove",0];	// ...let player play jump move for all machines...
 			true	// ... and prevent default step-over-move
 		};
 	}

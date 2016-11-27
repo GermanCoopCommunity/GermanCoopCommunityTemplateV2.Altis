@@ -4,6 +4,19 @@ dieses Template verfügt über alle Funktionen, die bei der GeCo nötig sind.
 Im Folgenden wird dir erklärt, wie du das Template auf deine eigene Mission anpassen kannst.
 WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 
-1. Trage in der initBriefing.hpp dein Missionsbriefing ein (Situation, Mission, Durchführung, Einsatzregeln).
-2. Wähle in der initPlayerLocal.sqf, ob die Spieler die Waldland-Uniform tragen sollen, indem du "#define NoNVG" entweder so stehen lässt oder mit "//" davor auskommentierst, sodass der Befehl nicht vom System gelesen wird.
-3. Wähle in der initPlayerLocal.sqf, ob die Spieler Nachtsichtgeräte erhalten sollen, indem du "#define Woodland" entweder so stehen lässt oder mit "//" davor auskommentierst, sodass der Befehl nicht vom System gelesen wird.
+
+1.	initBriefing.hpp:
+	- Missionsbriefing eintragen (Situation, Mission, Durchführung, Einsatzregeln)
+2.	description.ext:
+	- class Debriefing:
+		Debriefing-Text ändern, falls du deine Mission gescriptet und nicht von Zeus aus enden lassen möchtest.
+		Voreinstellung: generischer Sieg-/Niederlagentext
+	- class Params
+		default-Werte der voreingestellten Missionsparameter nach Belieben auf einen der darüber definierten values einstellen
+		Voreinstellung: siehe default
+3.	mission.sqm
+	- falls du in der Basis etwas änderst, pass auf, dass die Variablennamen in der README.md weiter bestehen. Lösche also z.B. nicht den BaseMarker, da sonst das Schutzsystem nicht mehr funktioniert usw.
+
+
+
+In der README.md stehen alle Funktionen und Variablennamen des Templates, falls du sie brauchst.

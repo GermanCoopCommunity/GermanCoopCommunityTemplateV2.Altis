@@ -1,5 +1,27 @@
-// by joko (?)
-// edited by Psycho & Quentin
+// Joko's Nametags, edited by Psycho & Quentin
+/*
+	Author: Joko
+
+	Description:
+	shows nametags above other player's heads
+
+	Parameter(s):
+		none	
+
+	Returns:
+	true
+*/
+/* To Do
+
+
+
+*/
+/* Notes
+
+
+
+*/
+
 
 #define TEXTURES_RANKS [ \
     "", \
@@ -59,7 +81,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				[0.77, 0.51, 0.08, _alpha]	// orange
 			};
 			
-			_text = name _target;
+			_text = rank _target + " " + name _target + " (" + str(group _target) select [2] + ")";
 			_class = "";
 			_class = getText (configFile >> "CfgVehicles" >> typeOf (_target) >> "DisplayName");
 			_icon = "";
@@ -69,7 +91,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				_text = _text + " (Verwundet)";
 			} else {
 			   _text = _text + call {
-					if (str(_target) in ["co"]) exitWith {" (Commanding Officer)"};
+					/*if (str(_target) in ["co"]) exitWith {" (Commanding Officer)"};
 					if (str(_target) in ["xo"]) exitWith {" (Executive Officer)"};
 					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha-Truppführer)"};
 					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo-Truppführer)"};
@@ -77,7 +99,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 					if (str(_target) in ["delta_lead"]) exitWith {" (Delta-Truppführer)"};
 					if (str(_target) in ["echo_lead"]) exitWith {" (Echo-Truppführer)"};
 					if (str(_target) in ["foxtrot_lead"]) exitWith {" (Foxtrot-Truppführer)"};
-					if (str(_target) in ["golf_lead"]) exitWith {" (Golf-Truppführer)"};
+					if (str(_target) in ["golf_lead"]) exitWith {" (Golf-Truppführer)"};*/
 					(" (" + _class + ")");
 				};
 				_icon = TEXTURES_RANKS select ((["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"] find (rank _target)) + 1);

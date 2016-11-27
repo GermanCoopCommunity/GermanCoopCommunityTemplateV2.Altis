@@ -12,7 +12,6 @@
 	Returns:
 	true
 */
-
 /* To Do
 
 - check if buttons already assigned to another important action
@@ -42,7 +41,7 @@ gestureUp	// not so pretty
 
 // add EHs to unit
 waituntil {!(isNull (findDisplay 46))};	// wait until main display is initialized
-(findDisplay 46) displayAddEventHandler [
+QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 	"KeyDown",
 	{
 		private _DIK = _this select 1;
