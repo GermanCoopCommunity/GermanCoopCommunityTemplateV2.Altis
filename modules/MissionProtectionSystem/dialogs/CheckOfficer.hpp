@@ -1,7 +1,7 @@
 // by Fabi
 
 
-class CheckOPZ
+class CheckOfficers
 {
 	idd = 1500;
 	class controls
@@ -17,7 +17,7 @@ class CheckOPZ
 		};
 		class GeCo_CheckPilot_RscText : GeCo_RscText
 		{
-			text = "Dies ist ein OPZ-Slot. Bitte Passwort eingeben:";
+			text = "Dies ist ein Officers-Slot. Bitte Passwort eingeben:";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";
@@ -42,7 +42,7 @@ class CheckOPZ
 			y = "SafeZoneY + (469.04 / 1080) * SafeZoneH";
 			text = "Bestätigen";
 			x = "SafeZoneX + (633 / 1920) * SafeZoneW";
-            action = "if(ctrlText 1600 == ""OPZ"") then {[true,""CheckOPZ"",3,false,true] call MPS_fnc_PW;} else {[false,""CheckOPZ"",3,false,true] call MPS_fnc_PW;}; closeDialog 0;";
+            action = "if(ctrlText 1600 isEqualTo ""Officers"") then {[true,""CheckOfficers"",3,false,true] call MPS_fnc_PW;} else {[false,""CheckOfficers"",3,false,true] call MPS_fnc_PW;}; closeDialog 0;";
 		};
 	};
 };

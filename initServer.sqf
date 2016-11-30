@@ -3,6 +3,8 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initServer.sqf",diag_ticktime];
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
 /* public variables */
@@ -43,3 +45,4 @@ call _MPS_InitServer;
 
 // log end of execution
 diag_log format ["%1 --- initServer.sqf executed",diag_ticktime];
+player createDiaryRecord ["Modules",["InitServer","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

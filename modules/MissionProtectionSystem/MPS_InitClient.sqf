@@ -1,21 +1,20 @@
 // by Fabi & Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["MPS InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
-// define Password Control Function
-MPS_fnc_PW = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_fnc_PW.sqf";
 
 
 // wait until all core variables are publicized
 waitUntil {!isNil "AllWarned"};
 
 
-/* Fouls section */
-// set player's foul count and MPS's warnings to 0 initially
-MPS_FoulsCount = 0;
+/* Foul Monitoring Function */
+MPS_FoulsCount = 0;	// set player's foul count and MPS's warnings to 0 initially
 MPS_Warnings = 0;
 
-// fnc foul control
 //player createDiarySubject ["Auffällige Spieler","Auffällige Spieler"];	// create diary subject containing all foulers registered by MPS	DEACTIVATED UNTIL WORKING
 MPS_fnc_AddFoul =
 {
@@ -33,7 +32,7 @@ MPS_fnc_AddFoul =
 		AllKicked pushbackUnique (name player);	// ...add player's name to array of all kicked foulers to display it
 		publicVariable "AllKicked";	// ...broadcast current kicked foulers to each connected computer
 		[player,["Auffällige Spieler",[name player,"wurde gekickt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
-		["eevlkneevl",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
+		["bratwurst",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		((name player) + " wurde wegen seines Fehlverhaltens vom Einsatz abgezogen.") remoteExec ["systemChat",0];	// ...show system info message for the other players
     };
 	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 4) && {!(getPlayerUID player in Whitelist)}) then	// if player's fouls haven't exceeded limit yet and he isn't a trustworthy person on the whitelist...
@@ -55,7 +54,7 @@ if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
 		if (((_this select 0) distance (getMarkerPos "MPS_BaseMrkr")) < 400) then	// if player fires inside base...
 		{
 			deleteVehicle (_this select 6);	// ...delete the projectile / grenade / satchel / mine
-			switch true do	// (by Drunken Officer, edited by Quentin) ...warn player according to what foul he committed
+			switch true do	// (by Drunken Officers, edited by Quentin) ...warn player according to what foul he committed
 			{
 				case ((_this select 1) isKindOf ["Put", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Das Platzieren von Sprengstoff in der Basis ist strengstens verboten, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Put sind die Bomben und Minen
 				case ((_this select 1) isKindOf ["Throw", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Das Werfen von Objekten in der Basis ist strengstens verboten, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Throw sind Granaten
@@ -85,13 +84,13 @@ MPKilled_EH = player addMPEventHandler ["MPKilled",
 	private _victim = _this select 0;
 	private _killer = _this select 1;
 	private _instigator = _this select 2;
-	if ((player == _victim) && {!(player == _killer)}) then
+	if ((player isEqualTo _victim) && {!(player isEqualTo _killer)}) then
 	{
 		hint format ["Du wurdest von deinem Kameraden %1 %2 aus der %3-Einheit getötet. Er wurde verwarnt.",toLower (rank _killer),name _killer,str(group _killer) select [2]];
 	}
 	else
 	{ 
-		if (player == _killer) then
+		if (player isEqualTo _killer) then
 		{
 			[50] call MPS_fnc_AddFoul;
 			if (MPS_FoulsCount < 100) then
@@ -102,72 +101,6 @@ MPKilled_EH = player addMPEventHandler ["MPKilled",
 	};
 }];
 /* Teamkill Protection section finished */
-
-
-/* Fouler Rejoin Protection */
-if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)}) then	// if player has already been kicked and therefor is on blacklist and he is also not on the whitelist of trustworthy people...
-{
-	PW_Attempts = 1;	// ...set this as his first password attempt
-	waitUntil {time > 0};	// ...wait for mission start
-	0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
-	createDialog "FRP";	// ...create according security dialog
-};
-/* Fouler Rejoin Protection section finished */
-
-
-/* Slot Protection dialogs */
-// check on join, if...
-if (isMultiplayer) then	// only if it is multiplayer mode, for editor purposes
-{
-	// ...player has pilot password
-	if (typeOf player in Pilots) then	// if player is a pilot...	
-	{
-		PW_Attempts = 1;	// ...set this as his first password attempt
-		waitUntil {time > 0};	// ...wait for mission start
-		0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
-		createDialog "CheckPilot";	// ...create according security dialog
-	};
-
-	// ...player has curator password
-	if (typeOf player in Curators) then
-	{
-		PW_Attempts = 1;	// ...set this as his first password attempt
-		waitUntil {time > 0};	// ...wait for mission start
-		0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
-		createDialog "CheckCurator";	// ...create according security dialog
-	};
-
-	// ...player has OPZ password
-	if (typeOf player in OPZ) then	// if player is a curator...
-	{
-		PW_Attempts = 1;	// ...set this as his first password attempt
-		waitUntil {time > 0};	// ...wait for mission start
-		0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
-		createDialog "CheckOPZ";	// ...create according security dialog
-	};
-};
-/* Slot Protection section finished */
-
-
-/* Idiotentest */
-// ...JIPer speaks German
-if (isMultiplayer && {didJIP}) then
-{
-	PW_Attempts = 1;	// ...set this as his first password attempt
-	waitUntil {time > 0};	// ...wait for mission start
-	0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
-	createDialog "CheckGerman";	// ...create according security dialog
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	PW_Attempts = 1;	// ...set this as his first password attempt
-	createDialog "CheckGerman2";	// ...create according security dialog
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	PW_Attempts = 1;	// ...set this as his first password attempt
-	createDialog "CheckGerman3";	// ...create according security dialog
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	PW_Attempts = 1;	// ...set this as his first password attempt
-	createDialog "CheckGerman4";	// ...create according security dialog
-};
-/* Idiotentest section finished */
 
 
 // if player is a curator, initialize MPS on vehicles and units spawned by him
@@ -215,7 +148,7 @@ if ((getPlayerUID player) in Whitelist) then
 			"Passwörter",
 			"Diesen Tagebucheintrag bekommst nur du als vertrauenswürdiger Spieler angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
 			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
-				OPZ:  <font color='#107b1b'>""OPZ""</font color><br/>
+				Officers:  <font color='#107b1b'>""Officers""</font color><br/>
 				Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
 				Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
 				<font color='#1d49d1'>Idiotentest:</font color><br/>
@@ -228,3 +161,11 @@ if ((getPlayerUID player) in Whitelist) then
 		]
 	];
 };
+
+
+// initialize Security Dialogs
+_null = execVM "modules\MissionProtectionSystem\MPS_Sec_Dialogs.sqf";
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["MPS InitClient","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

@@ -393,11 +393,11 @@ class Params
 	};
 	class Woodland
 	{
-		title = "Spieler tragen Waldland-Tarnung";
+		title = "US-Spieler tragen Waldland-Tarnung";
 		texts[] = {"Ja","Nein"};
 		values[] = {1,0};
 		default = 0;
-		file = "modules\MissionParams\setWoodland.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+		file = "modules\Loadout\Loadout_InitClient.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
  		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
 	};
 	/*class Daytime

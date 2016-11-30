@@ -1,6 +1,11 @@
 // by Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["QTS InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
+
+
 /* initialize QTS */
 // define fnc arrays
 QT_call_fncs = [];
@@ -75,3 +80,7 @@ if (typeOf player in Curators) then
 	];*/
 };
 /* QTS initialization complete */
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["QTS InitClient","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

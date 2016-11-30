@@ -1,6 +1,11 @@
 // by Fabi, edited by Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["MPS InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
+
+
 // disable vehicles firing in base
 if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
 {
@@ -23,3 +28,7 @@ else	// ...otherwise...
 		["<t color='#ff0000' size ='1.5'>Es gibt keinen BaseMarker!<br/>Erstelle ein Objekt namens ""MPS_BaseMrkr"" und platziere es ins Zentrum der Spielerbasis, damit das Schutzsystem arbeiten kann.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...tell him
 	};
 };
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["MPS InitServer","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

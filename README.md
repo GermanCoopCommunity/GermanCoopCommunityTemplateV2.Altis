@@ -8,7 +8,7 @@ General:
 - Faction: NATO
 - Playable Units: 83, which are...
                       - 7x 10 per squad
-                      - 2 OPZ (Commanding Officer & Executive Officer)
+                      - 2 Officers (Commanding Officers & Executive Officers)
                       - 4 pilots
                       - 1 jet pilot
                       - 2 curators
@@ -40,8 +40,8 @@ Features:
 
 Unit variable names:
 
-- Commanding Officer: co
-- Executive Officer: xo
+- Commanding Officers: co
+- Executive Officers: xo
 - Squadleaders: squadname_lead
 - Pilots: pilot_1 to pilot_4
 - Crew leader: crew_1
@@ -52,6 +52,7 @@ Unit variable names:
 
 Other variable names:
 
+- Drone streaming their sight: streaming_drone
 - Whiteboard UAV Stream surface: whiteboard
 - Drone Control Station: drone_control
 - Mission Protection System:

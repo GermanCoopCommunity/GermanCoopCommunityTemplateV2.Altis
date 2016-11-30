@@ -45,7 +45,7 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 	"KeyDown",
 	{
 		private _DIK = _this select 1;
-		if (_DIK == 5) then
+		if (_DIK isEqualTo 5) then
 		{
 			player playAction "gestureAdvance";
 			if (shownChat) then
@@ -53,7 +53,7 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 				player groupChat "Go!";
 			};
 		};
-		if (_DIK == 6) then
+		if (_DIK isEqualTo 6) then
 		{
 			player playAction "gestureFreeze";
 			if (shownChat) then
@@ -61,7 +61,7 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 				player groupChat "Stop!";
 			};
 		};
-		if (_DIK == 7) then
+		if (_DIK isEqualTo 7) then
 		{
 			player playAction "gestureYes";
 			if (shownChat) then
@@ -69,7 +69,7 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 				player groupChat "Affirmative!";
 			};
 		};
-		if (_DIK == 8) then
+		if (_DIK isEqualTo 8) then
 		{
 			player playAction "gestureNo";
 			if (shownChat) then
@@ -77,7 +77,7 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 				player groupChat "Negative!";
 			};
 		};
-		if (_DIK == 9) then
+		if (_DIK isEqualTo 9) then
 		{
 			private _dir = "";
 			

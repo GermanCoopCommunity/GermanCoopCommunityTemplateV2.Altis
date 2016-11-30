@@ -1,6 +1,15 @@
 // by Fabi, edited by Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["BFT InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
+
+
+// wait for mission to start, otherwise no markers are shown
+waitUntil {time > 0};
+
+
 // check every player's group and add it to array of groups to be tracked
 BFT_Groups = [];
 {
@@ -15,7 +24,7 @@ BFT_Groups = [];
     _marker setMarkerText ((str _x) select [2]);
     if (typeOf (leader _x) in Pilots) then
 	{
-		if (typeOf leader _x == "B_Pilot_F" or {typeOf leader _x == "O_Pilot_F"} or {typeOf leader _x == "I_Pilot_F"}) then
+		if (typeOf leader _x isEqualTo "B_Pilot_F" or {typeOf leader _x isEqualTo "O_Pilot_F"} or {typeOf leader _x isEqualTo "I_Pilot_F"}) then
 		{
 			_marker setMarkerType "b_plane";
 		}
@@ -32,7 +41,7 @@ BFT_Groups = [];
         }
 		else
 		{
-            if (typeOf (leader _x) in OPZ) then
+            if (typeOf (leader _x) in Officers) then
 			{
                 _marker setMarkerType "b_hq";
             }
@@ -56,3 +65,7 @@ BFT_fn_PFH =
     } count BFT_Groups;
 };
 PFH pushback [BFT_fn_PFH, 5];
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["BFT InitServer","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

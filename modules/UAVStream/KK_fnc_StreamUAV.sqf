@@ -102,7 +102,7 @@ drone_control addAction [
 	true,
 	true,
 	"",
-	"typeOf player in OPZ && {(player distance drone_control) < 5}"
+	"typeOf player in Officers && {(player distance drone_control) < 5}"
 ];
 
 

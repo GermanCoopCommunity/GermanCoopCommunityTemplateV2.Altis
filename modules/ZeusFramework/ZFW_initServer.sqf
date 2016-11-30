@@ -12,3 +12,4 @@ diag_log format ["%1 --- Executing ZFW_initServer.sqf",diag_ticktime];
 
 // log end of execution
 diag_log format ["%1 --- ZFW_initServer.sqf executed",diag_ticktime];
+player createDiaryRecord ["Modules",["ZFW InitServer","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

@@ -1,6 +1,11 @@
 // by Fabi & Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["Core InitServer","Ausführung begonnen um " + str(time)]];
+
+
 /* let server define all arrays and publicize them to the clients, so JIPers don't reset the arrays each time they JIP */
 // define Pilots
 Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
@@ -10,9 +15,9 @@ publicVariable "Pilots";
 Crews = ["B_crew_F","O_crew_F","I_crew_F"];
 publicVariable "Crew";
 
-// define OPZ
-OPZ = ["B_officer_F","O_officer_F","I_officer_F"];
-publicVariable "OPZ";
+// define Officers
+Officers = ["B_Officers_F","O_Officers_F","I_Officers_F"];
+publicVariable "Officers";
 
 // define Curators
 Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
@@ -48,3 +53,7 @@ addMissionEventHandler ["EachFrame",
     nil
   } count PFH;
 }];
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["Core InitServer","Ausführung beendet um " + str(time)]];

@@ -1,6 +1,11 @@
 // by Quentin
 
 
+// log start of execution
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
+
+
 // Briefing
 // benutze <br/>, um einen Enter-artigen Zeilensprung einzufügen
 player createDiaryRecord [
@@ -63,7 +68,7 @@ player createDiaryRecord [
 	"Teamspeak",
 	[
 		"IP",
-			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ dich deinen Kameraden auf dem TS an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
+			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TS an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
 	]
 ];
 
@@ -84,3 +89,7 @@ player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 	};
 	nil;
 } count allGroups;
+
+
+// log end of execution
+player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];

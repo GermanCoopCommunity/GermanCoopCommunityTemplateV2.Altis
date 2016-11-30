@@ -91,8 +91,8 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				_text = _text + " (Verwundet)";
 			} else {
 			   _text = _text + call {
-					/*if (str(_target) in ["co"]) exitWith {" (Commanding Officer)"};
-					if (str(_target) in ["xo"]) exitWith {" (Executive Officer)"};
+					/*if (str(_target) in ["co"]) exitWith {" (Commanding Officers)"};
+					if (str(_target) in ["xo"]) exitWith {" (Executive Officers)"};
 					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha-Truppführer)"};
 					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo-Truppführer)"};
 					if (str(_target) in ["charlie_lead"]) exitWith {" (Charlie-Truppführer)"};

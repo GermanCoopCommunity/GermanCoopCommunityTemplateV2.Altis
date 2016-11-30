@@ -2,7 +2,7 @@
 
 
 // set NVG for player according to value set in Mission Params in description.ext
-if (_this select 0 == 0) then
+if (_this select 0 isEqualTo 0) then
 {
 	switch (side player) do	// depending on player's side, remove the according NV goggles
 	{

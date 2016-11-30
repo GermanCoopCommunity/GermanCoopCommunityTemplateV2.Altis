@@ -3,6 +3,8 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing init.sqf",diag_ticktime];
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+player createDiaryRecord ["Modules",["Init","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
 // Psychobastard: needed to reset EH/ mission EHs can avoid unwanted impacts on mission flow (for example after player slot changed)
@@ -15,13 +17,13 @@ JK_fnc_NameTags = compile preprocessFileLineNumbers "modules\Nametags\JK_fnc_Nam
 /* functions defined */
  
 
-// initialize UAV streaming to OPZ
+// initialize UAV streaming to Officers
 _null = execVM "modules\UAVStream\UAVStream_Init.sqf";
 
 
 /* add Mission EHs */
-_null = execVM "modules\Nametags\Nametags_Init.sqf";	// Nametags
-_null = execVM "modules\MissionProtectionSystem\MPS_Init.sqf";	// 3rd Person Restriction & Vehicle Restriction
+_null = execVM "modules\Nametags\Nametags_InitClient.sqf";	// Nametags
+_null = execVM "modules\MissionProtectionSystem\MPS_addMEH.sqf";	// 3rd Person Restriction & Vehicle Restriction
 /* Mission EHs added */
 
 
@@ -40,3 +42,4 @@ enableSentences false;
 
 // log end of execution
 diag_log format ["%1 --- init.sqf executed",diag_ticktime];
+player createDiaryRecord ["Modules",["Init","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];
