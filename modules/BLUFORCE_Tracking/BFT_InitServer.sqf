@@ -56,7 +56,7 @@ BFT_Groups = [];
 
 
 // refresh each group's marker position on each frame depending on group leader's position
-BFT_fn_PFH =
+BFT_fnc_PFH =
 {
 	if (!isServer) exitWith{};
     {
@@ -64,7 +64,7 @@ BFT_fn_PFH =
         nil
     } count BFT_Groups;
 };
-PFH pushback [BFT_fn_PFH, 5];
+PFH pushback [BFT_fnc_PFH,5];
 
 
 // log end of execution

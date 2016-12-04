@@ -49,6 +49,13 @@ player createDiaryRecord [
 			"Sitzscript"
 	]
 ];
+player createDiaryRecord [
+	"Credits",
+	[
+		"Blackburn / Zombeck",
+			"Unbedingte Hilfsbereitschaft"
+	]
+];
 
 
 // Revive explanation

@@ -2,6 +2,7 @@
 
 
 // set AI skill according to value set in Mission Params in description.ext
+waitUntil {time > 0};
 private _possUnif = ["U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest"];
 if (uniform player in _possUnif) then
 {
@@ -76,7 +77,7 @@ if (uniform player in _possUnif) then
 	plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
 	addMissionEventHandler ["EachFrame",	// add persistent MEH to maintain texture
 	{
-		if (uniform player in _possUnif && !{"a3\characters_f\blufor\data\clothing_wdl_co.paa" in getObjectTextures player}) then
+		if (uniform player in _possUnif && !("a3\characters_f\blufor\data\clothing_wdl_co.paa" in getObjectTextures player)) then
 		{
 			player setObjectTextureGlobal [0,"\a3\characters_f\BLUFOR\Data\clothing_wdl_co.paa"];
 		};

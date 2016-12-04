@@ -15,7 +15,6 @@ if (side player isEqualTo "WEST") then
 	if (rank player isEqualTo "COLONEL") then {player addHeadgear "H_Beret_Colonel";};	// if player is a US Officers with colonel rank, assign him the colonel military cap
 };
 plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
-//if ((_this select 0) isEqualTo 1) then {_null = execVM "modules\MissionParams\setWoodland.sqf";};	// if US players are to wear woodland camouflage, execute according file
 /* Player Loadout set */
 
 

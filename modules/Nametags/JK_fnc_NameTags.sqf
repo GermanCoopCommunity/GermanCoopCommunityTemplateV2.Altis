@@ -90,18 +90,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				_icon = "\A3\Ui_f\data\IGUI\Cfg\Cursors\unitbleeding_ca.paa";
 				_text = _text + " (Verwundet)";
 			} else {
-			   _text = _text + call {
-					/*if (str(_target) in ["co"]) exitWith {" (Commanding Officers)"};
-					if (str(_target) in ["xo"]) exitWith {" (Executive Officers)"};
-					if (str(_target) in ["alpha_lead"]) exitWith {" (Alpha-Truppführer)"};
-					if (str(_target) in ["bravo_lead"]) exitWith {" (Bravo-Truppführer)"};
-					if (str(_target) in ["charlie_lead"]) exitWith {" (Charlie-Truppführer)"};
-					if (str(_target) in ["delta_lead"]) exitWith {" (Delta-Truppführer)"};
-					if (str(_target) in ["echo_lead"]) exitWith {" (Echo-Truppführer)"};
-					if (str(_target) in ["foxtrot_lead"]) exitWith {" (Foxtrot-Truppführer)"};
-					if (str(_target) in ["golf_lead"]) exitWith {" (Golf-Truppführer)"};*/
-					(" (" + _class + ")");
-				};
+			   _text = _text + roleDescription player;
 				_icon = TEXTURES_RANKS select ((["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"] find (rank _target)) + 1);
 			};
 			drawIcon3D [_icon, _color, _headPosition vectorAdd [0, 0, 0.4], 0.8, 0.8, 0, _text, 2, 0.033, "PuristaMedium"];

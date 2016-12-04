@@ -86,7 +86,7 @@ MPKilled_EH = player addMPEventHandler ["MPKilled",
 	private _instigator = _this select 2;
 	if ((player isEqualTo _victim) && {!(player isEqualTo _killer)}) then
 	{
-		hint format ["Du wurdest von deinem Kameraden %1 %2 aus der %3-Einheit getötet. Er wurde verwarnt.",toLower (rank _killer),name _killer,str(group _killer) select [2]];
+		hint format ["Du wurdest von deinem Kameraden <t color='#ff0000' size ='1.5'>%1</t> %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
 	}
 	else
 	{ 
