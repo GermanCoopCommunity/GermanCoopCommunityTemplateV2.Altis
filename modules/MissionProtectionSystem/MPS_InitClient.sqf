@@ -49,19 +49,19 @@ MPS_fnc_AddFoul =
 /* Baserape Protection section */
 if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
 {
-	Fired_EH = player addEventHandler ["Fired",
+	FiredMan_EH = player addEventHandler ["FiredMan",
 	{
 		if (((_this select 0) distance (getMarkerPos "MPS_BaseMrkr")) < 400) then	// if player fires inside base...
 		{
 			deleteVehicle (_this select 6);	// ...delete the projectile / grenade / satchel / mine
-			switch true do	// (by Drunken Officers, edited by Quentin) ...warn player according to what foul he committed
+			switch true do	// (by Drunken Officer, edited by Quentin) ...warn player according to what foul he committed
 			{
 				case ((_this select 1) isKindOf ["Put", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Das Platzieren von Sprengstoff in der Basis ist strengstens verboten, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Put sind die Bomben und Minen
 				case ((_this select 1) isKindOf ["Throw", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Das Werfen von Objekten in der Basis ist strengstens verboten, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Throw sind Granaten
 				case ((_this select 1) isKindOf ["Rifle", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Der Waffeneinsatz in der Basis ist gegen die Dienstvorschriften, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Rifle im allg
 				case ((_this select 1) isKindOf ["Pistol", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Der Waffeneinsatz in der Basis ist gegen die Dienstvorschriften, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- Pistolenim allg
 				case ((_this select 1) isKindOf ["Launcher_Base_F", configFile >> "CfgWeapons"]): {["<t color='#ff0000' size ='1.5'>Der Waffeneinsatz in der Basis ist gegen die Dienstvorschriften, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText}; //--- RPGim allg
-				default {["<t color='#ff0000' size ='1.5'>Zuwiderhandlung gegen die Dienstvorschriften in der Basis ist strengstens verboten, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText};
+				default {["<t color='#ff0000' size ='1.5'>Der Einsatz von Bordwaffen in der Basis ist gegen die Dienstvorschriften, Soldat!<br/>Sie wurden verwarnt.</t>",0,0,4,0] spawn BIS_fnc_dynamicText};	//--- Fahrzeugwaffen
 			};
 			[15] call MPS_fnc_AddFoul;	// ...increase his foul counter
 		};

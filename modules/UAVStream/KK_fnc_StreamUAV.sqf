@@ -106,6 +106,14 @@ drone_control addAction [
 ];
 
 
+// destroy camera on UAV's death
+_uav addEventHandler ["Killed",
+	{
+		camDestroy _cam;
+	}
+];
+
+
 // return
 _return = true;
 _return;

@@ -2,12 +2,12 @@
 
 
 // declare given argument in local variable
-private _setWoodland = _this select 0;
+private _setSage = _this select 0;
 
-// set player's woodland camo according to value set in Mission Params in description.ext
-if (_setWoodland isEqualTo 1) then
+// set player's sage camo according to value set in Mission Params in description.ext
+if (_setSage isEqualTo 1) then
 {
-	waitUntil {time > 0};	// wait for mission start, so default loadout is assigned first to be overwritten by the woodland one
+	waitUntil {time > 0};	// wait for mission start, so default loadout is assigned first to be overwritten by the sage one
 
 	possCamoUnif = ["U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest"];
 	if (uniform player in possCamoUnif) then
@@ -83,9 +83,9 @@ if (_setWoodland isEqualTo 1) then
 		plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
 		addMissionEventHandler ["EachFrame",	// add persistent MEH to maintain texture
 		{
-			if (uniform player in possCamoUnif && !("a3\characters_f\blufor\data\clothing_wdl_co.paa" in getObjectTextures player)) then
+			if (uniform player in possCamoUnif && !("\a3\characters_f\BLUFOR\Data\clothing_sage_co.paa" in getObjectTextures player)) then
 			{
-				player setObjectTextureGlobal [0,"\a3\characters_f\BLUFOR\Data\clothing_wdl_co.paa"];
+				player setObjectTextureGlobal [0,"\a3\characters_f\BLUFOR\Data\clothing_sage_co.paa"];
 			};
 		}];
 	};

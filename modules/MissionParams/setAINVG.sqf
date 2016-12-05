@@ -1,8 +1,12 @@
 // by Quentin
 
 
+// declare given argument in local variable
+private _setAINONVG = _this select 0;
+
+
 // set NVG for AI according to value set in Mission Params in description.ext
-if (_this select 0 isEqualTo 1) then
+if (_setAINONVG isEqualTo 0) then
 {
 	waitUntil {!isNil "Curators"};	// wait until Curators variable is defined and publicized
 	{switch (side _x) do	// depending on AI's side, remove the according NV goggles

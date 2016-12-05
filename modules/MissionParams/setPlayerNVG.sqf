@@ -1,9 +1,14 @@
 // by Quentin
 
 
+// declare given argument in local variable
+private _setPlayerNONVG = _this select 0;
+
+
 // set NVG for player according to value set in Mission Params in description.ext
-if (_this select 0 isEqualTo 0) then
+if (_setPlayerNONVG isEqualTo 0) then
 {
+	waitUntil {time > 0};	// wait for mission start, so default loadout is assigned first to be overwritten by the NVG one
 	switch (side player) do	// depending on player's side, remove the according NV goggles
 	{
 		case ("WEST"): {player unassignItem "NVGoggles"; player removeItem "NVGoggles";};

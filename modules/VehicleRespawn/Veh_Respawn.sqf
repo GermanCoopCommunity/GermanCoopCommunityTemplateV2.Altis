@@ -10,7 +10,7 @@ _vehicle = _this select 0;
 
 
 // add Veh_FiredEH
-if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
+/*if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
 {
 	_vehicle addEventHandler ["Fired",
 	{
@@ -28,7 +28,7 @@ else	// ...otherwise...
 	{
 		["<t color='#ff0000' size ='1.5'>Es gibt keinen BaseMarker!<br/>Erstelle ein Objekt namens ""MPS_BaseMrkr"" und platziere es ins Zentrum der Spielerbasis, damit das Schutzsystem arbeiten kann.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...tell him
 	};
-};
+};*/
 
 
 // BLUFOR Striders
@@ -41,7 +41,7 @@ if (/*side co isEqualTo "WEST" && {*/(typeOf _vehicle isEqualTo "I_MRAP_03_hmg_F
 // initialize KK Stream UAV on respawned streaming_drone
 if (str(_vehicle) isEqualTo "streaming_drone") then
 {
-	if (((typeOf streaming_drone isEqualTo "B_UAV_02_CAS_F") or (typeOf streaming_drone isEqualTo "I_UAV_02_CAS_F") or (typeOf streaming_drone isEqualTo "O_UAV_02_CAS_F")) && {!isNil "whiteboard"} && {!isNil "drone_control"}) then
+	if (((typeOf streaming_drone isEqualTo "B_UAV_02_CAS_F") or {typeOf streaming_drone isEqualTo "I_UAV_02_CAS_F"} or {typeOf streaming_drone isEqualTo "O_UAV_02_CAS_F"}) && {!isNil "whiteboard"} && {!isNil "drone_control"}) then
 	{
 		[streaming_drone,whiteboard,drone_control] remoteExecCall ["KK_fnc_StreamUAV",0];
 	};

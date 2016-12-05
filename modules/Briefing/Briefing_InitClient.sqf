@@ -56,6 +56,13 @@ player createDiaryRecord [
 			"Unbedingte Hilfsbereitschaft"
 	]
 ];
+player createDiaryRecord [
+	"Credits",
+	[
+		"Wolf13898",
+			"NATO Bundeswehr Reskin Textures"
+	]
+];
 
 
 // Revive explanation

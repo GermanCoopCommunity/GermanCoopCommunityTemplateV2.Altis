@@ -391,13 +391,31 @@ class Params
 		file = "modules\MissionParams\setAINVG.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
  		isGlobal = 0; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
 	};
-	class Woodland
+	class WoodlandCamo
 	{
-		title = "US-Spieler tragen Waldland-Tarnung";
+		title = "NATO-Spieler tragen Waldland-Tarnung";
 		texts[] = {"Ja","Nein"};
 		values[] = {1,0};
 		default = 0;
 		file = "modules\MissionParams\setWoodland.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	class SageCamo
+	{
+		title = "NATO-Spieler tragen Sage-Tarnung";
+		texts[] = {"Ja","Nein"};
+		values[] = {1,0};
+		default = 0;
+		file = "modules\MissionParams\setSage.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+	class FlecktarnCamo
+	{
+		title = "NATO-Spieler tragen Flecktarn (NOCH UNVOLLSTÄNDIG!)";
+		texts[] = {"Ja","Nein"};
+		values[] = {1,0};
+		default = 0;
+		file = "modules\MissionParams\setFlecktarn.sqf"; // (Optional) Script called when player joins, selected value is passed as an argument
  		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
 	};
 	/*class Daytime
