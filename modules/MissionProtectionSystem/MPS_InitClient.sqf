@@ -6,7 +6,6 @@ if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modu
 player createDiaryRecord ["Modules",["MPS InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
-
 // wait until all core variables are publicized
 waitUntil {!isNil "AllWarned"};
 
@@ -21,7 +20,7 @@ MPS_fnc_AddFoul =
     params [["_foulWeight",1]];
     MPS_FoulsCount = MPS_FoulsCount + _foulWeight;	// increase player's foul limit by weight of the foul he committed
     
-    if (MPS_FoulsCount >= 100 && {!(getPlayerUID player in Whitelist)}) then	// if player's fouls exceed limit and he isn't a trustworthy person on the whitelist...
+    if (MPS_FoulsCount >= 100 && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if player's fouls exceed limit, he isn't a trustworthy person on the whitelist and he doesn't play a Sepcial Slot...
 	{
 		[""] spawn BIS_fnc_dynamicText;	// ...remove currently displayed dynamic text
 		endMission "LOSER";	// ...end mission for him
@@ -35,7 +34,7 @@ MPS_fnc_AddFoul =
 		["bratwurst",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		((name player) + " wurde wegen seines Fehlverhaltens vom Einsatz abgezogen.") remoteExec ["systemChat",0];	// ...show system info message for the other players
     };
-	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 4) && {!(getPlayerUID player in Whitelist)}) then	// if player's fouls haven't exceeded limit yet and he isn't a trustworthy person on the whitelist...
+	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 4) && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if player's fouls haven't exceeded limit yet, he isn't a trustworthy person on the whitelist and he doesn't play a Sepcial Slot...
 	{
 		MPS_Warnings = MPS_Warnings + 1;
 		AllWarned pushbackUnique (name player);	// ...add player's name to array of all warned foulers to display it
@@ -47,7 +46,7 @@ MPS_fnc_AddFoul =
 
 
 /* Baserape Protection section */
-if (isNil "MPS_BaseMrkr") then	// if mission builder has placed a BaseMarker...
+if (isNil "MPS_BaseMrkr" && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if mission builder has placed a BaseMarker, player is not on Whitelist and doesn't play a Special Slot...
 {
 	FiredMan_EH = player addEventHandler ["FiredMan",
 	{
@@ -79,27 +78,30 @@ else	// ...otherwise...
 
 
 /* Teamkill Protection */
-MPKilled_EH = player addMPEventHandler ["MPKilled",
+if (!(getPlayerUID player in Whitelist) && {!(typeOf player in SpecSlots)}) then	// if player is not on Whitelist and doesn't play a Special Slot...
 {
-	private _victim = _this select 0;
-	private _killer = _this select 1;
-	private _instigator = _this select 2;
-	if ((player isEqualTo _victim) && {!(player isEqualTo _killer)}) then
+	MPKilled_EH = player addMPEventHandler ["MPKilled",
 	{
-		hint format ["Du wurdest von deinem Kameraden <t color='#ff0000' size ='1.5'>%1</t> %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
-	}
-	else
-	{ 
-		if (player isEqualTo _killer) then
+		private _victim = _this select 0;
+		private _killer = _this select 1;
+		private _instigator = _this select 2;
+		if ((player isEqualTo _victim) && {!(player isEqualTo _killer)} && {!(player isEqualTo _instigator)}) then
 		{
-			[50] call MPS_fnc_AddFoul;
-			if (MPS_FoulsCount < 100) then
-			{	
-				["<t color='#ff0000' size = '1.5'>Verbündetenbeschuss wird nicht toleriert, Soldat!<br/>Beim nächsten Verbündetenbeschuss wird ihre Mission abgebrochen.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+			hint format ["Du wurdest von deinem Kameraden <t color='#ff0000' size ='1.5'>%1</t> %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
+		}
+		else
+		{ 
+			if (player isEqualTo _killer) then
+			{
+				[50] call MPS_fnc_AddFoul;
+				if (MPS_FoulsCount < 100) then
+				{	
+					["<t color='#ff0000' size = '1.5'>Verbündetenbeschuss wird nicht toleriert, Soldat!<br/>Beim nächsten Verbündetenbeschuss wird ihre Mission abgebrochen.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;
+				};
 			};
 		};
-	};
-}];
+	}];
+};
 /* Teamkill Protection section finished */
 
 
@@ -146,7 +148,7 @@ if ((getPlayerUID player) in Whitelist) then
 		"Sicherheit",
 		[
 			"Passwörter",
-			"Diesen Tagebucheintrag bekommst nur du als vertrauenswürdiger Spieler angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
+			"Diesen Tagebucheintrag bekommst nur du als GeCo-Orga-Mitglied angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
 			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
 				Officers:  <font color='#107b1b'>""Officers""</font color><br/>
 				Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>

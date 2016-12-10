@@ -24,7 +24,7 @@ BFT_Groups = [];
     _marker setMarkerText ((str _x) select [2]);
     if (typeOf (leader _x) in Pilots) then
 	{
-		if (typeOf leader _x isEqualTo "B_Pilot_F" or {typeOf leader _x isEqualTo "O_Pilot_F"} or {typeOf leader _x isEqualTo "I_Pilot_F"}) then
+		if (typeOf leader _x isEqualTo "B_Pilot_F" or {typeOf leader _x isEqualTo "O_Pilot_F"} or {typeOf leader _x isEqualTo "I_Pilot_F"}) then	// if group leader is fighter pilot
 		{
 			_marker setMarkerType "b_plane";
 		}

@@ -8,13 +8,45 @@ player createDiaryRecord ["Modules",["Loadout InitClient","<font color='#b40100'
 
 /* Player Loadout */
 waitUntil {!isNil "Officers"};
-// ...modify loadout as you like
+
+/*
+
+...modify loadout as you like
+
+*/
+
 if (side player isEqualTo "WEST") then
 {
-	if (typeOf player in Officers) then {player addHeadgear "H_Beret_02";};	// if player is a US Officers, assign him the Officers military cap
-	if (rank player isEqualTo "COLONEL") then {player addHeadgear "H_Beret_Colonel";};	// if player is a US Officers with colonel rank, assign him the colonel military cap
+	if (typeOf player in Officers) then {player addHeadgear "H_Beret_02";};	// if player is a US Officer, assign him the Officers military cap
+	if (rank player isEqualTo "COLONEL") then {player addHeadgear "H_Beret_Colonel";};	// if player is a US Officer with colonel rank, assign him the colonel military cap
 };
 plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
+
+// set camos
+#define Woodland	// replace "Camo" with any of the below to apply this camo to players
+#ifdef Woodland
+_null = [] execVM "modules\Loadout\Camos\setWoodland.sqf";
+#endif
+#ifdef Tropentarn
+_null = [] execVM "modules\Loadout\Camos\setTropentarn.sqf";
+#endif
+#ifdef Flecktarn
+_null = [] execVM "modules\Loadout\Camos\setFlecktarn.sqf";
+#endif
+#ifdef Sage
+_null = [] execVM "modules\Loadout\Camos\setSage.sqf";
+#endif
+#ifdef UN
+_null = [] execVM "modules\Loadout\Camos\setUN.sqf";
+#endif
+#ifdef UK
+_null = [] execVM "modules\Loadout\Camos\setUK.sqf";
+#endif
+
+// set player night vision preferences (comment out with // to deactivate taking NVGs from player)
+_null = [] execVM "modules\Loadout\NVG\setPlayerNVG.sqf";
+// set AI night vision preferences (activate taking NVGs from AI by de-outcommenting it (= remove // at the start of the next line))
+//_null = [] execVM "modules\Loadout\NVG\setAINVG.sqf";
 /* Player Loadout set */
 
 

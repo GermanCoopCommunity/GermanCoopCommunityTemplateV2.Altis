@@ -33,6 +33,10 @@ enableRadio false;
 enableSentences false;
 
 
+// set view distance
+setViewDistance 5000;
+
+
 /* mission specific code comes here */
 
 

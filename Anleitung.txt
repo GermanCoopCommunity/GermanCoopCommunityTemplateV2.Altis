@@ -5,9 +5,9 @@ Im Folgenden wird dir erklärt, wie du das Template auf deine eigene Mission anpa
 WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 
 
-1.	initBriefing.hpp:
+1.	modules\Briefing\Briefing_InitClient.sqf
 	- Missionsbriefing eintragen (Situation, Mission, Durchführung, Einsatzregeln)
-2.	description.ext:
+2.	description.ext
 	- class Debriefing:
 		Debriefing-Text ändern, falls du deine Mission gescriptet und nicht von Zeus aus enden lassen möchtest.
 		Voreinstellung: generischer Sieg-/Niederlagentext
@@ -16,6 +16,8 @@ WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 		Voreinstellung: siehe default
 3.	mission.sqm
 	- falls du in der Basis etwas änderst, pass auf, dass die Variablennamen in der README.md weiter bestehen. Lösche also z.B. nicht den BaseMarker, da sonst das Schutzsystem nicht mehr funktioniert usw.
+4.	modules\Loadout\Loadout_InitClient.sqf
+	- einstellen, ob und welche Tarnfarbe die Spieler tragen und ob sie und/oder die KI Nachtsichtgeräte erhalten sollen
 
 
 

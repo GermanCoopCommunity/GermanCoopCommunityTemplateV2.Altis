@@ -90,23 +90,28 @@ MPS_fnc_PW = {
 PW_Attempts = 1;	// ...set this as his first password attempt
 if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)}) then	// if player has already been kicked and therefor is on blacklist and he is also not on the whitelist of trustworthy people...
 {
-	["FRP",1,false,{Blacklist = Blacklist - [getPlayerUID player]}] call MPS_fnc_PW;
+	["FRP",1,false,{Blacklist = Blacklist - [getPlayerUID player]; publicVariable "Blacklist"}] call MPS_fnc_PW;
 };
 /* Fouler Rejoin Protection section finished */
 
 
 /* Idiotentest */
 // check on join, if JIPer speaks German
-PW_Attempts = 1;	// ...set this as his first password attempt
-if (isMultiplayer && {didJIP}) then
+if !((getPlayerUID player) in JIP_WL) then
 {
-	["CheckGerman",2,false,true] call MPS_fnc_PW;
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	["CheckGerman2",2,false,true] call MPS_fnc_PW;
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	["CheckGerman3",2,false,true] call MPS_fnc_PW;
-	waitUntil {!dialog};	// ...wait until dialog is answered
-	["CheckGerman4",2,false,true] call MPS_fnc_PW;
+	PW_Attempts = 1;	// ...set this as his first password attempt
+	if (isMultiplayer && {didJIP}) then
+	{
+		["CheckGerman",2,false,true] call MPS_fnc_PW;
+		waitUntil {!dialog};	// ...wait until dialog is answered
+		["CheckGerman2",2,false,true] call MPS_fnc_PW;
+		waitUntil {!dialog};	// ...wait until dialog is answered
+		["CheckGerman3",2,false,true] call MPS_fnc_PW;
+		waitUntil {!dialog};	// ...wait until dialog is answered
+		["CheckGerman4",2,false,true] call MPS_fnc_PW;
+		JIP_WL pushBackUnique (getPlayerUID player);
+		publicVariable "JIP_WL";
+	};
 };
 /* Idiotentest section finished */
 

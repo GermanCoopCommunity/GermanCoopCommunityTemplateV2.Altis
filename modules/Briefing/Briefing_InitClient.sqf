@@ -38,8 +38,15 @@ player createDiarySubject ["Credits","Credits"];
 player createDiaryRecord [
 	"Credits",
 	[
-		"GeCo Team",
-			"Hauptfunktionen"
+		"Wolf13898 & wildw1ng",
+			"Bundeswehr Texturen"
+	]
+];
+player createDiaryRecord [
+	"Credits",
+	[
+		"Sabre",
+			"UN 2030 Texturen"
 	]
 ];
 player createDiaryRecord [
@@ -52,15 +59,15 @@ player createDiaryRecord [
 player createDiaryRecord [
 	"Credits",
 	[
-		"Blackburn / Zombeck",
-			"Unbedingte Hilfsbereitschaft"
+		"GeCo Team",
+			"Hauptfunktionen"
 	]
 ];
 player createDiaryRecord [
 	"Credits",
 	[
-		"Wolf13898",
-			"NATO Bundeswehr Reskin Textures"
+		"Blackburn / Zombeck",
+			"Unbedingte Hilfsbereitschaft"
 	]
 ];
 

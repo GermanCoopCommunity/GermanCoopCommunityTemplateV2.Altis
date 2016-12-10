@@ -16,16 +16,24 @@ Crews = ["B_crew_F","O_crew_F","I_crew_F"];
 publicVariable "Crew";
 
 // define Officers
-Officers = ["B_Officers_F","O_Officers_F","I_Officers_F"];
+Officers = ["B_officer_F","O_officer_F","I_officer_F"];
 publicVariable "Officers";
 
 // define Curators
 Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
 publicVariable "Curators";
 
+// define Special Slots
+SpecSlots = Pilots + Officers + Curators;
+publicVariable "SpecSlots";
+
 // whitelist of trustworthy people
 Whitelist = ["76561198024503777","76561198029924112","76561198063094413","76561198035982662"];
 publicVariable "Whitelist";
+
+// whitelist of trustworthy people
+JIP_WL = ["76561198024503777","76561198029924112","76561198063094413","76561198035982662"];
+publicVariable "JIP_WL";
 
 // blacklist containing players which exceeded the fouls limit and were kicked
 Blacklist = [];
