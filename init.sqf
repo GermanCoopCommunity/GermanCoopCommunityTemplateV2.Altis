@@ -12,13 +12,8 @@ removeAllMissionEventHandlers "Draw3D";
 
 
 /* define functions */
-KK_fnc_StreamUAV = compile preprocessFileLineNumbers "modules\UAVStream\KK_fnc_StreamUAV.sqf";
 JK_fnc_NameTags = compile preprocessFileLineNumbers "modules\Nametags\JK_fnc_NameTags.sqf";
 /* functions defined */
- 
-
-// initialize UAV streaming to Officers
-_null = execVM "modules\UAVStream\UAVStream_Init.sqf";
 
 
 /* add Mission EHs */

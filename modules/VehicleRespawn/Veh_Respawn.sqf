@@ -32,17 +32,7 @@ else	// ...otherwise...
 
 
 // BLUFOR Striders
-if (/*side co isEqualTo "WEST" && {*/(typeOf _vehicle isEqualTo "I_MRAP_03_hmg_F") or {typeOf _vehicle isEqualTo "I_MRAP_03_gmg_F"}/*}*/) then
+if (/*side co isEqualTo WEST && {*/(typeOf _vehicle isEqualTo "I_MRAP_03_hmg_F") or {typeOf _vehicle isEqualTo "I_MRAP_03_gmg_F"}/*}*/) then
 {
 	[_vehicle,["Blufor",1],true] call BIS_fnc_initVehicle;
-};
-
-
-// initialize KK Stream UAV on respawned streaming_drone
-if (str(_vehicle) isEqualTo "streaming_drone") then
-{
-	if (((typeOf streaming_drone isEqualTo "B_UAV_02_CAS_F") or {typeOf streaming_drone isEqualTo "I_UAV_02_CAS_F"} or {typeOf streaming_drone isEqualTo "O_UAV_02_CAS_F"}) && {!isNil "whiteboard"} && {!isNil "drone_control"}) then
-	{
-		[streaming_drone,whiteboard,drone_control] remoteExecCall ["KK_fnc_StreamUAV",0];
-	};
 };

@@ -150,7 +150,7 @@ if ((getPlayerUID player) in Whitelist) then
 			"Passwörter",
 			"Diesen Tagebucheintrag bekommst nur du als GeCo-Orga-Mitglied angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
 			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
-				Officers:  <font color='#107b1b'>""Officers""</font color><br/>
+				Officers:  <font color='#107b1b'>""OPZ""</font color><br/>
 				Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
 				Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
 				<font color='#1d49d1'>Idiotentest:</font color><br/>

@@ -62,7 +62,7 @@ MPS_fnc_PW = {
 	{
 		if (PW_Attempts < _PW_att_all) then
 		{
-			hint format ["Falsch. Sie haben noch %1 Versuch(e).",PW_Attempts - _PW_att_all];
+			//hint format ["Falsch. Sie haben noch %1 Versuch(e).",PW_Attempts - _PW_att_all];
 			PW_Attempts = PW_Attempts + 1;
 			0 cutText ["Beantworten Sie die Frage, Soldat!","BLACK FADED",0,true];	// ...turn screen black as long as security question isn't answered
 			[_dialog,PW_Attempts - _PW_att_all,_kickIfWrong,_furtherCode] call MPS_fnc_PW;
@@ -81,7 +81,8 @@ MPS_fnc_PW = {
 	}
 	else
 	{
-		_furtherCode; closeDialog 0;
+		_furtherCode;
+		closeDialog 0;
 	};
 };
 

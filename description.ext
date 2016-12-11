@@ -117,11 +117,6 @@ class CfgRemoteExec
         // Ability to send jip messages: 0-disabled, 1-enabled (default)
         JIP = 1;
         /*your functions here*/
-		class KK_fnc_StreamUAV
-        {
-			allowedTargets = 0;
-			JIP = 1;
-        };
     };
 	class Commands
     {

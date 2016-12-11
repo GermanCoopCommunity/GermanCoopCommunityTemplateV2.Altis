@@ -15,7 +15,7 @@ waitUntil {!isNil "Officers"};
 
 */
 
-if (side player isEqualTo "WEST") then
+if (side player isEqualTo WEST) then
 {
 	if (typeOf player in Officers) then {player addHeadgear "H_Beret_02";};	// if player is a US Officer, assign him the Officers military cap
 	if (rank player isEqualTo "COLONEL") then {player addHeadgear "H_Beret_Colonel";};	// if player is a US Officer with colonel rank, assign him the colonel military cap

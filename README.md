@@ -46,14 +46,11 @@ Unit variable names:
 - Pilots: pilot_1 to pilot_4
 - Crew leader: crew_1
 - Fighter Pilot: jet_pilot
-- Streamendes UAV: streaming_drone
 - Curators: gamemaster_1 & gamemaster_2
 
 
 Other variable names:
 
-- Drone streaming their sight: streaming_drone
-- Whiteboard UAV Stream surface: whiteboard
 - Drone Control Station: drone_control
 - Mission Protection System:
 	...Base Protection Marker: MPS_BaseMrkr (object placed in centre of player base for MPS to work)

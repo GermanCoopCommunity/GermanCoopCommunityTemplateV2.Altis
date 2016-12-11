@@ -52,9 +52,9 @@ if (typeOf player in Curators) then
 				/*#ifdef NoAINVG	// if AI aren't to be equipped with NVGs...
 				switch (side _entity) do	// ...depending on entity's side, remove the according NV goggles
 				{
-					case ("WEST"): {_entity unassignItem "NVGoggles"; _entity removeItem "NVGoggles";};
-					case ("EAST"): {_entity unassignItem "NVGoggles_OPFOR"; _entity removeItem "NVGoggles_OPFOR";};
-					case ("RESISTANCE"): {_entity unassignItem "NVGoggles_INDEP"; _entity removeItem "NVGoggles_INDEP";};
+					case (WEST): {_entity unassignItem "NVGoggles"; _entity removeItem "NVGoggles";};
+					case (EAST): {_entity unassignItem "NVGoggles_OPFOR"; _entity removeItem "NVGoggles_OPFOR";};
+					case (RESISTANCE): {_entity unassignItem "NVGoggles_INDEP"; _entity removeItem "NVGoggles_INDEP";};
 					default {_entity unassignItem "NVGoggles"; _entity removeItem "NVGoggles";};
 				};
 				#endif*/
