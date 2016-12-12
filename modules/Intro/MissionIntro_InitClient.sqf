@@ -1,10 +1,14 @@
 // by Quentin
 
 
+// wait until security dialogs are answered
+waitUntil {!isNil "PW_correct"};
+waitUntil {!dialog && (PW_correct isEqualTo true)};
+
 /* Intro */
 if (isMultiplayer) then
 {
-	if !((typeOf player in Curators) or {typeOf player isEqualTo "VirtualSpectator_F"}) then {[player,"US-Basis Almyra, Altis, Mittelmeer"] call BIS_fnc_establishingShot;};
+	//if !((typeOf player in Curators) or {typeOf player isEqualTo "VirtualSpectator_F"}) then {[player,"US-Basis Almyra, Altis, Mittelmeer"] call BIS_fnc_establishingShot;};
 	[[ 
 	  ["Willkommen","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"], 
 	  ["bei der GeCo!","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t>"],

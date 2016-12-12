@@ -105,7 +105,7 @@ player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 			[
 				str(_x) select [2],
 				"<br/><font color='#107b1b'>Befehlshaber:</font color> " + rank leader _x + " " + name leader _x +
-				"<br/><font color='#107b1b'>Mannstärke gesamt:</font color> " + str(count (units  _x))
+				"<br/><font color='#107b1b'>Anfängliche Mannstärke gesamt:</font color> " + str(count (units  _x))
 			]
 		];
 	};

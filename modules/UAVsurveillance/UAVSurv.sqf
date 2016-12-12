@@ -1,3 +1,4 @@
+// by Quentin
 /*
 
 	Description:
@@ -32,8 +33,8 @@ private _groupLeader = _this select 3;
 
 // play UAV sequence above specific group leader
 [
-	_groupLeader,(str(group _groupLeader) select [2]) + ", Position :" + str(position _groupLeader) + ", Mannstärke: " + str(count units group _groupLeader),
-	100/*,
+	_groupLeader,((str(group _groupLeader) select [2]) + ", Position: " + str(position _groupLeader) + ", Aktuelle Mannstärke: " + str(count units group _groupLeader)),
+	50/*,
 	1,
 	0,
 	1,

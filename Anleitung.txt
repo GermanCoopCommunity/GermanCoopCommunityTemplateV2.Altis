@@ -18,6 +18,8 @@ WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 	- falls du in der Basis etwas änderst, pass auf, dass die Variablennamen in der README.md weiter bestehen. Lösche also z.B. nicht den BaseMarker, da sonst das Schutzsystem nicht mehr funktioniert usw.
 4.	modules\Loadout\Loadout_InitClient.sqf
 	- einstellen, ob und welche Tarnfarbe die Spieler tragen und ob sie und/oder die KI Nachtsichtgeräte erhalten sollen
+5.	init.sqf
+	- Sichtweite für die Spieler bei setViewDistance in Metern
 
 
 
