@@ -3,7 +3,7 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["InitPlayerLocal","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 

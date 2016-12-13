@@ -3,7 +3,7 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initServer.sqf",diag_ticktime];
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -18,28 +18,35 @@ DC_EH = addMissionEventHandler ["HandleDisconnect",{deleteVehicle (_this select 
 
 
 /* initialize InitServers */
-// Core
-private _Core_InitServer = compile preprocessFileLineNumbers "modules\Core\CR_InitServer.sqf";
-call _Core_InitServer;
+if !(time > 0) then	// only execute those files on mission start to prevent resetting blacklist, whitelist, JIP whitelist etc.
+{
+	// Core
+	private _Core_InitServer = compile preprocessFileLineNumbers "modules\Core\CR_InitServer.sqf";
+	call _Core_InitServer;
 
-// Zeus Framework
-private _ZFW_InitServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_InitServer.sqf";
-call _ZFW_InitServer;
+	// Zeus Framework
+	private _ZFW_InitServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_InitServer.sqf";
+	call _ZFW_InitServer;
 
-// BLUFORCE Tracking
-private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
-call _BFT_InitServer;
+	// BLUFORCE Tracking
+	private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
+	call _BFT_InitServer;
 
-// Mission Protection System
-private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
-call _MPS_InitServer;
+	// Mission Protection System
+	private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
+	call _MPS_InitServer;
+	
+	// Vehicle Respawn System
+	//private _VRS_InitServer = compile preprocessFileLineNumbers "modules\VehicleRespawn\VRS_InitServer.sqf";
+	//call _VRS_InitServer;
+};
 /* initServers initialized */
 
 
 /* Missing Content Warnings */
 // check for Curators
 if (({count entities _x; nil;} count Curators) isEqualTo 0) then	// if there are no Virtual Curator Units...
-{["<t color='#ff0000' size ='1.5'>Es gibt keinen neutralen Zeus!<br/>Erstelle mindestens einen ""VirtualCurator_F"".</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
+{["<t color='#ff0000' size ='1.5'>Es gibt keinen virtuellen Zeus!<br/>Erstelle mindestens einen ""VirtualCurator_F"" o.ä.</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
 };
 // check for Vehicle Respawn Module
 if (count entities "ModuleRespawnVehicle_F" isEqualTo 0) then	// if there is no Vehicle Respawn Module...
@@ -51,7 +58,7 @@ if (!isNil "respawn_west" && {!isNil "respawn_east"} && {!isNil "respawn_guerril
 };
 // check for Drone Control Station
 if (isNil "drone_control") then	// if there is no streaming control station...
-{["<t color='#ff0000' size ='1.5'>Es gibt keine Streaming-Station!<br/>Erstelle einen Monitor o.ä. namens ""drone_control"", damit das UAV Streaming arbeiten kann!</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
+{["<t color='#ff0000' size ='1.5'>Es gibt keine Drohnen-Kontrollstation!<br/>Erstelle einen Monitor o.ä. namens ""drone_control"", damit die Luftüberwachung arbeiten kann!</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
 } else {if (typeOf player in Officers) then {_null = execVM "modules\UAVsurveillance\UAVSurv_InitServer.sqf";};};	// UAVSurveillance
 /* Missing Content Warnings ended */
 

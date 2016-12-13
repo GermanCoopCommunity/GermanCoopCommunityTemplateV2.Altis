@@ -1,38 +1,90 @@
 // by Quentin
 
 
-// some important commands
-enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
+/* default template settings */
+// Header
+class Header
+{
+	gameType = Coop;
+};
+author = "GeCo Team";
+overviewPicture = "img\loadingpic.paa";
+loadScreen = "img\loadingpic.paa";
+
+// Respawn
+respawn = 3;
+respawnTemplates[] = {"MenuPosition"};
+respawnDialog = 0;	// don't show scoreboard on respawn
+respawnButton = 1;	// allow manual respawn via Esc-menu
 respawnOnStart = -1;	// disable respawn on start
+respawnDelay = 10;
+respawnVehicleDelay = 10;
+
+// Revive
+ReviveMode = 1;
+ReviveUnconsciousStateMode = 2;
+ReviveRequiredTrait = 1;
+ReviveRequiredItems = 2;
+ReviveRequiredItemsFakConsumed = 0;
+ReviveMedicSpeedMultiplier = 2;
+ReviveDelay = 6;
+ReviveForceRespawnDelay = 3;
+ReviveBleedOutDelay = 120;
+
+// Misc
+joinUnassigned = 1;	// don't autoassign player to side with least players
+disabledAI = 1;
+aiKills = 1;
+enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
+forceRotorLibSimulation = 0; // flight model is up to the player
+showHUD[] = {
+	true,	// Scripted HUD (same as showHUD command)
+	false,	// Vehicle + soldier info
+	false,	// Vehicle radar
+	true,	// Vehicle compass
+	true,	// Tank direction indicator
+	true,	// Commanding menu
+	true,	// Group Bar
+	true,	// HUD Weapon Cursors
+	true	// HUD Squad Radar
+};
+showGPS = 1;
+showCompass = 1;
+showMap = 1;
+showWatch = 1;
+showUAVFeed = 1;
+showSquadRadar = 1;
+briefing = 1;
+debriefing = 1;
+saving = 0; // disable saving
+
+// MPS
 #include "modules\MissionProtectionSystem\MPS_Description.hpp"	// dialogs for Mission Protection System
 
-
-/* Corpse & Wreck Management */
+// Corpse & Wreck Management
 corpseManagerMode = 2;
-/*
-	0 = None - None of the units are managed by the manager
+
+	/*0 = None - None of the units are managed by the manager
 	1 = All - All units are managed by the manager
 	2 = None_But_Respawned - Only units that can respawn are managed by the manager
-	3 = All_But_Respawned - All units are managed by the manager with exception of respawned (opposite to mode 2)
-*/
-/*
+	3 = All_But_Respawned - All units are managed by the manager with exception of respawned (opposite to mode 2)*/
+
 corpseLimit = 15;
 corpseRemovalMinTime = 300;
 corpseRemovalMaxTime = 600;
 wreckManagerMode = 2;
-*/
-/*
-	0 = None - None of the vehicles are managed by the manager
+
+	/*0 = None - None of the vehicles are managed by the manager
 	1 = All - All vehicles are managed by the manager
 	2 = None_But_Respawned - Only vehicles that can respawn are managed by the manager
-	3 = All_But_Respawned - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)
-*/
-/*
+	3 = All_But_Respawned - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)*/
+
 wreckLimit = 15;
 wreckRemovalMinTime = 300;
 wreckRemovalMaxTime = 600;
-*/
-/* end of Corpse & Wreck Management */
+
+minPlayerDistance = 50; // The minimum distance between corpse or wreck and nearest player before the corpse or wreck is allowed to be removed by the garbage collector.
+/* default template settings set */
 
 
 /* Debriefing */
@@ -168,14 +220,14 @@ class CfgORBAT
 		commander = "Grey Wolf";	// Name of unit commander. Can be either direct name, or class from CfgWorlds >> GenericNames (random name from the list is then selected)
 		commanderRank = "Captain";	// Rank of unit commander (by default selected based on unit size)
 		//tags[] = {BLUFOR,USArmy};	// Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
-		text = "111te Infanterie-Kompanie";	// Custom text and short text, can still use some arguments when defined:
+		text = "111. Infanterie-Kompanie";	// Custom text and short text, can still use some arguments when defined:
 		// 	%1 - ID (e.g. "7th")
 		// 	%2 - Type (e.g. "Infantry")
 		// 	%3 - Size (e.g. "Division")
-		textShort = "111te Infanterie-Kompanie";
+		textShort = "111. Infanterie-Kompanie";
 		texture = "\a3\missions_F_epa\data\img\ORBAT\B_111_texture_ca.paa";	// Custom texture, will replace icon set by 'type' param.
 		//color[] = {0,0,1,1};	// Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors
-        description = "Die 111te ist ein aus US-Truppen bestehendes NATO-Kommando.";	// A brief description of the group or unit.
+        description = "Die 111. ist ein NATO-Friedenskommando.";	// A brief description of the group or unit.
 		//assets[] = {{B_Heli_Transport_03_F,5},{B_Heli_Light_01_F,3},{B_Heli_Light_01_armed_F,4},B_Heli_Transport_01_camo_F}; // Will display pictures of all available assets to the unit commander
 		
 		class Alpha

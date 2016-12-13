@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["MPS InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -24,22 +24,22 @@ MPS_fnc_AddFoul =
 	{
 		[""] spawn BIS_fnc_dynamicText;	// ...remove currently displayed dynamic text
 		endMission "LOSER";	// ...end mission for him
-		titleCut ["Ihr Einsatz wurde aufgrund Ihres Fehlverhaltens abgebrochen.","BLACK FADED",0];	// ...inform him about the reason for the kick
+		0 cutText ["Ihr Einsatz wurde aufgrund Ihres Fehlverhaltens abgebrochen.","BLACK FADED",0];	// ...inform him about the reason for the kick
 		//["LOSER",false,0,false,false] call BIS_fnc_endMission;	// does the same as command above, but not as pretty and with "restart" option, which is not wanted
 		Blacklist pushbackUnique (getPlayerUID player);	// ...add player's UID (equal to steamID64 of the player) to blacklist to prevent him from rejoining the mission (FRP)
 		publicVariable "Blacklist";	// ...broadcast current blacklist to each connected computer
 		AllKicked pushbackUnique (name player);	// ...add player's name to array of all kicked foulers to display it
 		publicVariable "AllKicked";	// ...broadcast current kicked foulers to each connected computer
-		[player,["Auffällige Spieler",[name player,"wurde gekickt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
+		//[player,["Auffällige Spieler",[name player,"wurde gekickt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
 		["bratwurst",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		((name player) + " wurde wegen seines Fehlverhaltens vom Einsatz abgezogen.") remoteExec ["systemChat",0];	// ...show system info message for the other players
     };
-	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 4) && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if player's fouls haven't exceeded limit yet, he isn't a trustworthy person on the whitelist and he doesn't play a Sepcial Slot...
+	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 0) && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if player's fouls haven't exceeded limit yet, he isn't a trustworthy person on the whitelist and he doesn't play a Sepcial Slot...
 	{
 		MPS_Warnings = MPS_Warnings + 1;
 		AllWarned pushbackUnique (name player);	// ...add player's name to array of all warned foulers to display it
 		publicVariable "AllWarned";	// ...broadcast current warned foulers to each connected computer
-		[player,["Auffällige Spieler",[name player,"wurde " + str(MPS_Warnings) + " mal verwarnt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
+		//[player,["Auffällige Spieler",[name player,"wurde " + str(MPS_Warnings) + " mal verwarnt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
 	};
 };
 /* Fouls section finished */

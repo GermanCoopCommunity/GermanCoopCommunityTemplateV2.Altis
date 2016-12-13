@@ -33,10 +33,11 @@ private _groupLeader = _this select 3;
 
 // play UAV sequence above specific group leader
 [
-	_groupLeader,((str(group _groupLeader) select [2]) + ", Position: " + str(position _groupLeader) + ", Aktuelle Mannstärke: " + str(count units group _groupLeader)),
-	50/*,
-	1,
-	0,
+	_groupLeader,
+	("Einheit: " + (str(group _groupLeader) select [2]) + ", Position: " + str(position _groupLeader) + ", Aktuelle Mannstärke: " + str(count units group _groupLeader)),
+	50,
+	10,
+	70/*,
 	1,
 	["Infantry",'#107b1b',_groupLeader,5,5,0,str(position _groupLeader),0],
 	0*/
