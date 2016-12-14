@@ -133,22 +133,29 @@ if (isMultiplayer) then	// only if it is multiplayer mode, for editor purposes
 	// ...player has pilot password
 	if (typeOf player in Pilots) then	// if player is a pilot...	
 	{
-		["CheckPilot",3,false,true] call MPS_fnc_PW;
+		["CheckPilot",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
 		
 	};
 
 	// ...player has curator password
-	if (typeOf player in Curators) then
+	if (typeOf player in Curators) then	// if player is an Curator...
 	{
 		PW_correct = false;
 		["CheckCurator",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
 	};
 
 	// ...player has OPZ password
-	if (typeOf player in Officers) then	// if player is a curator...
+	if (typeOf player in Officers) then	// if player is an Officer...
 	{
 		PW_correct = false;
-		["CheckOfficer",3,false,true] call MPS_fnc_PW;
+		["CheckOfficer",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
+	};
+	
+	// ...player has Spectator password
+	if (typeOf player isEqualTo "VirtualSpectator_F") then	// if player is a Spectator...
+	{
+		PW_correct = false;
+		["CheckSpec",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
 	};
 };
 /* Slot Protection section finished */

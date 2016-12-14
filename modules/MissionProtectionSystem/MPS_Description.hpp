@@ -8,4 +8,5 @@
 #include "dialogs\CheckGerman2.hpp"
 #include "dialogs\CheckGerman3.hpp"
 #include "dialogs\CheckGerman4.hpp"
+#include "dialogs\CheckSpec.hpp"
 #include "dialogs\FRP.hpp"
