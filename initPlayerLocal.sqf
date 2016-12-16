@@ -3,7 +3,7 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initPlayerLocal.sqf",diag_ticktime];
-if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["InitPlayerLocal","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -17,6 +17,7 @@ _null = execVM "modules\Loadout\Loadout_InitClient.sqf";	// Player Loadout
 _null = execVM "modules\QTS\QTS_InitClient.sqf";	// Quentin's Scripts
 _null = execVM "modules\MissionProtectionSystem\MPS_InitClient.sqf";	// Mission Protection System
 _null = execVM "modules\Intro\MissionIntro_InitClient.sqf";	// Mission Intro
+if (typeOf player in Officers) then {_null = execVM "modules\UAVsurveillance\UAVSurv_InitClient.sqf";};	// UAVSurveillance
 /* initialized modules */
 
 

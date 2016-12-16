@@ -3,7 +3,7 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initServer.sqf",diag_ticktime];
-if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -59,7 +59,7 @@ if (!isNil "respawn_west" && {!isNil "respawn_east"} && {!isNil "respawn_guerril
 // check for Drone Control Station
 if (isNil "drone_control") then	// if there is no streaming control station...
 {["<t color='#ff0000' size ='1.5'>Es gibt keine Drohnen-Kontrollstation!<br/>Erstelle einen Monitor o.ä. namens ""drone_control"", damit die Luftüberwachung arbeiten kann!</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
-} else {if (typeOf player in Officers) then {_null = execVM "modules\UAVsurveillance\UAVSurv_InitServer.sqf";};};	// UAVSurveillance
+};
 /* Missing Content Warnings ended */
 
 

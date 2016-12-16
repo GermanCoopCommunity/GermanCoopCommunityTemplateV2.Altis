@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["Loadout InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 

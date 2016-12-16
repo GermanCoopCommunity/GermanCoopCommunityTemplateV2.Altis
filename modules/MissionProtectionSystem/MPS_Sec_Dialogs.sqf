@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if (isServer && {!(player diarySubjectExists "Modules")}) then {player createDiarySubject ["Modules","Modules"];};
+if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
 player createDiaryRecord ["Modules",["MPS Sec Diags","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -71,11 +71,11 @@ MPS_fnc_PW = {
 		{
 			if (_kickIfWrong) then
 			{
-				if !([getPlayerUID player] in Whitelist) then {[100] call MPS_fnc_AddFoul;};	// ...kick player
+				if !(getPlayerUID player in Whitelist) then {[100] call MPS_fnc_AddFoul;};	// ...kick player
 			}
 			else
 			{
-				if !([getPlayerUID player] in Whitelist) then {endMission "LOSER";};	// ...take player back to lobby
+				if !(getPlayerUID player in Whitelist) then {endMission "LOSER";};	// ...take player back to lobby
 			};
 		};
 	}

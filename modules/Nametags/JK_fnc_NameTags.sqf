@@ -68,7 +68,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 
 			if (lineIntersects [_playerPos, _targetPos vectorAdd [0,0,1], vehicle player, _target]) exitWith {};
 		
-			_color = if (group _target == group player) then {
+			_color = if (group _target isEqualTo group player) then {
 				_tempColor = [
 					[1,1,1,_alpha],//Main
 					[1,0,0.1,_alpha],//Red
@@ -86,7 +86,7 @@ if ((count _targets) > 0) then {			// only if someone is in array
 			_class = getText (configFile >> "CfgVehicles" >> typeOf (_target) >> "DisplayName");
 			_icon = "";
 			
-			if (_target in (missionNamespace getVariable ["BIS_revive_units", []]) || {_target getVariable ["FAR_isUnconscious",0] == 1}) then {
+			if (_target in (missionNamespace getVariable ["BIS_revive_units", []]) || {_target getVariable ["FAR_isUnconscious",0] isEqualTo 1}) then {
 				_icon = "\A3\Ui_f\data\IGUI\Cfg\Cursors\unitbleeding_ca.paa";
 				_text = _text + " (Verwundet)";
 			} else {
