@@ -17,7 +17,7 @@ class CheckGerman4
 		};
 		class GeCo_CheckGerman_RscText : GeCo_RscText
 		{
-			text = "Wer ist aktuell Bundeskanzler in Deutschland?";
+			text = "Wer ist aktuell Bundeskanzler (Vorname Leerzeichen Nachname) Deutschlands?";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";

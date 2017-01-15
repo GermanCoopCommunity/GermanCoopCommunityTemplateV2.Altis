@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["MPS InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -31,7 +31,7 @@ MPS_fnc_AddFoul =
 		AllKicked pushbackUnique (name player);	// ...add player's name to array of all kicked foulers to display it
 		publicVariable "AllKicked";	// ...broadcast current kicked foulers to each connected computer
 		//[player,["Auffällige Spieler",[name player,"wurde gekickt."]]] remoteExec ["createDiaryRecord",0];	// ...update foulers diary entry
-		["bratwurst",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
+		["homojack",format ["#kick %1",name player]] remoteExec ["serverCommand",2];	// ...kick him
 		((name player) + " wurde wegen seines Fehlverhaltens vom Einsatz abgezogen.") remoteExec ["systemChat",0];	// ...show system info message for the other players
     };
 	if ((MPS_FoulsCount < 100) && (MPS_FoulsCount > 0) && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in SpecSlots)}) then	// if player's fouls haven't exceeded limit yet, he isn't a trustworthy person on the whitelist and he doesn't play a Sepcial Slot...

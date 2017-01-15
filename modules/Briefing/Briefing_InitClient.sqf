@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -28,7 +28,7 @@ player createDiaryRecord [
 ];
 player createDiaryRecord [
 	"Diary", [
-		"Durchführung","Wird von der Führung bestimmt."	// bleibt bestehen
+		"Durchführung","Wird von der Führung bestimmt."	// bleibt bestehen, hier nichts ändern
 	]
 ];
 

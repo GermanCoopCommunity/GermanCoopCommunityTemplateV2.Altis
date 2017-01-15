@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["MPS Sec Diags","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -81,10 +81,10 @@ MPS_fnc_PW = {
 	}
 	else
 	{
-		_furtherCode;	// ...execute given code
 		hint "";	// ...remove possible hint remains
+		_furtherCode;	// ...execute given code		
 		player enableSimulation true;	// ...make player mobile
-		//closeDialog 0;
+		//closeDialog 0;	// already done by the dialogs themselves
 	};
 };
 
@@ -94,7 +94,7 @@ if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)
 {
 	PW_Attempts = 0;	// ...set this as players first password attempt
 	PW_correct = false;
-	["FRP",1,false,{Blacklist = Blacklist - [getPlayerUID player]; publicVariable "Blacklist"}] call MPS_fnc_PW;
+	["FRP",1,true,{Blacklist = Blacklist - [getPlayerUID player]; publicVariable "Blacklist"}] call MPS_fnc_PW;
 };
 /* Fouler Rejoin Protection section finished */
 
@@ -125,7 +125,7 @@ if !((getPlayerUID player) in JIP_WL) then
 
 
 /* Slot Protection dialogs */
-if (isMultiplayer) then	// only if it is multiplayer mode, for editor purposes
+if (isMultiplayer && {!((getPlayerUID player) in JIP_WL)}) then	// only if it is multiplayer mode, for editor purposes, and player isn't whitelisted
 {
 	PW_Attempts = 0;	// ...set this as players first password attempt
 	PW_correct = false;

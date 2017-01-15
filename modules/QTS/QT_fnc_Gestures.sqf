@@ -114,7 +114,7 @@ player createDiaryRecord [
 	"Gesten",
 	[
 		"Info",
-			"Folgende Zahlen auf der Tastatur unter den F-Tasten, um folgende Gesten auszuführen:<br/><br/><font color='#107b1b'>5</font color> - ""Los!""<br/><font color='#107b1b'>6</font color> - ""Stop!""<br/><font color='#107b1b'>7</font color> - ""Ja!""<br/><font color='#107b1b'>8</font color> - ""Nein!""<br/><font color='#107b1b'>9</font color> - ""Sichtung auf (Gradangabe)!"""""
+			"Folgende Zahlen auf der Tastatur unter den F-Tasten, um folgende Gesten auszuführen:<br/><br/><font color='#107b1b'>4</font color> - ""Los!""<br/><font color='#107b1b'>5</font color> - ""Stop!""<br/><font color='#107b1b'>6</font color> - ""Ja!""<br/><font color='#107b1b'>7</font color> - ""Nein!""<br/><font color='#107b1b'>8</font color> - ""Sichtung auf (Gradangabe)!"""""
 	]
 ];
 

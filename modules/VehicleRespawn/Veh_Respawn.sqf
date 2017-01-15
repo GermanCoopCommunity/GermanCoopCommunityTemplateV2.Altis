@@ -5,7 +5,7 @@
 _vehicle = _this select 0;
 
 // create new vehicle at start position
-(typeOf _vehicle) createVehicle (_vehicle getVariable "StartPos");
+//(typeOf _vehicle) createVehicle (_vehicle getVariable "StartPos");
 
 // add respawned vehicle to editable objects for all curators
 {[_x,[[_vehicle],true]] remoteExec ["addCuratorEditableObjects",2]; nil;} count allCurators;

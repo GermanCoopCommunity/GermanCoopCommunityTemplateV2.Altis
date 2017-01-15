@@ -3,7 +3,7 @@
 
 // log start of execution
 diag_log format ["%1 --- Executing initServer.sqf",diag_ticktime];
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -28,10 +28,6 @@ if !(time > 0) then	// only execute those files on mission start to prevent rese
 	private _ZFW_InitServer = compile preprocessFileLineNumbers "modules\ZeusFramework\ZFW_InitServer.sqf";
 	call _ZFW_InitServer;
 
-	// BLUFORCE Tracking
-	private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
-	call _BFT_InitServer;
-
 	// Mission Protection System
 	private _MPS_InitServer = compile preprocessFileLineNumbers "modules\MissionProtectionSystem\MPS_InitServer.sqf";
 	call _MPS_InitServer;
@@ -39,6 +35,10 @@ if !(time > 0) then	// only execute those files on mission start to prevent rese
 	// Vehicle Respawn System
 	//private _VRS_InitServer = compile preprocessFileLineNumbers "modules\VehicleRespawn\VRS_InitServer.sqf";
 	//call _VRS_InitServer;
+
+	// BLUFORCE Tracking (placed last because it waits until mission start and meanwhile pauses this script)
+	private _BFT_InitServer = compile preprocessFileLineNumbers "modules\BLUFORCE_Tracking\BFT_InitServer.sqf";
+	call _BFT_InitServer;
 };
 /* initServers initialized */
 

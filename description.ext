@@ -37,7 +37,7 @@ disabledAI = 1;
 aiKills = 1;
 enableDebugConsole = 1;	// enable debug console for hosts and logged in admins
 forceRotorLibSimulation = 0; // flight model is up to the player
-showHUD[] = {
+/*showHUD[] = {
 	true,	// Scripted HUD (same as showHUD command)
 	false,	// Vehicle + soldier info
 	false,	// Vehicle radar
@@ -47,7 +47,7 @@ showHUD[] = {
 	true,	// Group Bar
 	true,	// HUD Weapon Cursors
 	true	// HUD Squad Radar
-};
+};*/
 showGPS = 1;
 showCompass = 1;
 showMap = 1;

@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["MPS MEH","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -52,7 +52,7 @@ Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",
 	then
 	{
 		_veh = objectParent player;
-		["Sie sind kein  " + (getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")) >> "DisplayName"))+ ".<br/>" + "Überlassen Sie diesen Platz jemandem, der dafür auch ausgebildet ist, Soldat.",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...warn him
+		["Sie sind kein " + (getText (configFile >> "CfgVehicles" >> (getText (configFile >> "CfgVehicles" >> typeOf _veh >> "crew")) >> "DisplayName"))+ ".<br/>" + "Überlassen Sie diesen Platz jemandem, der dafür auch ausgebildet ist, Soldat.",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...warn him
 		player action ["GetOut",_veh];	// ...eject him out of the vehicle
 		if (isNull driver _veh) then {_veh engineOn false;};
 	};

@@ -2,7 +2,7 @@
 
 
 // log start of execution
-if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];};
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
 player createDiaryRecord ["Modules",["BFT InitServer","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
@@ -26,28 +26,58 @@ BFT_Groups = [];
 	{
 		if (typeOf leader _x isEqualTo "B_Pilot_F" or {typeOf leader _x isEqualTo "O_Pilot_F"} or {typeOf leader _x isEqualTo "I_Pilot_F"}) then	// if group leader is fighter pilot
 		{
-			_marker setMarkerType "b_plane";
+			switch (side leader _x) do
+			{
+				case WEST: {_marker setMarkerType "b_plane";};
+				case EAST: {_marker setMarkerType "o_plane";};
+				case RESISTANCE: {_marker setMarkerType "n_plane";};
+				default {_marker setMarkerType "n_plane";};
+			};
 		}
 		else
 		{
-			_marker setMarkerType "b_air";
+			switch (side leader _x) do
+			{
+				case WEST: {_marker setMarkerType "b_air";};
+				case EAST: {_marker setMarkerType "o_air";};
+				case RESISTANCE: {_marker setMarkerType "n_air";};
+				default {_marker setMarkerType "n_air";};
+			};
 		};
     }
 	else
 	{
         if (typeOf (leader _x) in Crews) then
 		{ 
-            _marker setMarkerType "b_mech_inf";
+            switch (side leader _x) do
+			{
+				case WEST: {_marker setMarkerType "b_mech_inf";};
+				case EAST: {_marker setMarkerType "o_mech_inf";};
+				case RESISTANCE: {_marker setMarkerType "n_mech_inf";};
+				default {_marker setMarkerType "n_mech_inf";};
+			};
         }
 		else
 		{
             if (typeOf (leader _x) in Officers) then
 			{
-                _marker setMarkerType "b_hq";
+                switch (side leader _x) do
+				{
+				case WEST: {_marker setMarkerType "b_hq";};
+				case EAST: {_marker setMarkerType "o_hq";};
+				case RESISTANCE: {_marker setMarkerType "n_hq";};
+				default {_marker setMarkerType "n_hq";};
+				};
             }
 			else
 			{
-                _marker setMarkerType "b_inf";
+                switch (side leader _x) do
+				{
+				case WEST: {_marker setMarkerType "b_inf";};
+				case EAST: {_marker setMarkerType "o_inf";};
+				case RESISTANCE: {_marker setMarkerType "n_inf";};
+				default {_marker setMarkerType "n_inf";};
+				};
             };
         };
     };

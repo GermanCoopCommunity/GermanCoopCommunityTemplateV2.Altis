@@ -15,7 +15,7 @@
 /* To Do
 
 - check if button is already assigned to another important action
-- fade speech and music too (not radio because important for ingame sound)
+- fade speech too (not radio because important for ingame sound)
 - make player play a move while toggling earplugs
 
 */
@@ -45,7 +45,7 @@ QT_Earplugs_Display_EH = (findDisplay 46) displayAddEventHandler [
 			{
 				0.1 fadeSound (soundVolume / 5);	// ...decrease sound volume...
 				//0.1 fadeSpeech 0.25;
-				//0.1 fadeMusic 0.25;
+				0.1 fadeMusic (musicVolume / 5);	// ...decrease music volume...
 				["Ohrstöpsel eingesetzt.",1,0,3,0] spawn BIS_fnc_dynamicText;
 				player setVariable ["EarplugsIn",true,false]; // ...and set earplugs to "in"
 			}
@@ -53,8 +53,8 @@ QT_Earplugs_Display_EH = (findDisplay 46) displayAddEventHandler [
 			{
 				0.1 fadeSound (soundVolume * 5);	// ...reset sound volume
 				//0.1 fadeSpeech 1;
-				//0.1 fadeMusic 1;
-				["Ohrstöpsel entfernt.",1,0.1,3,0] spawn BIS_fnc_dynamicText;
+				0.1 fadeMusic (musicVolume * 5);	// ...reset music volume
+				["Ohrstöpsel entfernt.",1,0,3,0] spawn BIS_fnc_dynamicText;
 				player setVariable ["EarplugsIn",false,false];	// ...and set earplugs to "out"
 			};
 		};
@@ -67,16 +67,16 @@ QT_Earplugs_Respawn_EH = player addEventHandler [	// reset volume on players dea
 	{
 		if !(player getVariable "EarplugsIn") then
 		{
-			0.1 fadeSound (soundVolume / 4);
+			0.1 fadeSound (soundVolume / 5);	// ...decrease sound volume...
 			//0.1 fadeSpeech 0.25;
-			//0.1 fadeMusic 0.25;
+			0.1 fadeMusic (musicVolume / 5);	// ...decrease music volume...
 			player setVariable ["EarplugsIn",true];
 		}
 		else
 		{
-			0.1 fadeSound (soundVolume * 4);
+			0.1 fadeSound (soundVolume * 5);	// ...reset sound volume
 			//0.1 fadeSpeech 1;
-			//0.1 fadeMusic 1;
+			0.1 fadeMusic (musicVolume * 5);	// ...reset music volume
 			player setVariable ["EarplugsIn",false];
 		};
 	}
