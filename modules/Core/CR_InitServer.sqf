@@ -8,15 +8,15 @@ player createDiaryRecord ["Modules",["Core InitServer","Ausführung begonnen um 
 
 /* let server define all arrays and publicize them to the clients, so JIPers don't reset the arrays each time they JIP */
 // define Pilots
-Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F"];
+Pilots = ["B_Helipilot_F","B_Pilot_F","O_Helipilot_F","O_Pilot_F","I_helipilot_F","I_Pilot_F","C_man_pilot_F","B_T_Helipilot_F","B_T_Pilot_F","O_T_Helipilot_F","O_T_Pilot_F","I_C_Pilot_F"];
 publicVariable "Pilots";
 
 // define Crew
-Crews = ["B_crew_F","O_crew_F","I_crew_F"];
+Crews = ["B_crew_F","O_crew_F","I_crew_F","B_T_crew_F","O_T_crew_F"];
 publicVariable "Crew";
 
 // define Officers
-Officers = ["B_officer_F","O_officer_F","I_officer_F"];
+Officers = ["B_officer_F","O_officer_F","I_officer_F","B_T_officer_F","O_T_officer_F","B_GEN_Commander_F"];
 publicVariable "Officers";
 
 // define Curators

@@ -1,4 +1,4 @@
-Lieber GeCo-Missionsbauer,
+Lieber Missionsbauer,
 
 dieses Template verfügt über alle Funktionen, die bei der GeCo nötig sind.
 Im Folgenden wird dir erklärt, wie du das Template auf deine eigene Mission anpassen kannst.
@@ -10,13 +10,14 @@ WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 2.	description.ext
 	- class Debriefing:
 		Debriefing-Text ändern, falls du deine Mission gescriptet und nicht von Zeus aus enden lassen möchtest.
-		Voreinstellung: generischer Sieg-/Niederlagentext
+		Voreinstellung: generischer Sieg-/Niederlagentext, der aber nicht angezeigt wird, da meist der Zeus die Mission selbst beendet
 3.	mission.sqm
 	- achte darauf, stets ein Objekt namens MPS_BaseMrkr im Zentrum deiner Basis zu haben. Es wird vom Schutzsystem benötigt
+	- benenne jede Spielergruppe. Ist sonst hässlich, wenn sie automatische Namen wie "Alpha 3-4" zugewiesen bekommen
 4.	modules\Loadout\Loadout_InitClient.sqf
 	- einstellen, ob und welche Tarnfarbe die Spieler tragen und ob sie und/oder die KI Nachtsichtgeräte erhalten sollen
 5.	init.sqf
-	- Sichtweite für die Spieler bei setViewDistance in Metern
+	- Sichtweite für die Spieler bei setViewDistance in Metern nach Belieben
 
 
 
