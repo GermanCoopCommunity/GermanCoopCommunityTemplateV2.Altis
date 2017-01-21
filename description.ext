@@ -169,6 +169,11 @@ class CfgRemoteExec
         // Ability to send jip messages: 0-disabled, 1-enabled (default)
         JIP = 1;
         /*your functions here*/
+		class BIS_fnc_initVehicle
+        {
+			allowedTargets = 0;	// can target anyone (default)
+			JIP = 1;	// sending jip messages is disabled for this function (overrides settings in the Functions class)
+        };
     };
 	class Commands
     {
@@ -233,7 +238,7 @@ class CfgORBAT
 		class Alpha
 		{
 			textShort = "Alpha";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -245,7 +250,7 @@ class CfgORBAT
 		class Bravo
 		{
 			textShort = "Bravo";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -257,7 +262,7 @@ class CfgORBAT
 		class Charlie
 		{
 			textShort = "Charlie";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -269,7 +274,7 @@ class CfgORBAT
 		class Delta
 		{
 			textShort = "Delta";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -281,7 +286,7 @@ class CfgORBAT
 		class Echo
 		{
 			textShort = "Echo";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -293,7 +298,7 @@ class CfgORBAT
 		class Foxtrot
 		{
 			textShort = "Foxtrot";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -305,7 +310,7 @@ class CfgORBAT
 		class Golf
 		{
 			textShort = "Golf";
-			text = "Infanterie-Squad";
+			text = "Infanterie-Trupp";
 			//description = "All of your text would go here.";
 			type = "Infantry";
 			size = "Squad";
@@ -399,15 +404,15 @@ class CfgORBAT
 
 
 /* Mission Params */
-class Params
+/*class Params
 {
-	/*class Daytime
+	class Daytime
 	{
 		title = "Tageszeit";
 		texts[] = {"Morgen","Mittag","Abend","Nacht"};
 		values[] = {6,12,18,0};
 		default = 12;
 		function = "BIS_fnc_paramDaytime"; // (Optional) Function called when player joins, selected value is passed as an argument
-	};*/
-};
+	};
+};*/
 /* end of Mission Params */

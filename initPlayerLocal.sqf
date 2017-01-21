@@ -17,7 +17,6 @@ _null = execVM "modules\QTS\QTS_InitClient.sqf";	// Quentin's Scripts
 _null = execVM "modules\MissionProtectionSystem\MPS_InitClient.sqf";	// Mission Protection System
 _null = execVM "modules\Loadout\Loadout_InitClient.sqf";	// Player Loadout
 _null = execVM "modules\Intro\MissionIntro_InitClient.sqf";	// Mission Intro
-waitUntil {!isNil "Officers"}; if (typeOf player in Officers) then {_null = execVM "modules\UAVsurveillance\UAVSurv_InitClient.sqf";};	// UAVSurveillance
 /* initialized modules */
 
 

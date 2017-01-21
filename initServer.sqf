@@ -56,10 +56,6 @@ if (count entities "ModuleRespawnVehicle_F" isEqualTo 0) then	// if there is no 
 if (!isNil "respawn_west" && {!isNil "respawn_east"} && {!isNil "respawn_guerrila"} && {!isNil "respawn_civilian"} && {count entities "ModuleRespawnPosition_F" isEqualTo 0}) then	// if there is no Player Respawn (Module)...
 {["<t color='#ff0000' size ='1.5'>Es gibt keinen Spieler-Respawn-Marker bzw. -modul!<br/>Erstelle einen Marker namens ""respawn_west"" oder setze ein Respawn-Modul ""ModuleRespawnPosition_F"" und setze ihn an eine Position, wo die Spieler respawnen sollen.</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
 };
-// check for Drone Control Station
-if (isNil "drone_control") then	// if there is no streaming control station...
-{["<t color='#ff0000' size ='1.5'>Es gibt keine Drohnen-Kontrollstation!<br/>Erstelle einen Monitor o.ä. namens ""drone_control"", damit die Luftüberwachung arbeiten kann!</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
-};
 /* Missing Content Warnings ended */
 
 

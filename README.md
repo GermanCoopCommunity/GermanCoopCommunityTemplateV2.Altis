@@ -46,12 +46,11 @@ Unit variable names:
 - Pilots: pilot_1 to pilot_4
 - Crew leader: crew_1
 - Fighter Pilot: jet_pilot
-- Curators: gamemaster_1 & gamemaster_2
+- Curators: curator_1 & curator_2
 
 
 Other variable names:
 
-- Drone Control Station: drone_control
 - Mission Protection System:
 	...Base Protection Marker: MPS_BaseMrkr (object placed in centre of player base for MPS to work)
 
