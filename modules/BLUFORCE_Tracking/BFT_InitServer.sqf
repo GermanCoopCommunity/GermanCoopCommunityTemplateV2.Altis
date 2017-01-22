@@ -94,7 +94,7 @@ BFT_fnc_PFH =
         nil
     } count BFT_Groups;
 };
-PFH pushback [BFT_fnc_PFH,5];
+PFH pushback [BFT_fnc_PFH,5];	// number is refreshing rate, modify as you wish
 
 
 // log end of execution

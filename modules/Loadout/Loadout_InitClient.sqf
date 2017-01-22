@@ -11,7 +11,7 @@ waitUntil {!isNil "Officers"};
 
 /*
 
-...modify loadout as you like
+...modify loadout as you like here
 
 */
 
@@ -47,6 +47,8 @@ _null = [] execVM "modules\Loadout\Camos\setUK.sqf";
 _null = [] execVM "modules\Loadout\NVG\setPlayerNVG.sqf";
 // set AI night vision preferences (comment out with // at the start of the next line to deactivate taking NVGs from AI)
 _null = [] execVM "modules\Loadout\NVG\setAINVG.sqf";
+// set player weapon flashlight preferences (comment out with // at the start of the next line to deactivate replacing player's laser attachment with flashlight)
+_null = [] execVM "modules\Loadout\setPlayerFlashlight.sqf";
 /* Player Loadout set */
 
 

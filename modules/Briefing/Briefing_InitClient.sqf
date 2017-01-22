@@ -35,7 +35,7 @@ player createDiaryRecord [
 
 // Credits
 player createDiarySubject ["Credits","Credits"];
-player createDiaryRecord [
+/*player createDiaryRecord [
 	"Credits",
 	[
 		"Wolf13898 & wildw1ng",
@@ -48,7 +48,7 @@ player createDiaryRecord [
 		"Sabre",
 			"UN 2030 Texturen"
 	]
-];
+];*/
 player createDiaryRecord [
 	"Credits",
 	[
