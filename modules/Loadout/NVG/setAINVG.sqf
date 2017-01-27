@@ -1,7 +1,7 @@
 // by Quentin
 
 
-if (isServer) then
+if (isServer) then	// let server remove NVGs from all current AI
 {
 	{switch (side _x) do	// depending on AI's side, remove the according NV goggles
 	{
@@ -9,7 +9,7 @@ if (isServer) then
 		case (EAST): {_x unassignItem "NVGoggles_OPFOR"; _x removeItem "NVGoggles_OPFOR";};
 		case (RESISTANCE): {_x unassignItem "NVGoggles_INDEP"; _x removeItem "NVGoggles_INDEP";};
 		default {_x unassignItem "NVGoggles"; _x removeItem "NVGoggles";};
-	};} forEach allUnits - playableUnits;
+	};nil} count allUnits - playableUnits;
 };
 if (typeOf player in Curators) then	// if player is a curator, remove NVG from units spawned by him
 {

@@ -33,7 +33,7 @@ QT_call_fncs pushBackUnique QT_fnc_Jump;
 
 // apply QTS on player
 {[player] call _x} count QT_call_fncs;
-{[player] spawn _x} forEach QT_spawn_fncs;
+{[player] spawn _x;nil} count QT_spawn_fncs;
 
 // if player is a curator, apply QTS on units spawned by him
 if (typeOf player in Curators) then
@@ -48,7 +48,7 @@ if (typeOf player in Curators) then
 			if (_entity in (allUnits - playableUnits - entities "HeadlessClient_F")) then	// if entity spawned is an AI unit...
 			{
 				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
-				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
+				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x;nil} count QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 				/*#ifdef NoAINVG	// if AI aren't to be equipped with NVGs...
 				switch (side _entity) do	// ...depending on entity's side, remove the according NV goggles
 				{
@@ -73,7 +73,7 @@ if (typeOf player in Curators) then
 			if (_group in allGroups) then	// if group spawned is an AI group...
 			{
 				if (!isNil "QT_AI_call_fncs") then {{[_entity] call _x} count QT_AI_call_fncs};	// ...initialize QT_AI_call_fncs for it
-				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x} forEach QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
+				if (!isNil "QT_AI_spawn_fncs") then {{[_entity] spawn _x;nil} count QT_AI_spawn_fncs};	// ...initialize QT_AI_spawn_fncs for it
 			};
 			{_x addCuratorEditableObjects [[_entity],true]} count (allCurators - [_curator]);	// ...add placed entity to editable objects for the other curators
 		}

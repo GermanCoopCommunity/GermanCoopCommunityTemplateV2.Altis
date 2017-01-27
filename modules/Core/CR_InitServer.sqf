@@ -23,10 +23,6 @@ publicVariable "Officers";
 Curators = ["VirtualCurator_F","B_VirtualCurator_F","O_VirtualCurator_F","I_VirtualCurator_F","C_VirtualCurator_F"];
 publicVariable "Curators";
 
-// define Special Slots
-SpecSlots = Pilots + Officers + Curators;
-publicVariable "SpecSlots";
-
 // whitelist of trustworthy people
 Whitelist = ["76561198024503777","76561198029924112","76561198063094413","76561198035982662","76561198006766136"];
 publicVariable "Whitelist";
@@ -34,14 +30,6 @@ publicVariable "Whitelist";
 // blacklist containing players which exceeded the fouls limit and were kicked
 Blacklist = [];
 publicVariable "Blacklist";
-
-// array containing names of players which exceeded the fouls limit and were kicked
-AllKicked = [];
-publicVariable "AllKicked";
-
-// array containing names of players which fouled, but weren't kicked yet
-AllWarned = [];
-publicVariable "AllWarned";
 
 // define PFH
 PFH = [];

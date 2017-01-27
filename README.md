@@ -1,13 +1,13 @@
 # GermanCoopCommunityTemplateV2
 
-This is the new (second) version of the German Coop Community Mission Template.
+This is the new (second) version of the German Coop Community Mission Template by Quentin.
 
 General:
 
 - Side: BLUFOR
 - Faction: NATO
 - Playable Units: 83, which are...
-                      - 7x 10 per squad
+                      - 7 x 10 per squad
                       - 2 Officers (Commanding Officers & Executive Officers)
                       - 4 pilots
                       - 1 jet pilot
@@ -42,7 +42,7 @@ Unit variable names:
 
 - Commanding Officers: co
 - Executive Officers: xo
-- Squadleaders: squadname_lead
+- Squadleaders: -squadname-_lead
 - Pilots: pilot_1 to pilot_4
 - Crew leader: crew_1
 - Fighter Pilot: jet_pilot

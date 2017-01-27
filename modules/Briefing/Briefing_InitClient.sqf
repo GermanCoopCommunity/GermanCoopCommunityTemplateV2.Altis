@@ -10,24 +10,24 @@ player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#b40100
 // benutze <br/>, um einen Enter-artigen Zeilensprung einzufügen
 player createDiaryRecord [
 	"Diary", [
-		"Situation",
-		"Die Ausgangssituation der Mission steht hier."
+		"Situation",	// hier nichts ändern
+		"Die Ausgangssituation der Mission steht hier."	// <- hier kannst du deinen Ausgangssituation hineinschreiben
 	]
 ];
 player createDiaryRecord [
 	"Diary", [
-		"Einsatzregeln",
-		"Die Einsatzregeln der Mission stehen hier."
+		"Einsatzregeln",	// hier nichts ändern
+		"Die Einsatzregeln der Mission stehen hier."	// <- hier kannst du die Einsatzregeln (kein Artilleriebeschuss auf Städte, Zivilisten und Kriegsgefangenen ist nichts anzutun etc.) hineinschreiben
 	]
 ];
 player createDiaryRecord [
 	"Diary", [
-		"Mission",
-		"Die Mission selbst steht hier."
+		"Mission",	// hier nichts ändern
+		"Die Mission selbst steht hier."	// <- hier kannst du die Missionsbeschreibung hineinschreiben
 	]
 ];
 player createDiaryRecord [
-	"Diary", [
+	"Diary", [	// hier nichts ändern
 		"Durchführung","Wird von der Führung bestimmt."	// bleibt bestehen, hier nichts ändern
 	]
 ];
@@ -48,14 +48,14 @@ player createDiaryRecord [
 		"Sabre",
 			"UN 2030 Texturen"
 	]
-];*/
+];
 player createDiaryRecord [
 	"Credits",
 	[
 		"MacRae",
 			"Sitzscript"
 	]
-];
+];*/
 player createDiaryRecord [
 	"Credits",
 	[
@@ -66,13 +66,13 @@ player createDiaryRecord [
 player createDiaryRecord [
 	"Credits",
 	[
-		"Blackburn / Zombeck",
+		"Zombeck",
 			"Unbedingte Hilfsbereitschaft"
 	]
 ];
 
 
-// Revive explanation
+/*// Revive explanation
 player createDiarySubject ["Revive","Revive"];
 player createDiaryRecord [
 	"Revive",
@@ -80,7 +80,7 @@ player createDiaryRecord [
 		"Info",
 			"Das Revivesystem ist darauf ausgelegt, den Spieler bei Treffern durch großkalibrige Projektile oder bei Treffern auf ungeschützte Areale zu töten. <font color='#107b1b'>Nur Sanitäter können wiederbeleben</font color>, wenn sie ein Medikit bei sich tragen."
 	]
-];
+];*/
 
 
 // Teamspeak IP
@@ -88,13 +88,13 @@ player createDiarySubject ["Teamspeak","Teamspeak"];
 player createDiaryRecord [
 	"Teamspeak",
 	[
-		"IP",
-			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TS an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
+		"Server-IP",
+			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TeamSpeak-Server an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
 	]
 ];
 
 
-// Company Roster
+/*// Company Roster
 player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 {
 	if (isPlayer leader _x) then
@@ -110,7 +110,7 @@ player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 		];
 	};
 	nil;
-} count allGroups;
+} count allGroups;*/
 
 
 // log end of execution

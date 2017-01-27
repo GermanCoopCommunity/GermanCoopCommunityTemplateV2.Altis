@@ -81,21 +81,21 @@ if ((count _targets) > 0) then {			// only if someone is in array
 				[0.77, 0.51, 0.08, _alpha]	// orange
 			};
 			
-			//_text = rank _target + " " + name _target + " (" + str(group _target) select [2] + ")";
-			//_text = rank _target + " " + name _target + " " + (str(group _target) select [2]) + "";	// Scruffy's fix attempt
-			_text = rank _target + " " + name _target + " (" + (str(group _target) select [2]) + ")";
-			_class = "";
-			_class = getText (configFile >> "CfgVehicles" >> typeOf (_target) >> "DisplayName");
+			_text = /*rank _target + " " + */name _target/* + " (" + (str(group _target) select [2]) + ")"*/;
+			/*_class = "";
+			_class = getText (configFile >> "CfgVehicles" >> typeOf (_target) >> "DisplayName");*/
 			_icon = "";
 			
-			if (_target in (missionNamespace getVariable ["BIS_revive_units", []]) || {_target getVariable ["FAR_isUnconscious",0] isEqualTo 1}) then {
+			if (_target in (missionNamespace getVariable ["BIS_revive_units",[]])) then {
 				_icon = "\A3\Ui_f\data\IGUI\Cfg\Cursors\unitbleeding_ca.paa";
 				_text = _text + " (Verwundet)";
-			} else {
-			   _text = _text + " " + roleDescription _target;
+			}
+			else
+			{
+				_text = _text/* + " " + roleDescription _target*/;
 				_icon = TEXTURES_RANKS select ((["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"] find (rank _target)) + 1);
 			};
-			drawIcon3D [_icon, _color, _headPosition vectorAdd [0, 0, 0.4], 0.8, 0.8, 0, _text, 2, 0.033, "PuristaMedium"];
+			drawIcon3D [_icon,_color,_headPosition vectorAdd [0,0,0.4],0.8,0.8,0,_text,2,0.033,"PuristaMedium"];
 		};
 		true
 

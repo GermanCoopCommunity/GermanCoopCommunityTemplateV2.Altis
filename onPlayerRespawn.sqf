@@ -2,7 +2,8 @@
 
 
 // log start of execution
-diag_log format ["%1 --- Executing onPlayerRespawn.sqf",diag_ticktime];
+//if !(player diarySubjectExists "Modules") then {player createDiarySubject ["Modules","Modules"];}; // create "Modules" diary entry for player
+player createDiaryRecord ["Modules",["onPlayerRespawn","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
 // ZFW
@@ -22,4 +23,4 @@ player setUnitLoadout plyr_ldt;
 
 
 // log end of execution
-diag_log format ["%1 --- onPlayerRespawn.sqf executed",diag_ticktime];
+player createDiaryRecord ["Modules",["onPlayerRespawn","<font color='#107b1b'>Ausführung beendet</font color> nach " + str(time) + " Sekunden."]];
