@@ -24,7 +24,7 @@ if (side player isEqualTo WEST) then
 plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
 
 // set camos
-#define UK	// replace "Camo" with any of the below to apply this camo to players
+#define Camo	// replace "Camo" with any of the below to apply this camo to players
 #ifdef Woodland	// works fully
 _null = [] execVM "modules\Loadout\Camos\setWoodland.sqf";
 #endif
