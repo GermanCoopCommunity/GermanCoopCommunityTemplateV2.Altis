@@ -52,7 +52,9 @@ Unit variable names:
 Other variable names:
 
 - Mission Protection System:
-	...Base Protection Marker: MPS_BaseMrkr (object placed in centre of player base for MPS to work)
+	...Base Protection Marker: MPS_BaseMrkr (marker placed in centre of player base for MPS to work)
+- other
+	...Arm & Refuel Point: refuel_point (does nothing atm)
 
 
 Passwords not shown for safety reasons.

@@ -10,7 +10,7 @@ waitUntil {time > 0};	// wait for mission start, so default loadout is assigned 
 possCamoUnif = ["U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest"];
 if (uniform player in possCamoUnif) then
 {
-	/*private _vestItems = vestItems player;
+	private _vestItems = vestItems player;
 	private _vestMagazines = vestMagazines player;
 	switch (vest player) do
 	{
@@ -77,7 +77,7 @@ if (uniform player in possCamoUnif) then
 		case "H_Booniehat_mcamo": {player addHeadgear "H_Booniehat_oli"};
 		
 		default {nil};
-	};*/
+	};
 	plyr_ldt = getUnitLoadout player;	// save default player loadout to apply on respawn later
 	addMissionEventHandler ["EachFrame",	// add persistent MEH to maintain texture
 	{

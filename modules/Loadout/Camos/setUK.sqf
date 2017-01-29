@@ -2,13 +2,25 @@
 
 
 possCamoUnif = ["U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest"];
+
 if (uniform player in possCamoUnif) then
 {
 	private _unifItems = uniformItems player;
 	private _unifMagazines = uniformMagazines player;
-	if (uniform player isEqualTo "U_B_CombatUniform_mcam") then {player addUniform "U_B_CTRG_Soldier_urb_1_F"};
-	if (uniform player isEqualTo "U_B_CombatUniform_mcam_tshirt") then {player addUniform "U_B_CTRG_Soldier_urb_2_F"};
-	if (uniform player isEqualTo "U_B_CombatUniform_mcam_vest") then {player addUniform "U_B_CTRG_Soldier_urb_3_F"};
+	
+	if (_this select 0 isEqualTo "NonTanoa") then
+	{
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam") then {player addUniform "U_B_CTRG_1"};
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam_tshirt") then {player addUniform "U_B_CTRG_1"};
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam_vest") then {player addUniform "U_B_CTRG_1"};
+	}
+	else
+	{
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam") then {player addUniform "U_B_CTRG_Soldier_urb_1_F"};
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam_tshirt") then {player addUniform "U_B_CTRG_Soldier_urb_2_F"};
+		if (uniform player isEqualTo "U_B_CombatUniform_mcam_vest") then {player addUniform "U_B_CTRG_Soldier_urb_3_F"};
+	};
+		
 	{player addItemToUniform _x; nil;} count _unifItems;
 	{player addItemToUniform _x; nil;} count _unifMagazines;
 	

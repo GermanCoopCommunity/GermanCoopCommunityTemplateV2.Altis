@@ -12,8 +12,7 @@ WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 		Debriefing-Text ändern, falls du deine Mission gescriptet und nicht von Zeus aus enden lassen möchtest.
 		Voreinstellung: generischer Sieg-/Niederlagentext, der aber nicht angezeigt wird, da meist der Zeus die Mission selbst beendet
 3.	mission.sqm
-	- achte darauf, stets ein Objekt namens MPS_BaseMrkr im Zentrum deiner Basis zu haben. Es wird vom Schutzsystem benötigt
-	- benenne jede Spielergruppe. Ist sonst hässlich, wenn sie automatische Namen wie "Alpha 3-4" zugewiesen bekommen
+	- achte darauf, stets einen MARKER namens MPS_BaseMrkr im Zentrum deiner Basis zu haben. Er wird vom Schutzsystem benötigt
 4.	modules\Loadout\Loadout_InitClient.sqf
 	- Spielerausrüstung scripttechnisch veränderbar, ansonsten wird die im Editor zugewiesene Ausrüstung benutzt
 	- einstellen, ob und welche Tarnfarbe die Spieler tragen, ob ihre Waffenlaser durch Taschenlampen ersetzt werden sollen und ob sie und/oder die KI Nachtsichtgeräte erhalten sollen

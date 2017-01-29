@@ -101,7 +101,8 @@ if ((getPlayerUID player) in Blacklist && {!((getPlayerUID player) in Whitelist)
 
 /* Idiotentest */
 // check on join, if JIPer speaks German
-if !((getPlayerUID player) in Whitelist) then
+waitUntil {!isNil "JIP_WL"};
+if !((getPlayerUID player) in JIP_WL) then
 {
 	PW_Attempts = 0;	// ...set this as players first password attempt
 	PW_correct = false;
@@ -117,8 +118,8 @@ if !((getPlayerUID player) in Whitelist) then
 		waitUntil {!dialog};	// ...wait until dialog is answered
 		PW_correct = false;
 		["CheckGerman4",2,false,true] call MPS_fnc_PW;
-		Whitelist pushBackUnique (getPlayerUID player);
-		publicVariable "Whitelist";
+		JIP_WL pushBackUnique (getPlayerUID player);	// ...add player to JIP whitelist so they won't be bothered with Idiotentest again
+		publicVariable "JIP_WL";
 	};
 };
 /* Idiotentest section finished */

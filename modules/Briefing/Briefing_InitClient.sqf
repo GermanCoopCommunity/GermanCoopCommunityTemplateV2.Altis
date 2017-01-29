@@ -66,7 +66,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	"Credits",
 	[
-		"Zombeck",
+		"DrZombeck",
 			"Unbedingte Hilfsbereitschaft"
 	]
 ];

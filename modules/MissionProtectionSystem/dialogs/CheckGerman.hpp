@@ -17,7 +17,7 @@ class CheckGerman
 		};
 		class GeCo_CheckGerman_RscText : GeCo_RscText
 		{
-			text = "In welcher Sprache wird auf dem Server gespielt?";
+			text = "In welcher Sprache (klein) wird auf dem Server gespielt?";
 			x = "SafeZoneX + (577.5 / 1920) * SafeZoneW";
 			y = "SafeZoneY + (317.5 / 1080) * SafeZoneH";
 			w = "(558.999999999999 / 1920) * SafeZoneW";

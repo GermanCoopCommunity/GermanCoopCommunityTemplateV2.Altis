@@ -7,14 +7,13 @@ player createDiaryRecord ["Modules",["MPS InitClient","<font color='#b40100'>Aus
 
 
 // wait until all core variables are publicized
-waitUntil {!isNil "AllWarned"};
+waitUntil {!isNil "Blacklist"};
 
 
 /* Foul Monitoring Function */
 MPS_FoulsCount = 0;	// set player's foul count and MPS's warnings to 0 initially
 MPS_Warnings = 0;
 
-//player createDiarySubject ["Auffällige Spieler","Auffällige Spieler"];	// create diary subject containing all foulers registered by MPS	DEACTIVATED UNTIL WORKING
 MPS_fnc_AddFoul =
 {
 	params [["_foulWeight",1]];
@@ -60,14 +59,14 @@ else	// ...otherwise...
 {
 	if (!isNil "MPS_BaseMrkr") then	// ...if there is no object called "MPS_BaseMrkr"...
 	{
-		["<t color='#ff0000' size ='1.5'>Es gibt keinen BaseMarker!<br/>Erstelle ein Objekt namens ""MPS_BaseMrkr"" und platziere es ins Zentrum der Spielerbasis, damit das Schutzsystem arbeiten kann.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...tell him
+		["<t color='#ff0000' size ='1.5'>Es gibt keinen BaseMarker!<br/>Erstelle einen Marker namens ""MPS_BaseMrkr"" und platziere ihn ins Zentrum der Spielerbasis, damit das Schutzsystem arbeiten kann.</t>",0,0,4,0] spawn BIS_fnc_dynamicText;	// ...tell him
 	};
 };
 /* Baserape Protection section finished */
 
 
 /* Teamkill Protection */
-if (!(getPlayerUID player in Whitelist)) then	// if player is not on Whitelist and doesn't play a Special Slot...
+if (!(getPlayerUID player in Whitelist) && {!(getPlayerUID player in Pilots)}) then	// if player is not on Whitelist and doesn't play as a pilot (because they could accidentally teamkill dropping bombs etc.)...
 {
 	MPKilled_EH = player addMPEventHandler ["MPKilled",
 	{
@@ -76,11 +75,11 @@ if (!(getPlayerUID player in Whitelist)) then	// if player is not on Whitelist a
 		private _instigator = _this select 2;
 		if ((player isEqualTo _victim) && {!(player isEqualTo _killer)} && {!(player isEqualTo _instigator)}) then
 		{
-			hint format ["Du wurdest von deinem Kameraden <t color='#ff0000' size ='1.5'>%1</t> %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
+			hint format ["Du wurdest von deinem Kameraden %1 %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
 		}
 		else
 		{ 
-			if (player isEqualTo _killer) then
+			if (player isEqualTo _killer && {!(player isEqualTo _victim)}) then
 			{
 				[50] call MPS_fnc_AddFoul;
 				if (MPS_FoulsCount < 100) then
