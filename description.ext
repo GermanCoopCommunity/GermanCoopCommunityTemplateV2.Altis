@@ -192,11 +192,6 @@ class CfgRemoteExec
 			allowedTargets = 2;
 			JIP = 1;
 		};
-		class createDiaryRecord
-		{
-			allowedTargets = 0;
-			JIP = 1;
-		};
 		class call
 		{
 			allowedTargets = 0;

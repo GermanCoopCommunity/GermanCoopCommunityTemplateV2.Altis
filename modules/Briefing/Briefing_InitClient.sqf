@@ -86,7 +86,7 @@ player createDiaryRecord [
 // Teamspeak IP
 player createDiarySubject ["Teamspeak","Teamspeak"];
 player createDiaryRecord [
-	"Teamspeak",
+	"TeamSpeak",
 	[
 		"Server-IP",
 			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TeamSpeak-Server an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"

@@ -18,7 +18,7 @@ BFT_Groups = [];
 } count (allPlayers - entities "VirtualCurator_F");	// exclude curators
 
 
-// assign each group in BFT_Groups-Array a marker with its name
+// assign each player group a marker with its name
 {
     private _marker = createMarker [str _x + "_BFT",[0,0,0]];
     _marker setMarkerText ((str _x) select [2]);
@@ -44,7 +44,7 @@ BFT_Groups = [];
 				default {_marker setMarkerType "n_air";};
 			};
 		};
-    }
+	}
 	else
 	{
         if (typeOf (leader _x) in Crews) then

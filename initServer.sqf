@@ -44,10 +44,10 @@ if !(time > 0) then	// only execute those files on mission start to prevent rese
 
 
 /* Missing Content Warnings */
-// check for Curators (currently disabled due to bug https://forums.bistudio.com/topic/188194-eden-zeus-mission-does-not-work/)
-/*if (({count entities _x; nil;} count Curators) isEqualTo 0) then	// if there are no Virtual Curator Units...
+// check for Curators
+if (({count entities _x; nil;} count Curators) isEqualTo 0) then	// if there are no Virtual Curator Units...
 {["<t color='#ff0000' size ='1.5'>Es gibt keinen virtuellen Zeus!<br/>Erstelle mindestens einen ""VirtualCurator_F"" o.ä., falls du nicht schon einen gesetzt hast und er gerade unbesetzt ist.</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder
-};*/
+};
 // check for Vehicle Respawn Module
 if (count entities "ModuleRespawnVehicle_F" isEqualTo 0) then	// if there is no Vehicle Respawn Module...
 {["<t color='#ff0000' size ='1.5'>Es gibt kein Fahrzeug-Respawn-Modul!<br/>Erstelle ein ""ModuleRespawnVehicle_F"" und synchronisiere alle Fahrzeuge, die respawnen sollen, damit.</t>",0,0,10,0] spawn BIS_fnc_dynamicText;	// ...tell mission builder

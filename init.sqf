@@ -32,6 +32,10 @@ enableSentences false;
 setViewDistance 5000;
 
 
+// set group names according to the ones given in editor, as they are overwritten by Arma pre init
+//{_x setGroupIdGlobal [(str _x) select [2]];} forEach allGroups;
+
+
 /* mission specific code comes here */
 
 

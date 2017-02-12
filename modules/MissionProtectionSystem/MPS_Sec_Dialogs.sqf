@@ -135,11 +135,10 @@ if (isMultiplayer && {!((getPlayerUID player) in Whitelist)}) then	// only if it
 	if (typeOf player in Pilots) then	// if player is a pilot...	
 	{
 		["CheckPilot",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
-		
 	};
 
 	// ...player has curator password
-	if (typeOf player in Curators) then	// if player is an Curator...
+	if (typeOf player in Curators) then	// if player is a Curator...
 	{
 		PW_correct = false;
 		["CheckCurator",3,false,true] call MPS_fnc_PW;	// ...create according security dialog
@@ -160,6 +159,9 @@ if (isMultiplayer && {!((getPlayerUID player) in Whitelist)}) then	// only if it
 	};
 };
 /* Slot Protection section finished */
+
+
+PW_correct = true;	// set password to true to display mission intro
 
 
 // log end of execution

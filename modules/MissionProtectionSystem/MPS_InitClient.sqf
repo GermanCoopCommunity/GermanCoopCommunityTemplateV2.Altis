@@ -73,13 +73,13 @@ if (!(getPlayerUID player in Whitelist) && {!(getPlayerUID player in Pilots)}) t
 		private _victim = _this select 0;
 		private _killer = _this select 1;
 		private _instigator = _this select 2;
-		if ((player isEqualTo _victim) && {!(player isEqualTo _killer)} && {!(player isEqualTo _instigator)}) then
+		if ((player isEqualTo _victim) && {!(player isEqualTo _killer)} && {!(player isEqualTo _instigator)} && {isPlayer _killer}) then
 		{
 			hint format ["Du wurdest von deinem Kameraden %1 %2 aus der Einheit %3 getötet. Er wurde verwarnt.",rank _killer,name _killer,str(group _killer) select [2]];
 		}
 		else
 		{ 
-			if (player isEqualTo _killer && {!(player isEqualTo _victim)}) then
+			if (player isEqualTo _killer && {!(player isEqualTo _victim)} && {isPlayer _killer}) then
 			{
 				[50] call MPS_fnc_AddFoul;
 				if (MPS_FoulsCount < 100) then
