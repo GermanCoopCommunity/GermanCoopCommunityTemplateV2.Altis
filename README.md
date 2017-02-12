@@ -1,4 +1,9 @@
 # PublicLargeScaleCoop Template
+<<<<<<< HEAD
+=======
+
+This is the new (second) version of the German Coop Community Mission Template by Quentin.
+>>>>>>> origin/master
 
 General:
 - Prebuilt Base
