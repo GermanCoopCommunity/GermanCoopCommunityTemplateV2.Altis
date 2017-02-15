@@ -84,7 +84,7 @@ player createDiaryRecord [
 
 
 // Teamspeak IP
-player createDiarySubject ["Teamspeak","Teamspeak"];
+player createDiarySubject ["TeamSpeak","TeamSpeak"];
 player createDiaryRecord [
 	"TeamSpeak",
 	[
