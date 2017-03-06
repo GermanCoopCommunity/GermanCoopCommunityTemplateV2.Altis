@@ -26,49 +26,30 @@
 private _unit = _this select 0;
 
 
-if (!(side _unit isEqualTo civilian)/* && {!(captive _unit)}*/) then	// if unit is neither civilian (nor a captive)...
+if (!(side _unit isEqualTo civilian)/* && {!(captive _unit)}*/) then	// if unit is no civilian...
 {
-	// ...assign player an insignia according to his rank
+	// ...assign unit an insignia according to his rank
 	switch (rank _unit) do
 	{	
-		case "COLONEL": {[_unit,"ColonelInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "MAJOR": {[_unit,"MajorInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "CAPTAIN": {[_unit,"CaptainInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "LIEUTENANT": {[_unit,"LieutenantInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "SERGEANT": {[_unit,"SergeantInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "CORPORAL": {[_unit,"CorporalInsignia"] call BIS_fnc_setUnitInsignia;};
-		case "PRIVATE": {[_unit,"PrivateInsignia"] call BIS_fnc_setUnitInsignia;};
+		case "COLONEL": {[_unit,"ColonelInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "MAJOR": {[_unit,"MajorInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "CAPTAIN": {[_unit,"CaptainInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "LIEUTENANT": {[_unit,"LieutenantInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "SERGEANT": {[_unit,"SergeantInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "CORPORAL": {[_unit,"CorporalInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+		case "PRIVATE": {[_unit,"PrivateInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
 	};
-	_unit addEventHandler [	// ...reassign unit an insignia according to their rank after death again
-		"Respawn",
-			{
-				// declare EH variables
-				private _unit = _this select 0;
-				
-				// code
-				switch (rank _unit) do
-				{	
-					case "COLONEL": {[_unit,"ColonelInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "MAJOR": {[_unit,"MajorInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "CAPTAIN": {[_unit,"CaptainInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "LIEUTENANT": {[_unit,"LieutenantInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "SERGEANT": {[_unit,"SergeantInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "CORPORAL": {[_unit,"CorporalInsignia"] call BIS_fnc_setUnitInsignia;};
-					case "PRIVATE": {[_unit,"PrivateInsignia"] call BIS_fnc_setUnitInsignia;};
-				};
-			}
-	];
-	addMissionEventHandler ["EachFrame",	// add persistent MEH to maintain insignia
+	addMissionEventHandler ["EachFrame",	// add persistent MEH to maintain insignia after respawn / opening virtual arsenal / taking off clothes and back on again
 	{
 		switch (rank player) do
 		{	
-			case "COLONEL": {[player,"ColonelInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "MAJOR": {[player,"MajorInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "CAPTAIN": {[player,"CaptainInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "LIEUTENANT": {[player,"LieutenantInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "SERGEANT": {[player,"SergeantInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "CORPORAL": {[player,"CorporalInsignia"] call BIS_fnc_setUnitInsignia;};
-			case "PRIVATE": {[player,"PrivateInsignia"] call BIS_fnc_setUnitInsignia;};
+			case "COLONEL": {[player,"ColonelInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "MAJOR": {[player,"MajorInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "CAPTAIN": {[player,"CaptainInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "LIEUTENANT": {[player,"LieutenantInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "SERGEANT": {[player,"SergeantInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "CORPORAL": {[player,"CorporalInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
+			case "PRIVATE": {[player,"PrivateInsignia"] remoteExec [BIS_fnc_setUnitInsignia,0,true]};
 		};
 	}];
 };

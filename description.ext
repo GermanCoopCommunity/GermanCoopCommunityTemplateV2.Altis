@@ -166,6 +166,11 @@ class CfgRemoteExec
 			allowedTargets = 0;	// can target anyone (default)
 			JIP = 1;	// sending jip messages is disabled for this function (overrides settings in the Functions class)
         };
+		class BIS_fnc_setUnitInsignia
+        {
+			allowedTargets = 0;	// can target anyone (default)
+			JIP = 1;	// sending jip messages is disabled for this function (overrides settings in the Functions class)
+        };
     };
 	class Commands
     {
