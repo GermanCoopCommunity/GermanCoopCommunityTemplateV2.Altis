@@ -31,7 +31,7 @@ Features:
 	...Unit Insignia
 	...Jumping
 	...Gestures
-- fully equipped US-Base on salt lake Almyra
+- fully equipped US-Base on Altis Airport
 - Zeus Support (every vehicle and unit editable for all curators, Respawn- & JIP-compatible)
 - Admin Curator Access
 

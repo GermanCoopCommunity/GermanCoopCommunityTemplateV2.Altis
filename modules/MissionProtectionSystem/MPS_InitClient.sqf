@@ -55,7 +55,7 @@ if (isNil "MPS_BaseMrkr" && {!(getPlayerUID player in Whitelist)}) then	// if mi
 		//nil;	// prevent weapon firing anim & sound (doesn't work like this)
 	}];
 }
-else	// ...otherwise...
+else	// ...otherwise
 {
 	if (!isNil "MPS_BaseMrkr") then	// ...if there is no object called "MPS_BaseMrkr"...
 	{
