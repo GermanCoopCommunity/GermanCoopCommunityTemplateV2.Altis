@@ -138,17 +138,17 @@ if ((getPlayerUID player) in Whitelist) then
 			"Passwörter",
 			"Diesen Tagebucheintrag bekommst nur du als GeCo-Orga-Mitglied angezeigt. Alle Passwörter sind natürlich ohne Anführungszeichen einzugeben.<br/><br/>
 			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
-				Offiziere:  <font color='#107b1b'>""OPZ""</font color><br/>
-				Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
-				Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
-				Zuschauer:  <font color='#107b1b'>""Spec""</font color><br/><br/>
-				<font color='#1d49d1'>Idiotentest:</font color><br/>
-				Serversprache:  <font color='#107b1b'>""deutsch""</font color><br/>
-				Hauptstadt:  <font color='#107b1b'>""Berlin""</font color><br/>
-				Bundesländer:  <font color='#107b1b'>""16""</font color><br/>
-				Bundeskanzler:  <font color='#107b1b'>""Angela Merkel""</font color><br/><br/>
-				<font color='#1d49d1'>Fouler Rejoin Protection:</font color><br/>
-				<font color='#107b1b'>""rejoin""</font color>"
+			Offiziere:  <font color='#107b1b'>""OPZ""</font color><br/>
+			Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
+			Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
+			<font color='#1d49d1'>Zuschauer:</font color><br/><font color='#107b1b'>""Spec""</font color><br/><br/>
+			<font color='#1d49d1'>Idiotentest:</font color><br/>
+			Serversprache:  <font color='#107b1b'>""deutsch""</font color><br/>
+			Hauptstadt:  <font color='#107b1b'>""Berlin""</font color><br/>
+			Bundesländer:  <font color='#107b1b'>""16""</font color><br/>
+			Bundeskanzler:  <font color='#107b1b'>""Angela Merkel""</font color><br/><br/>
+			<font color='#1d49d1'>Fouler Rejoin Protection:</font color><br/>
+			<font color='#107b1b'>""rejoin""</font color>"
 		]
 	];
 };

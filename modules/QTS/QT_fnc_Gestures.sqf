@@ -6,8 +6,7 @@
 	assigns hotkeys (4-8) for quick gestures
 
 	Parameter(s):
-		0:
-			OBJECT - player unit
+		none
 
 	Returns:
 	true
@@ -109,12 +108,12 @@ QT_Gestures_Display_EH = (findDisplay 46) displayAddEventHandler [
 
 
 // create diary entry explanation
-player createDiarySubject ["Gesten","Gesten"];
+if !(player diarySubjectExists "QTS") then {player createDiarySubject ["QTS","QTS"];}; // create "QTS" diary entry with usage hints for player
 player createDiaryRecord [
-	"Gesten",
+	"QTS",
 	[
-		"Info",
-			"Folgende Zahlen auf der Tastatur unter den F-Tasten, um folgende Gesten auszuführen:<br/><br/><font color='#107b1b'>4</font color> - ""Los!""<br/><font color='#107b1b'>5</font color> - ""Stop!""<br/><font color='#107b1b'>6</font color> - ""Ja!""<br/><font color='#107b1b'>7</font color> - ""Nein!""<br/><font color='#107b1b'>8</font color> - ""Sichtung auf (Gradangabe)!"""""
+		"Gesten",
+			"<br/>Folgende Zahlen auf der Tastatur unter den F-Tasten, um folgende Gesten auszuführen:<br/><br/><font color='#107b1b'>4</font color> - ""Los!""<br/><font color='#107b1b'>5</font color> - ""Stop!""<br/><font color='#107b1b'>6</font color> - ""Ja!""<br/><font color='#107b1b'>7</font color> - ""Nein!""<br/><font color='#107b1b'>8</font color> - ""Sichtung auf (Gradangabe)!"""""
 	]
 ];
 

@@ -6,8 +6,7 @@
 	plays jump move when player oversteps something
 
 	Parameter(s):
-		0:
-			OBJECT - player unit
+		none
 
 	Returns:
 	true
@@ -24,9 +23,6 @@
 - AovrPercMrunSrasWrflDf	// jump move
 
 */
-
-// declare local variables
-private _unit = _this select 0;
 
 
 // add EHs to unit
@@ -49,11 +45,11 @@ QT_Jump_Display_EH = (findDisplay 46) displayAddEventHandler
 
 
 // create diary entry explanation
-player createDiarySubject ["Springen","Springen"];
+if !(player diarySubjectExists "QTS") then {player createDiarySubject ["QTS","QTS"];}; // create "QTS" diary entry with usage hints for player
 player createDiaryRecord [
-	"Springen",
+	"QTS",
 	[
-		"Info",
+		"Springen",
 			"<br/><font color='#107b1b'>V</font color> auf der Tastatur, um während des Laufens zu springen."
 	]
 ];

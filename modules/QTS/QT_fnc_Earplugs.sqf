@@ -6,8 +6,7 @@
 	add earplugs to player
 
 	Parameter(s):
-		0:
-			OBJECT - player unit
+		none
 
 	Returns:
 	true
@@ -84,11 +83,11 @@ QT_Earplugs_Respawn_EH = player addEventHandler [	// reset volume on players dea
 
 
 // create diary entry explanation
-player createDiarySubject ["Ohrstöpsel","Ohrstöpsel"];
+if !(player diarySubjectExists "QTS") then {player createDiarySubject ["QTS","QTS"];}; // create "QTS" diary entry with usage hints for player
 player createDiaryRecord [
-	"Ohrstöpsel",
+	"QTS",
 	[
-		"Info",
+		"Ohrstöpsel",
 			"<br/><font color='#107b1b'>Rechte Windows-Taste</font color> auf der Tastatur, um die Ohrstöpsel umzuschalten."
 	]
 ];

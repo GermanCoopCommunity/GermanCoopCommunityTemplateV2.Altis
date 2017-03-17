@@ -18,6 +18,14 @@ BFT_Groups = [];
 } count (allPlayers - entities "VirtualCurator_F");	// exclude curators
 
 
+/*// store all pilots in an array
+BFT_Pilots = [];
+{
+	BFT_Pilots pushBackUnique _x;
+	nil
+} count [pilot_1,pilot_2,pilot_3,pilot_4];*/
+
+
 // assign each player group a marker with its name
 {
     private _marker = createMarker [str _x + "_BFT",[0,0,0]];

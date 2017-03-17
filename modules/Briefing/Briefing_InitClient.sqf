@@ -28,7 +28,8 @@ player createDiaryRecord [
 ];
 player createDiaryRecord [
 	"Diary", [	// hier nichts ändern
-		"Durchführung","Wird von der Führung bestimmt."	// bleibt bestehen, hier nichts ändern
+		"Durchführung",
+		"Wird von der Führung bestimmt."	// bleibt bestehen, hier nichts ändern
 	]
 ];
 
@@ -59,15 +60,15 @@ player createDiaryRecord [
 player createDiaryRecord [
 	"Credits",
 	[
-		"GeCo Team",
-			"Hauptfunktionen"
+		"Quentin (& Fabi)",
+			"<br/>Hauptfunktionen"
 	]
 ];
 player createDiaryRecord [
 	"Credits",
 	[
 		"DrZombeck",
-			"Unbedingte Hilfsbereitschaft"
+			"<br/>Unbedingte Hilfsbereitschaft"
 	]
 ];
 
@@ -89,7 +90,7 @@ player createDiaryRecord [
 	"TeamSpeak",
 	[
 		"Server-IP",
-			"Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TeamSpeak-Server an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
+			"<br/>Dies ist ein deutsches Coop-Event der German Coop Community. Bitte schließ' dich deinen Kameraden auf dem TeamSpeak-Server an:<br/><font color='#107b1b'>148.251.184.100:9983</font color>"
 	]
 ];
 

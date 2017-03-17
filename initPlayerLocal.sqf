@@ -11,6 +11,10 @@ player createDiaryRecord ["Modules",["InitPlayerLocal","<font color='#b40100'>Au
 player removeAllEventHandlers "CuratorObjectPlaced";
 
 
+// remove player body on respawn
+player addEventHandler ["Respawn",{deleteVehicle (_this select 1);}];
+
+
 /* initialize modules */
 _null = execVM "modules\Briefing\Briefing_InitClient.sqf";	// Briefing
 _null = execVM "modules\QTS\QTS_InitClient.sqf";	// Quentin's Scripts

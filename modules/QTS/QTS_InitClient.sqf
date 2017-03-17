@@ -32,8 +32,8 @@ QT_call_fncs pushBackUnique QT_fnc_Jump;
 {[_x] call QT_fnc_Insignia} count (allUnits - (allPlayers - entities "HeadlessClient_F"));
 
 // apply QTS on player
-{[player] call _x} count QT_call_fncs;
-{[player] spawn _x;nil} count QT_spawn_fncs;
+{[] call _x} count QT_call_fncs;
+{[] spawn _x; nil} count QT_spawn_fncs;
 
 // if player is a curator, apply QTS on units spawned by him
 if (typeOf player in Curators) then
