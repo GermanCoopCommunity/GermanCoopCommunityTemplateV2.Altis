@@ -11,7 +11,7 @@ player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#b40100
 player createDiaryRecord [
 	"Diary", [
 		"Situation",	// hier nichts ändern
-		"Die Ausgangssituation der Mission steht hier."	// <- hier kannst du deinen Ausgangssituation hineinschreiben
+		"Die Ausgangssituation der Mission steht hier."	// <- hier kannst du deine Ausgangssituation hineinschreiben
 	]
 ];
 player createDiaryRecord [

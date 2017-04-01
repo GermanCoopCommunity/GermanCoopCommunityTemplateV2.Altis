@@ -34,7 +34,7 @@ MPS_fnc_AddFoul =
 
 
 /* Baserape Protection section */
-if (isNil "MPS_BaseMrkr" && {!(getPlayerUID player in Whitelist)}) then	// if mission builder has placed a BaseMarker, player is not on Whitelist and doesn't play a Special Slot...
+if (isNil "MPS_BaseMrkr" && {!(getPlayerUID player in Whitelist)} && {!(typeOf player in Curators)}) then	// if mission builder has placed a BaseMarker, player is not on Whitelist and doesn't play as curator...
 {
 	FiredMan_EH = player addEventHandler ["FiredMan",
 	{
