@@ -73,7 +73,7 @@ player createDiaryRecord [
 ];
 
 
-/*// Revive explanation
+// Revive explanation
 player createDiarySubject ["Revive","Revive"];
 player createDiaryRecord [
 	"Revive",
@@ -81,7 +81,7 @@ player createDiaryRecord [
 		"Info",
 			"Das Revivesystem ist darauf ausgelegt, den Spieler bei Treffern durch großkalibrige Projektile oder bei Treffern auf ungeschützte Areale zu töten. <font color='#107b1b'>Nur Sanitäter können wiederbeleben</font color>, wenn sie ein Medikit bei sich tragen."
 	]
-];*/
+];
 
 
 // Teamspeak IP
@@ -95,11 +95,11 @@ player createDiaryRecord [
 ];
 
 
-/*// Company Roster
-player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
+// Company Roster
 {
 	if (isPlayer leader _x) then
 	{
+		player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 		player createDiaryRecord
 		[
 			"Kommandostruktur",
@@ -111,7 +111,7 @@ player createDiarySubject ["Kommandostruktur","Kommandostruktur"];
 		];
 	};
 	nil;
-} count allGroups;*/
+} count allGroups;
 
 
 // log end of execution
