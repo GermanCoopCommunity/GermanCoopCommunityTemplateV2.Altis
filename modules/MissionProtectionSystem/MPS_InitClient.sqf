@@ -140,8 +140,8 @@ if ((getPlayerUID player) in Whitelist) then
 			<font color='#1d49d1'>Slot Protection Passwords:</font color><br/>
 			Offiziere:  <font color='#107b1b'>""OPZ""</font color><br/>
 			Piloten:  <font color='#107b1b'>""Pilot""</font color><br/>
-			Zeus:  <font color='#107b1b'>""Zeus""</font color><br/><br/>
-			<font color='#1d49d1'>Zuschauer:</font color><br/><font color='#107b1b'>""Spec""</font color><br/><br/>
+			Zeus:  <font color='#107b1b'>""Zeus""</font color><br/>
+			Zuschauer: <font color='#107b1b'>""Spec""</font color><br/><br/>
 			<font color='#1d49d1'>Idiotentest:</font color><br/>
 			Serversprache:  <font color='#107b1b'>""deutsch""</font color><br/>
 			Hauptstadt:  <font color='#107b1b'>""Berlin""</font color><br/>

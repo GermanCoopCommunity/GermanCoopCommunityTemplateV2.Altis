@@ -6,34 +6,6 @@
 player createDiaryRecord ["Modules",["Briefing InitClient","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
-// Briefing
-// benutze <br/>, um einen Enter-artigen Zeilensprung einzufügen
-player createDiaryRecord [
-	"Diary", [
-		"Situation",	// hier nichts ändern
-		"Die Ausgangssituation der Mission steht hier."	// <- hier kannst du deine Ausgangssituation hineinschreiben
-	]
-];
-player createDiaryRecord [
-	"Diary", [
-		"Einsatzregeln",	// hier nichts ändern
-		"Die Einsatzregeln der Mission stehen hier."	// <- hier kannst du die Einsatzregeln (kein Artilleriebeschuss auf Städte, Zivilisten und Kriegsgefangenen ist nichts anzutun etc.) hineinschreiben
-	]
-];
-player createDiaryRecord [
-	"Diary", [
-		"Mission",	// hier nichts ändern
-		"Die Mission selbst steht hier."	// <- hier kannst du die Missionsbeschreibung hineinschreiben
-	]
-];
-player createDiaryRecord [
-	"Diary", [	// hier nichts ändern
-		"Durchführung",
-		"Wird von der Führung bestimmt."	// bleibt bestehen, hier nichts ändern
-	]
-];
-
-
 // Credits
 player createDiarySubject ["Credits","Credits"];
 /*player createDiaryRecord [

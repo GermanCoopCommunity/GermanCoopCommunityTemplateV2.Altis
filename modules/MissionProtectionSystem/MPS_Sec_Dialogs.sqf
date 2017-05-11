@@ -6,10 +6,6 @@
 player createDiaryRecord ["Modules",["MPS Sec Diags","<font color='#b40100'>Ausführung begonnen</font color> nach " + str(time) + " Sekunden."]];
 
 
-// wait for mission start
-waitUntil {time > 0};
-
-
 // define Password Control Function
 // Quentins MPS Password Control
 /*
@@ -87,6 +83,10 @@ MPS_fnc_PW = {
 		//closeDialog 0;	// already done by the dialogs themselves
 	};
 };
+
+
+// wait for mission start
+waitUntil {time > 0};
 
 
 /* Fouler Rejoin Protection */

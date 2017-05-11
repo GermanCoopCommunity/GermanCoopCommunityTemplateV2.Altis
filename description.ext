@@ -385,6 +385,20 @@ class CfgORBAT
 			//tags[] = {"BLUFOR","USArmy"};
 			//assets[] = {B_MBT_01_cannon_F};
  		};
+		
+		class Logistics
+		{
+			textShort = "Logistik";
+			text = "Logistiker";
+			description = "Logistische Unterstützung: Treibstoff, Reparaturen, Sanitätsmaterial und Munition.";
+			type = "Support";
+			size = "FireTeam";
+			//commander = "NATOMen";
+			//commanderRank = "Sergeant";
+			side = "West";
+			//tags[] = {"BLUFOR","USArmy"};
+			//assets[] = {B_MBT_01_cannon_F};
+ 		};
 	};
 };
 /* end of ORBAT */
