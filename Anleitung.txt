@@ -5,20 +5,14 @@ Im Folgenden wird dir erklärt, wie du das Template auf deine eigene Mission anpa
 WICHTIG: ÄNDERE KEINEN CODE, NIRGENDS! Befolge nur folgende Schritte:
 
 
-1.	modules\Briefing\Briefing_InitClient.sqf
-	- Missionsbriefing eintragen (Situation, Mission, Durchführung, Einsatzregeln)
+1.	einen Marker namens "MPS_BaseMrkr" ins Zentrum der Spielerbasis setzen (für das Schutzsystem)
 2.	description.ext
 	- class Debriefing:
 		Debriefing-Text ändern, falls du deine Mission gescriptet und nicht von Zeus aus enden lassen möchtest.
 		Voreinstellung: generischer Sieg-/Niederlagentext, der aber nicht angezeigt wird, da meist der Zeus die Mission selbst beendet
-3.	mission.sqm
-	- achte darauf, stets einen MARKER namens MPS_BaseMrkr im Zentrum deiner Basis zu haben. Er wird vom Schutzsystem benötigt
-4.	modules\Loadout\Loadout_InitClient.sqf
+3.	modules\Loadout\Loadout_InitClient.sqf
 	- Spielerausrüstung scripttechnisch veränderbar, ansonsten wird die im Editor zugewiesene Ausrüstung benutzt
 	- einstellen, ob und welche Tarnfarbe die Spieler tragen, ob ihre Waffenlaser durch Taschenlampen ersetzt werden sollen und ob sie und/oder die KI Nachtsichtgeräte erhalten sollen
-5.	init.sqf
-	- Sichtweite für die Spieler bei setViewDistance in Metern nach Belieben
-
 
 
 In der README.md stehen alle Funktionen und Variablennamen des Templates, falls du sie brauchst.

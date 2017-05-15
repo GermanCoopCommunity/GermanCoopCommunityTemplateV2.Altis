@@ -4,13 +4,14 @@ General:
 - Prebuilt Base
 	- Side: BLUFOR
 	- Faction: NATO
-	- Playable Units: 83, which are...
+	- Playable Units: 86, which are...
 			      - 7 x 10 per squad
 			      - 2 Officers (Commanding Officers & Executive Officers)
 			      - 4 pilots
 			      - 1 jet pilot
 			      - 2 curators
-			      - 4 crewmen
+			      - 3 crewmen
+				  - 4 logisticians
 
 
 Features:
@@ -51,8 +52,3 @@ Other variable names:
 
 - Mission Protection System:
 	...Base Protection Marker: MPS_BaseMrkr (marker placed in centre of player base for MPS to work)
-- other
-	...Arm & Refuel Point: refuel_point (does nothing atm)
-
-
-Passwords not shown for safety reasons.
