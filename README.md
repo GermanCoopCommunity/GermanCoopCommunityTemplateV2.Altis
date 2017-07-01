@@ -6,7 +6,7 @@ General:
 	- Faction: NATO
 	- Playable Units: 86, which are...
 			      - 7 x 10 per squad
-			      - 2 Officers (Commanding Officers & Executive Officers)
+			      - 2 Officers (Commanding Officer & Executive Officer)
 			      - 4 pilots
 			      - 1 jet pilot
 			      - 2 curators

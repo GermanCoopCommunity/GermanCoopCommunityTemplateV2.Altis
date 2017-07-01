@@ -28,6 +28,13 @@ player createDiaryRecord [
 		"MacRae",
 			"Sitzscript"
 	]
+];
+player createDiaryRecord [
+	"Credits",
+	[
+		"DrunkenOfficer",
+			"Verwundete ziehen"
+	]
 ];*/
 player createDiaryRecord [
 	"Credits",

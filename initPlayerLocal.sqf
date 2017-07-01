@@ -25,7 +25,7 @@ _null = execVM "modules\Intro\MissionIntro_InitClient.sqf";	// Mission Intro
 
 
 /* mission specific code comes here */
-
+call compileFinal preprocessFileLineNumbers "modules\DOF_DragAndDrop_for_BISRevive\DOF_DragAndDrop_for_BISRevive.sqf";
 
 
 /* end of mission specific code */
