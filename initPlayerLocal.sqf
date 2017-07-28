@@ -21,6 +21,7 @@ _null = execVM "modules\QTS\QTS_InitClient.sqf";	// Quentin's Scripts
 _null = execVM "modules\MissionProtectionSystem\MPS_InitClient.sqf";	// Mission Protection System
 _null = execVM "modules\Loadout\Loadout_InitClient.sqf";	// Player Loadout
 _null = execVM "modules\Intro\MissionIntro_InitClient.sqf";	// Mission Intro
+_null = execVM "modules\ZeusFramework\ZFW_initPlayerLocal.sqf";	// Zeus Framework InitPlayerLocal
 /* initialized modules */
 
 

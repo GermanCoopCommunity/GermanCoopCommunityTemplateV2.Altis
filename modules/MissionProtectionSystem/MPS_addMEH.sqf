@@ -43,7 +43,7 @@ Veh_Restrct_MEH = addMissionEventHandler ["Draw3D",
 		&&
 		!((getText (configfile >> "CfgVehicles" >> typeOf objectParent player >> "vehicleClass") isEqualTo "Submarine") or (typeOf objectParent player isEqualTo "Steerable_Parachute_F"))	// ...which is not an SDV (as only basic divers can maneuver them) or a parachute (for players mustn't be ejected out of them)...
 		&&
-		{(objectParent player isKindOf "Tank") or {objectParent player isKindOf "Air"}}	// ...but a tank or an aircraft... (to exclude crew requirements for cars and trucks)
+		{(objectParent player isKindOf "Tank") or {objectParent player isKindOf "Air"}}	// ...but is a tank or an aircraft... (to exclude crew requirements for cars and trucks)
 		&&
 		{((typeOf player) != (getText (configFile >> "CfgVehicles" >> typeOf objectParent player >> "crew")))}	// ...and he is not the same class as needed to crew that vehicle...
 		&&

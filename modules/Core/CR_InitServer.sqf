@@ -29,7 +29,7 @@ publicVariable "Whitelist";
 
 // list of people who passed the Idiotentest so they won't be bothered again
 JIP_WL = ["76561198024503777","76561198029924112","76561198063094413","76561198035982662","76561198006766136"];
-publicVariable "Whitelist";
+publicVariable "JIP_WL";
 
 // blacklist containing players which exceeded the fouls limit and were kicked
 Blacklist = [];
